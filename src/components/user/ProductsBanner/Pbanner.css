@@ -1,0 +1,91 @@
+.ProductBanneBox{
+    width: 85vw;
+    height: 80vh;
+    margin: auto;
+    display: flex;
+    margin-top: 5%;
+    justify-content: space-around;
+}
+.LeftBox{
+    height: 100%;
+    width: 50%;
+ 
+   
+}
+.rightBox{
+    width: 35%;
+    height: 100%;
+}
+.rightBox img{
+    width: 100%;
+    height: 100%;
+    border-radius: 30px;
+}
+.Headers{
+  height: 20%;
+  width: 100%;
+  background-color: black; 
+  color: white;
+  border-radius: 30px; 
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.Headers div{
+    width: 80%;
+    height: 100%;
+    margin: auto;
+    display: flex;
+    align-items: center;
+}
+.textContenst{
+    margin-top: 40px;
+    width: 100%;
+    height: 35%;
+    color: BLACK;
+    font-size: 36px;
+    font-family:'Courier New', Courier, monospace
+}
+.MONGER{
+    font-family:'Courier New', Courier, monospace;
+}
+.smallText span{
+    font-size: 20px;
+}
+.smallText{
+    width: 65%;
+    height: 22%;
+    color: BLACK;
+}
+.rate{
+    color: BLACK;
+    height: 40px;
+    
+}
+.rate span{
+    font-size: 20px;
+font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.team-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 10px;
+    padding: 10px 20px;
+    background-color: BLACK;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    font-size: 14px;
+    cursor: pointer;
+    width: 100%;
+    height: 44PX;
+    margin: 20px 0;
+    transition: all 0.3s ease;
+  }
+
+  .team-buttons:hover {
+    background-color: BLACK;
+    color: white;
+    transform: scale(1.05);
+  }

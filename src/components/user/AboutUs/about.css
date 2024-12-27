@@ -1,0 +1,153 @@
+// about.css
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.aboutMianDiv {
+  width: 80%;
+  height: 100vh;
+  display: flex;
+  margin: auto;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.about {
+  width: 45%;
+}
+
+.about h1 {
+  text-align: left;
+  font-family: 'Radio Canada', sans-serif;
+  font-size: 40px;
+  font-weight: 400;
+  line-height: 54px;
+}
+
+.descrpt {
+  color: white;
+}
+
+.descrpt span {
+  font-family: 'Raleway', sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 23.48px;
+  text-align: left;
+  color: rgba(231, 1, 60, 1);
+}
+
+.descrpt p {
+  font-family: 'Raleway', sans-serif;
+  font-size: 29px;
+  font-weight: 400;
+  line-height: 27px;
+  text-align: justify;
+}
+
+.team-button{
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+  padding: 10px 20px;
+  background-color: white;
+  color: black;
+  border: none;
+  border-radius: 30px;
+  font-size: 14px;
+  cursor: pointer;
+  height: auto;
+  margin: 20px 0;
+  transition: all 0.3s ease;
+}
+
+.team-button:hover {
+  background-color: rgba(231, 1, 60, 1);
+  color: white;
+  transform: scale(1.05);
+}
+
+.iconsbtn-team {
+  font-size: 2.5rem;
+}
+
+.Team {
+  color: black;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.misson {
+  color: white;
+}
+
+.misson p {
+  font-family: 'Raleway', sans-serif;
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 27px;
+  text-align: justify;
+  color: white;
+}
+
+.imageDiv {
+  margin-top: 6%;
+  width: 40%;
+  height: 84%;
+  border: 1px solid white;
+  border-radius: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.imageDiv div {
+  height: 80%;
+  width: 80%;
+  margin: auto;
+  background-color: black;
+  border-top-left-radius: 150px;
+  border-bottom-right-radius: 150px;
+  background-image: url('https://s3-alpha-sig.figma.com/img/95f6/6efa/d3f5fb9b0506f121a282725c520c0130?Expires=1734912000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=iJfvgosEPigp9hC25L2E5saiBTZg4gdB~eJqkZ9xukVeAMzaPxo9lZs21Dg0EsihyGzr27OaewBC45WX9fCWnMRpKuwPN~3EAjV-aRNzeEn0WvyP9BvsYvwDgHVTGEV99lrxH0Yrk3o7gPey1b4FeGeStcabaNgLrvflOimRKFTwGmhuzoIFx7ejhOL4fM9z~4ic0z1xSQR88LSgBC2HrdO9xPFHL9yhibVKVJ2siUjgJZDtitz9dsVUnFHy4xEU6QIV2XJnpYknPss2bdOHkQW4Qr9o94LpUsOd9fp0BU0AqVMpZvb9rAca3plCicfIixAh1LxIOXdXRwTh-l5xaw__');
+  background-size: cover;
+  background-position: center;
+}
+
+@media (max-width: 768px) {
+  .about {
+    width: 100%;
+  }
+
+  .aboutMianDiv {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .team-button {
+    width: 80%;
+    font-size: 14px;
+  }
+
+  .about h1 {
+    font-size: 30px;
+  }
+
+  .descrpt p {
+    font-size: 18px;
+  }
+
+  .misson p {
+    font-size: 15px;
+  }
+
+  .imageDiv {
+    width: 80%;
+    height: auto;
+  }
+}
+
+

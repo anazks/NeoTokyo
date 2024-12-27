@@ -1,0 +1,161 @@
+.head{
+    width: 80%;
+    height: 120px;
+    margin: auto;
+    margin-top: 10%;
+}
+.head h1{
+    text-align: center;
+    font-size: 50px;
+    font-weight: 700;
+    line-height: 40px;
+    letter-spacing: 0.2em;
+    text-align: center;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    color: rgba(229, 229, 229, 0.6);
+
+}
+.textContent{
+    width: 100%;
+    height: 100%;
+    margin: auto;
+}
+.Gaming{
+    color: rgba(218, 0, 55, 1);
+    text-align: center;
+    font-family: Radio Canada;
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 48px;
+    letter-spacing: 0.2em;
+    text-align: center;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+}
+.line {
+    width: 60%; /* Adjust the width as needed */
+    height: 0; /* Height is 0 since it's just a line */
+    border-top: 2px solid rgba(218, 0, 55, 1); /* Top border line */
+    margin: 10px 0; /* Optional margin to add spacing */
+    margin: auto;
+  }
+  /* Container for Flex Layout */
+
+  
+  /* Shared Box Styles */
+  .containerBox{
+    width: 75%;
+    height: 200px;
+    margin: auto;
+    margin-top: 10%;
+    display: flex;
+    gap: 20px;
+  }
+  .ProjectEden{
+    width: 100%;
+    height: 200px;
+    margin: auto;
+    margin-top: 10%;
+    display: flex;
+    gap: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .Left{
+    width: 50%;
+    height: 100%;
+    background: rgba(57, 57, 57, 0.7);
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+
+  
+  .leftBox {
+    color: white;
+    width: 40%;
+    height: 100%;
+    border: none; /* Removes all borders */
+    border-right: 2px solid rgba(218, 0, 55, 1); /* Only the right border is visible */
+    text-align: center;
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 27px;
+    letter-spacing: 0.2em;
+    text-align: left;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+
+  }
+  .leftBox h4{
+    font-family: Raleway;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 23.48px;
+    letter-spacing: 0.2em;
+    text-align: left;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+
+  }
+  .right{
+    width: 100%;
+    font-family: Raleway;
+    font-size: 12px;
+    font-weight: 300;
+    line-height: 23.48px;
+    letter-spacing: 0.09em;
+    text-align: justified;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+
+  }
+  .rightBox{
+    width: 100%;
+    background: rgba(57, 57, 57, 0.7);
+    height: 100%;
+    border-radius: 21px 21px 21px 21px;
+    display: flex;
+    align-items: center;
+
+  }
+  .trangleDiv{
+    width: 100%;
+    display: flex;
+  }
+  .triangl {
+    position: relative;
+    width: 200px; /* Base width */
+    height: 200px; /* Base height */
+    width: 200px; /* adjust to control the size */
+    aspect-ratio: 1;
+    clip-path: polygon(97.87% 64.45%,13.55% 84.23%,38.58% 1.32%);
+  
+
+  }
+  
+  .triangl::before {
+    content: '';
+    position: absolute;
+    width: 80%; /* Full width */
+    height: 80%; /* Full height */
+    background-color: #eb4747; /* Triangle color */
+    clip-path: polygon(0% 100%, 100% 100%, 50% 0%); /* Triangle shape */
+    border-radius: 20px 20px 0 0; /* Rounded corners */
+    transform: rotate(-11deg); /* Slight rotation */
+    transform-origin: center; /* Rotation point */
+    top: 0;
+    left: 0;
+  }
+.leftDivText h1{
+  font-size: 30px;
+  
+  font-family: 'Radio Canada', sans-serif;
+}
+.right h1{
+  font-family: 'Raleway', sans-serif;
+}

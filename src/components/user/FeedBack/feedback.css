@@ -1,0 +1,131 @@
+.feedback{
+    width: 80%;
+    margin: auto;
+    height: 100vh;
+    display: flex;
+}
+.leftB {
+    width: 50%;
+    padding: 0; /* Remove any padding from the left box */
+}
+
+.rightB {
+    width: 50%;
+    height: 100%;
+    background-color: rgb(22, 210, 235);
+    padding: 0; /* Remove any padding from the right box */
+}
+
+.leftB h1 {
+    font-family: 'Raleway', sans-serif;
+    color: white;
+    font-size: 65px;
+    font-weight: 400;
+    line-height: 88.05px;
+    text-align: left;
+    margin: 0; /* Remove any margin */
+    padding: 0; /* Remove any padding */
+}
+
+.ShortLine {
+    width: 70px;
+    height: 10px;
+    background-color: rgba(218, 0, 55, 1);
+    margin: 10px 0; /* Optional: You can adjust the margin here to control spacing */
+}
+
+.bottomBox {
+    width: 70%;
+    height: 300px;
+    margin-top: 50px; /* Reduced margin-top to eliminate unnecessary gap */
+    padding: 0; /* Remove any padding */
+}
+
+.thousand {
+    font-family: Space Grotesk;
+    font-size: 70px;
+    font-weight: 400;
+    line-height: 89.32px;
+    text-align: left;
+    margin: 0; /* Remove margin */
+    padding: 0; /* Remove padding */
+}
+
+.bottomBox h2 {
+    font-family: 'Raleway', sans-serif;
+    font-size: 40px;
+    font-weight: 400;
+    line-height: 51.04px;
+    text-align: left;
+    margin: 10px 0 0; /* Adjust margin to reduce space between h2 and content */
+    padding: 0; /* Remove padding */
+    color: white;
+}
+
+.contentsTokio {
+    height: 190px;
+    width: 250px;
+    display: flex;
+    flex-direction: column; /* Align the children vertically */
+    justify-content: center; /* Center the items vertically */
+    align-items: flex-start; /* Align the items to the left */
+    text-align: center; /* Center the text */
+    padding: 0; /* Remove any unnecessary padding */
+    margin: 0; /* Remove margin */
+}
+
+.thousand {
+    font-size: 2.5rem; /* Adjust the font size of "1000 +" */
+    margin: 0; /* Remove default margin */
+}
+
+.thousand span {
+    font-weight: bold;
+}
+
+.build {
+    color: white;
+    margin: 5px 0 0; /* Reduce margin between "1000 +" and "Completed Builds" */
+    font-size: 1.2rem; /* Adjust the font size */
+    font-family: Raleway;
+    font-size: 25px;
+    font-weight: 400;
+    line-height: 29.35px;
+    text-align: left;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+}
+
+.numbers {
+    display: flex;
+    justify-content: space-around;
+    width: 80%;
+    height: 150px;
+    color: white ;
+    gap :80px;
+    margin-top: 5px; /* Reduced margin-top for less space */
+    padding: 0; /* Remove unnecessary padding */
+}
+.entinies span{
+    font-family: Space Grotesk;
+    font-size: 30px;
+    font-weight: 400;
+    text-align: left;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    
+}
+.activeCustomers span{
+    font-family: Space Grotesk;
+    font-size: 30px;
+    font-weight: 400;
+    text-align: left;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+}
+.rightB{
+    width: 48%;
+    height: 95%;
+    background-color: rgba(57, 57, 57, 0.7);
+    border-radius: 30px;
+}

@@ -1,0 +1,119 @@
+/* Detail.css */
+.DetailsBox {
+    width: 90%;
+    margin: auto;
+    margin-top: 5%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 20px;
+    gap: 20px;
+  }
+  
+  .pcPic {
+    flex: 1;
+    max-width: 400px;
+    text-align: center;
+  }
+  
+  .pcPic img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+  }
+  
+  .descreption {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 20px;
+  }
+  
+  .descreption h2 {
+    font-size: 1.2rem;
+    color: #333;
+    margin: 0;
+    font-family:'Times New Roman', Times, serif;
+  }
+  
+  .rate {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.2rem;
+    color: #555;
+  }
+  
+  .rate h1 {
+    margin: 0;
+    font-weight: bold;
+    color: #222;
+    font-size: 20px;
+    width: 70%;
+    font-family:'Times New Roman', Times, serif;
+  }
+  
+  .detailedDescrption {
+    font-size: 1rem;
+    width: 70%;
+    color: #666;
+    line-height: 1.5;
+    font-family:'Times New Roman', Times, serif;
+  }
+  .selectionHeading{
+    font-size: .8rem;
+    color: #333;
+    margin: 0;
+    font-family:'Times New Roman', Times, serif;
+  }
+  .circleBox{
+    display: flex;
+  }
+  .circle{
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: black;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px;
+    font-size: .7rem;
+  }
+  .addtoCart{
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: start;
+    justify-content: space-between;
+  }
+  .addtoCart button{
+    width: 100px;
+    height: 24px;
+    background-color: black;
+    color: white;
+    border-radius: 30px;
+  }
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .DetailsBox {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+  
+    .rate {
+      flex-direction: column;
+      gap: 10px;
+    }
+  
+    .detailedDescrption {
+      font-size: 0.9rem;
+    }
+  }
+  

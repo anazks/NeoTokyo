@@ -1,0 +1,221 @@
+/* Main Header container */
+.Header {
+    width: 80%;
+    height: 180px;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 5%;
+    gap: 10px; /* Add spacing between buttons */
+  }
+  
+  /* General Button Styling */
+  .Header button {
+    flex: 0 1 calc(25% - 20px); /* Each button takes 25% width minus spacing */
+    height: auto;
+    background: none;
+    border: none;
+    font-size: 13px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: black;
+    position: relative;
+    cursor: pointer;
+    text-align: center;
+  }
+  
+  /* Hover effect: Add a small border and shadow */
+  .Header button:hover {
+    border: 1px solid #A36391;
+    background-color: #AB6698;
+    width: 100PX;
+    /* box-shadow: 0 4px 10px rgba(255, 255, 255, 0.3); */
+    border-radius: 5px;
+    padding: 5px;
+  }
+  
+  /* Special buttons with always-visible border and shadow */
+  .Header button.special {
+    flex: 0 1 calc(50% - 20px); /* Centered on their own row */
+    color: black;
+    border: 1px solid black;
+    border-radius: 5px;
+    box-shadow: 0 4px 10px rgba(255, 255, 255, 0.3);
+    padding: 5px;
+    margin: auto;
+    text-align: center;
+
+  }
+  
+  /* Responsive Styling */
+  @media (max-width: 768px) {
+    .Header button {
+      flex: 0 1 calc(50% - 20px); /* Two buttons per row */
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .Header button {
+      flex: 0 1 calc(100% - 20px); /* One button per row */
+    }
+  
+    .Header button.special {
+      flex: 0 1 calc(80%); /* Wider centered row for the special buttons */
+    }
+  }
+  /* Products container */
+/* Products container */
+.products {
+  display: flex;
+  justify-content: space-around;  /* Space out the cards */
+  align-items: center;
+  width: 80%;
+  margin: auto;
+  padding: 20px;
+  flex-wrap: wrap;  /* Allow wrapping of items to the next line */
+  gap: 20px;  /* Gap between cards both vertically and horizontally */
+}
+
+/* Card styling */
+.card {
+  background-color: rgba(57, 57, 57, 0.7); /* Gray background for the card */
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  padding: 10px; /* Reduced padding */
+  text-align: center;
+  width: 220px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px; /* Reduced gap */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+.card:hover{
+  cursor: pointer;
+  background-color: #393939;
+}
+
+/* Hover effect for the card */
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Image styling */
+.card img {
+  width: 100px; /* Reduced size */
+  height: auto;
+  border-radius: 10px;
+}
+
+/* Category styling */
+.card .category {
+  font-size: 18px;
+  color: #555;
+  font-weight: 600;
+  margin: 0; /* Remove extra margin */
+}
+
+/* Title styling */
+.card h2 {
+  font-size: 22px;
+  color: white;
+  margin: 0; /* Remove extra margin */
+}
+
+/* Price styling */
+.card .price {
+  font-size: 20px;
+  color: white;
+  font-weight: bold;
+  margin: 0; /* Remove extra margin */
+}
+
+/* Buttons container */
+.card .buttons {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 5px; /* Reduced gap between buttons */
+}
+
+/* Add to Cart button */
+.card .add-to-cart {
+  color: black;
+  padding: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  color: black;
+}
+
+/* Buy Now button */
+.buy-now {
+  color: black;
+  background-color: #d9d9d9;
+  width: 80%;
+  height: 25px;
+  font-family: 'Times New Roman', Times, serif;
+  border-radius: 20px;
+}
+
+/* Adjusted Buttons Text Styling */
+.buttons span {
+  color: white;
+}
+
+
+.sort{
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+  height: 270px;
+  border-radius: 30px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  margin: auto;
+  margin-top: 20px;
+  gap: 10px;
+  padding: 10px;
+}
+
+.category{
+  width: 50%;
+  height: 100%;
+
+}
+.category div{
+  padding: 15px;
+}
+.options{
+  width: 40%;
+  height: 100%;
+}
+.options {
+  width: 50%;
+  height: 84%;
+  margin: auto;
+  
+}
+.options div{
+  width: 90%;
+  gap: 10px;
+  display: flex;
+  justify-content: flex-end;
+
+}
+.options div select{
+  width: 200px;
+  height: 16px;
+  border-radius: 10px;
+  border: none;
+  margin-top: 10px;
+}
+
+.apply{
+  width: 100px;
+  height: 25px;
+  border-radius: 10px;
+  background-color: #E4D1DE;
+  border: none;
+}
