@@ -1,4 +1,4 @@
-// about.css
+
 * {
   margin: 0;
   padding: 0;
@@ -16,6 +16,7 @@
 
 .about {
   width: 45%;
+  color: black;
 }
 
 .about h1 {
@@ -27,7 +28,7 @@
 }
 
 .descrpt {
-  color: white;
+  color: black;
 }
 
 .descrpt span {
@@ -140,10 +141,16 @@
     font-size: 18px;
   }
 
-  .misson p {
+  .misson p{
     font-size: 15px;
+    color: black;
   }
-
+.misson h1{
+  color: black;
+}
+.misson p{
+  color: black;
+}
   .imageDiv {
     width: 80%;
     height: auto;

@@ -18,7 +18,7 @@
 
 .leftB h1 {
     font-family: 'Raleway', sans-serif;
-    color: white;
+    color: black;
     font-size: 65px;
     font-weight: 400;
     line-height: 88.05px;
@@ -59,7 +59,7 @@
     text-align: left;
     margin: 10px 0 0; /* Adjust margin to reduce space between h2 and content */
     padding: 0; /* Remove padding */
-    color: white;
+    color: black;
 }
 
 .contentsTokio {
@@ -84,7 +84,7 @@
 }
 
 .build {
-    color: white;
+    color: black;
     margin: 5px 0 0; /* Reduce margin between "1000 +" and "Completed Builds" */
     font-size: 1.2rem; /* Adjust the font size */
     font-family: Raleway;
@@ -101,7 +101,7 @@
     justify-content: space-around;
     width: 80%;
     height: 150px;
-    color: white ;
+    color: black ;
     gap :80px;
     margin-top: 5px; /* Reduced margin-top for less space */
     padding: 0; /* Remove unnecessary padding */

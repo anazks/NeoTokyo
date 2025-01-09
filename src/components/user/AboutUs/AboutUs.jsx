@@ -20,8 +20,8 @@ function AboutUs() {
                            <span className='Team' style={{ color: 'black' }} >Team Neo Tokyo </span>
         </button>
         <div className='misson'>
-          <h1>The Tech Mission & Core</h1>
-          <p>
+          <h1 style={{color:'black'}}>The Tech Mission & Core</h1>
+          <p style={{color:'black'}}>
             At our company, we pride ourselves on providing personalized service, expert advice, and after-sales support. With our team of experienced professionals, we ensure that every custom PC we build meets the unique needs and preferences of our customers. Whether you're a gamer, a content creator, or a professional in need of a powerful workstation, we have the expertise to deliver the perfect solution.
           </p>
         </div>
