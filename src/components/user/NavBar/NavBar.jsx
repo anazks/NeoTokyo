@@ -1,13 +1,16 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './nav.css';
 
 function NavBar() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-
+  const navigate = useNavigate();
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
-
+const openCartPage = ()=>{
+  navigate("/cart")
+}
   return (
     <div className='NavBar'>
       <div className='left'>
@@ -22,7 +25,7 @@ function NavBar() {
         </div>
       <div className='right' style={{width:'30%'}}>
         <div className='buttons'>
-          <div className='cartText'>Cart</div>
+          <button className='cartText' onClick={openCartPage}>Cart</button>
           <button className='loginBtn'>Login</button>
         </div>
         <button className='menuBtn' onClick={toggleSidebar}>
