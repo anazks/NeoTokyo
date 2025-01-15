@@ -3,6 +3,8 @@
     text-align: center;
     padding: 2rem 1rem;
     font-family: Arial, sans-serif;
+    width: 90vw;
+    margin: auto;
   }
   
   .header {
@@ -10,28 +12,42 @@
   }
   
   .title {
-    font-size: 2.5rem;
-    font-weight: bold;
-    color: #000;
-    margin: 0;
+    font-family: 'Raleway', sans-serif; /* Optional: Customize font family */
+    font-size: 2rem; /* Adjust font size */
+    font-weight: 700; /* Bold text */
+    line-height: .1; /* Adjust line height for tight spacing */
+    margin: 0; /* Remove default margin */
+    text-align: left; /* Align text to the left */
+    color: black; /* Text color */
   }
   
   .subtitle {
-    font-size: 1.2rem;
-    color: #555;
-    margin: 0.5rem 0 0;
+    font-family: 'Raleway', sans-serif; /* Optional: Customize font family */
+    font-size: 1rem; /* Adjust font size */
+    font-weight: 400; /* Regular text */
+    margin: 5px 0 0; /* Small gap between h1 and p */
+    text-align: left; /* Align text to the left */
+    color: gray; /* Text color */
   }
+  
+  .header div {
+    display: flex;
+    flex-direction: column; /* Stack h1 and p vertically */
+    align-items: flex-start; /* Align text to the left */
+  }
+  
   
   .team-container {
     display: flex;
+    justify-content: space-between;
     flex-wrap: wrap;
-    justify-content: center;
     gap: 2rem;
     margin-top: 2rem;
   }
   
   .team-member {
-    width: 250px;
+    width: 350px;
+    height: 300px;
     text-align: center;
   }
   

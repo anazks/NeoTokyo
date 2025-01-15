@@ -3,37 +3,46 @@ import './Blog.css'
 import blog from '../../../Images/blog.png'
 function Blog() {
   return (
-    <div className="container">
-    <header className="header">
-      <div className="logo">NT<br />KO</div>
-      <div className="title">
-        <h1>Priority One by Neo Tokyo</h1>
-        <p>For the One's who want the best we offer</p>
-      </div>
-    </header>
-    <main className="main">
-      <div className="content">
-        <h2>Hello Julian, search our Blogs</h2>
-        <ul>
-          <li>New Tech News</li>
-          <li>Tech Releases</li>
-          <li>Gadgets</li>
-          <li>E Sports Segments</li>
-          <li>and Much more</li>
-        </ul>
-        <p className="footer-text">Found what you are looking for?</p>
-      </div>
-      <div className="image-container">
-        <img
-          src={blog} // Replace with the actual image URL
-          alt="Planet"
-          className="planet-image"
-        />
-      </div>
-    </main>
-    <footer className="footer">
-      <button className="search-button">SEARCH</button>
-    </footer>
+  <div className="blog-containers">
+   <div className="blog-left">
+   <div className="blog-header">
+        <div className="textLogo">
+         <b> NT </b><br /><b>KO</b>
+        </div>
+        <div className="blog-heading">
+            <span>Priority One by Neo Tokyo</span>
+            <div className="blog-subHeading">
+                <p></p>For the One Who want the best we offer
+            </div>
+        </div>
+    </div>
+        <div className="blog-SubMainHeading">
+            <span>Hellow Julian,Search  our Blogs</span>
+        </div>
+   <div className="blog-details">
+      <ul>
+        <li>New Tech News</li>
+        <li>Tech Releases</li>
+        <li>Gadgets</li>
+        <li>E Sports Segments</li>
+        <li>and Much more</li>
+      </ul>
+   </div>
+   <div className="blog-SearchBox">
+        <h2>Found What you are Looking For</h2>
+        <div className="searchBox-blog">
+            
+          <div className="search-input">
+                 <button className="search-button">Search</button>    
+          </div>
+        </div>
+
+
+   </div>
+   </div>
+   <div className="blog-right">
+        <img src={blog} alt="" />
+   </div>
   </div>
 
   )

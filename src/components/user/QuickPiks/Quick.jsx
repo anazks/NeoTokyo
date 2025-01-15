@@ -2,43 +2,44 @@ import React from 'react';
 import './quick.css';
 import { IoIosArrowForward } from "react-icons/io";
 import { IoArrowForwardCircleSharp } from "react-icons/io5";
+import { RiShieldKeyholeLine } from "react-icons/ri";
 
 function Quick() {
   return (
     <div className='fullWindow'>
-        <div className='mainBox'>
+      <div className='mainBox'>
       {/* New row above the banner */}
 
       {/* Banner div */}
       <div className="banner">
-        <div className='imageContainer'></div>
-        <div className='subcribe'>
-          <div className='contentsdiv'>
-            <div>
-              <p>GAMING SQUAD <br /> <span className='gaming'>Radicle Gaming</span> <br /> Exclusive partnership</p>
-            </div>
-          </div>
-          <div className="arrow">
-            <div>
-              <IoIosArrowForward className='arrowText'/>
-            </div>
-          </div>
-          <div className="sub">
-            <div className='exclusive'>
-              <p>Subscribe for Exclusive Content</p>
-            </div>
-            <div>
-              <button className="subscribe-button">
-                <IoArrowForwardCircleSharp className='iconsbtn' /> Subscribe
-              </button>
-            </div>
-          </div>
-        </div>
+            <div className='imageContainer'></div>
+              <div className='subcribe'>
+                  <div className='contentsdiv'>
+                    <div>
+                      <p>GAMING SQUAD <br /> <span className='gaming'>    Radicle Gaming</span> <br /> Exclusive partnership</p>
+                    </div>
+                  </div>
+                <div className="arrow">
+                  <div>
+                    <IoIosArrowForward className='arrowText'/>
+                  </div>
+                </div>
+                <div className="sub">
+                  <div className='exclusive'>
+                    <p>Subscribe for Exclusive Content</p>
+                  </div>
+                  <div>
+                    <button className="subscribe-button">
+                      <IoArrowForwardCircleSharp className='iconsbtn' /> Subscribe
+                    </button>
+                  </div>
+                </div>
+              </div>
       </div>
       <div className="newRow">
       <div className="aspire">
         <div className="content">
-        <h2 className="subheading-prebuild"><b>Prebuild</b></h2>
+        <p className="subheading-prebuild"><b>  <RiShieldKeyholeLine/> Prebuild</b></p>
 
           <h1 className="heading">Aspire Series</h1>
           <p className="subheading">Performance Minimal,Sleek</p>
@@ -69,7 +70,7 @@ function Quick() {
                   <img className='imgage' src="https://s3-alpha-sig.figma.com/img/095e/f135/9e497924ab8cc0fcb3692e1a45979a16?Expires=1734912000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=pzxN1lUt4yBMeGoYm9Pvfmarw48WhMNMMNqaCL48HCjRZhvhkO2JLjpnK012CXOLD4YPLs~RjOBcEgKuAAbTBmH4CDKHWhTrvTu4DdsDMvs3sXxoZykt38IDbOpDXquf-DwiCArI6kWRnitiaP0iBdH9y-ZlTree8NjG-synSZiWKeVM2j~kKVGriEa1y8POjHC9kGXIzvPivegTd5MLy-o2vHMulz5s9uKSzUMJ64ddE1bfb2K9C-9QHdXR4byBTzpk39446inCIioam3Q~7y3-ihiwJ~Xx3IbFPpbqSdp9350UEfSjRFdb1aNXwHbNKwchdlR7r8msrlPCbiTABw__" alt="" />
               </div>
               <div className='PcName'>
-                  <span> Ion Drive</span>
+                  <span> <b>Ion Drive</b></span>
               </div>
 
             </div>
@@ -78,7 +79,7 @@ function Quick() {
                   <img className='imgage' src="https://s3-alpha-sig.figma.com/img/095e/f135/9e497924ab8cc0fcb3692e1a45979a16?Expires=1734912000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=pzxN1lUt4yBMeGoYm9Pvfmarw48WhMNMMNqaCL48HCjRZhvhkO2JLjpnK012CXOLD4YPLs~RjOBcEgKuAAbTBmH4CDKHWhTrvTu4DdsDMvs3sXxoZykt38IDbOpDXquf-DwiCArI6kWRnitiaP0iBdH9y-ZlTree8NjG-synSZiWKeVM2j~kKVGriEa1y8POjHC9kGXIzvPivegTd5MLy-o2vHMulz5s9uKSzUMJ64ddE1bfb2K9C-9QHdXR4byBTzpk39446inCIioam3Q~7y3-ihiwJ~Xx3IbFPpbqSdp9350UEfSjRFdb1aNXwHbNKwchdlR7r8msrlPCbiTABw__" alt="" />
               </div>
               <div className='PcName'>
-                  <span>E-75</span>
+                  <span><b>E-75</b> </span>
               </div>
 
             </div>
@@ -87,7 +88,7 @@ function Quick() {
                   <img className='imgage' src="https://s3-alpha-sig.figma.com/img/095e/f135/9e497924ab8cc0fcb3692e1a45979a16?Expires=1734912000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=pzxN1lUt4yBMeGoYm9Pvfmarw48WhMNMMNqaCL48HCjRZhvhkO2JLjpnK012CXOLD4YPLs~RjOBcEgKuAAbTBmH4CDKHWhTrvTu4DdsDMvs3sXxoZykt38IDbOpDXquf-DwiCArI6kWRnitiaP0iBdH9y-ZlTree8NjG-synSZiWKeVM2j~kKVGriEa1y8POjHC9kGXIzvPivegTd5MLy-o2vHMulz5s9uKSzUMJ64ddE1bfb2K9C-9QHdXR4byBTzpk39446inCIioam3Q~7y3-ihiwJ~Xx3IbFPpbqSdp9350UEfSjRFdb1aNXwHbNKwchdlR7r8msrlPCbiTABw__" alt="" />
               </div>
               <div className='PcName'>
-                  <span>Phantom</span>
+                  <span><b>Phantom</b></span>
               </div>
 
             </div>

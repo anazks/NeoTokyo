@@ -35,7 +35,7 @@
   font-family: 'Raleway', sans-serif;
   font-size: 20px;
   font-weight: 600;
-  line-height: 23.48px;
+  line-height: 63.48px;
   text-align: left;
   color: rgba(231, 1, 60, 1);
 }
@@ -82,7 +82,7 @@
 }
 
 .misson {
-  color: white;
+  color: black;
 }
 
 .misson p {
@@ -91,15 +91,15 @@
   font-weight: 400;
   line-height: 27px;
   text-align: justify;
-  color: white;
+  color: black;
 }
 
 .imageDiv {
   margin-top: 6%;
-  width: 40%;
-  height: 84%;
-  border: 1px solid white;
-  border-radius: 30px;
+  width: 37%;
+  height: 80%;
+  border: 1px solid black;
+  border-radius: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -112,7 +112,7 @@
   background-color: black;
   border-top-left-radius: 150px;
   border-bottom-right-radius: 150px;
-  background-image: url('https://s3-alpha-sig.figma.com/img/95f6/6efa/d3f5fb9b0506f121a282725c520c0130?Expires=1734912000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=iJfvgosEPigp9hC25L2E5saiBTZg4gdB~eJqkZ9xukVeAMzaPxo9lZs21Dg0EsihyGzr27OaewBC45WX9fCWnMRpKuwPN~3EAjV-aRNzeEn0WvyP9BvsYvwDgHVTGEV99lrxH0Yrk3o7gPey1b4FeGeStcabaNgLrvflOimRKFTwGmhuzoIFx7ejhOL4fM9z~4ic0z1xSQR88LSgBC2HrdO9xPFHL9yhibVKVJ2siUjgJZDtitz9dsVUnFHy4xEU6QIV2XJnpYknPss2bdOHkQW4Qr9o94LpUsOd9fp0BU0AqVMpZvb9rAca3plCicfIixAh1LxIOXdXRwTh-l5xaw__');
+  background-image: url('../../../Images//coffyWith.png');
   background-size: cover;
   background-position: center;
 }

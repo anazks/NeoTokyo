@@ -26,8 +26,12 @@ function PriorityOne() {
   return (
     <div className="priority-one-container">
       <div className="header">
-        <h1 className="title">Priority One by Neo Tokyo</h1>
-        <p className="subtitle">For the One's who want the best we offer</p>
+        <div>
+             <h1 className="title">Priority One by Neo Tokyo</h1>
+            <p className="subtitle">For the One's who want the best we offer</p>
+        </div> 
+        <div>
+        </div>
       </div>
       <div className="team-container">
         {team.map((member, index) => (
