@@ -9,6 +9,7 @@ import Directional from '../components/user/AboutUs/Directional'
 import Footer from '../components/user/Footer/Footer'
 import PriorityOne from '../components/user/PriorityOne/PriorityOne'
 import Blog from '../components/user/Blog/Blog'
+// import Subscription from '../components/user/Subscription/Subscription'
 
 function Home() {
   return (
@@ -22,6 +23,7 @@ function Home() {
         <Directional/>
         <PriorityOne/>
         <Blog/>
+        {/* <Subscription/> */}
         <Footer/>
     </div>
   )

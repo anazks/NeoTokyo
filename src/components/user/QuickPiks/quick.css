@@ -1,10 +1,10 @@
 .fullWindow {
-  width: 100vw;
-  height: 100vh;
-  position: relative; /* Needed for pseudo-element positioning */
-  overflow: hidden; /* Ensures the content stays within the container */
+  width: 100%;
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+  padding: 1rem;
 }
-
 .fullWindow::before {
   content: '';
   position: absolute;
@@ -18,14 +18,149 @@
   z-index: -1; /* Places the pseudo-element behind the content */
 }
 
+
+
 .mainBox {
-    width: 87%;
-    height: 499px;
-    border-radius: 30px;
-    margin: auto;
-    position: relative;
-    overflow: visible; /* Make sure the excess height can be visible */
+  width: 100%;
+  max-width: 1200px;
+  min-height: 500px;
+  border-radius: 30px;
+  margin: auto;
+  position: relative;
+  padding: 1rem;
+}
+
+.banner {
+  width: 100%;
+  min-height: 273px;
+  background: rgba(236, 230, 230, 0.7);
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem;
+  margin-bottom: 2rem;
+}
+
+@media (min-width: 768px) {
+  .banner {
+    flex-direction: row;
+    align-items: center;
   }
+}
+
+.imageContainer {
+  width: 100%;
+  min-height: 100px;
+  border-radius: 30px;
+  background-size: cover;
+  background-position: center;
+}
+
+@media (min-width: 768px) {
+  .imageContainer {
+    width: 90%;
+    height: 90%;
+  }
+}
+
+.subscribe {
+  width: 100%;
+  background: white;
+  opacity: 0.5;
+  color: black;
+  border-radius: 30px;
+  padding: 1rem;
+}
+
+@media (min-width: 768px) {
+  .subscribe {
+    width: 35%;
+    height: 90%;
+  }
+}
+
+.newRow {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  overflow-x: auto;
+  padding: 1rem 0;
+}
+
+@media (min-width: 768px) {
+  .newRow {
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+.aspire {
+  width: 100%;
+  min-height: 300px;
+  background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8));
+  border-radius: 30px;
+  position: relative;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 768px) {
+  .aspire {
+    width: 450px;
+    clip-path: polygon(0 0, 100% 0, 81% 59%, 67% 99%, 0 100%, 0% 25%);
+  }
+}
+
+.content {
+  z-index: 1;
+  color: white;
+  width: 100%;
+  max-width: 60%;
+}
+
+.rowCircle {
+  display: flex;
+  gap: 5px;
+  margin: 1rem 0;
+}
+
+.rowCircle div {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+}
+
+.subRight {
+  width: 100%;
+  min-height: 200px;
+  background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8));
+  border-radius: 30px;
+  padding: 1rem;
+}
+
+@media (min-width: 768px) {
+  .subRight {
+    width: 200px;
+    clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%);
+  }
+}
+
+/* Maintain existing color and button styles */
+.pink { background: rgba(221, 124, 116, 1); }
+.yellow { background: rgba(231, 225, 86, 1); }
+.blue { background: rgba(80, 85, 211, 1); }
+.black { background-color: black; }
+
+/* Additional responsive utilities */
+@media (max-width: 480px) {
+  .heading { font-size: 1.2rem; }
+  .subheading { font-size: 0.6rem; }
+  .gaming { font-size: 24px; }
+  .iconsbtn { font-size: 24px; }
+}
   
   /* New Row Above the Banner */
   .newRow {
@@ -39,8 +174,13 @@
     border-radius: 30px;
     display: flex;
     align-items: center;
+    overflow-x: scroll;
+    overflow-y: hidden;
   }
  
+  .newRow::-webkit-scrollbar{
+    display: none;
+  }
   .aspire {
     width: 450px;
     height: 300px;
@@ -105,8 +245,8 @@
     margin: 0; /* No extra margin */
   }
   .subheading-prebuild{
-    font-size: .5rem; /* Slightly smaller font size for the subheading */
-    font-weight: 500;
+    font-size: .8rem; /* Slightly smaller font size for the subheading */
+    font-weight: 300;
     margin: 0; /* No extra margin */
     color: black;
   }
@@ -230,7 +370,7 @@
     position: absolute; /* Required for centering */
     width: 1123px;
     height: 273px;  
-    background: rgba(57, 57, 57, 0.7); /* Semi-transparent background */
+    background: rgba(236, 230, 230, 0.7); /* Semi-transparent background */
     color: white;
     top: 30%; /* Move to the middle vertically */
     left: 50%; /* Move to the middle horizontally */
@@ -259,7 +399,12 @@
   .subcribe {
     width: 35%;
     height: 90%;
-    background: rgba(126, 126, 126, 0.68);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    background:white;
+    opacity: .5;
+    color: black;
     border-radius: 30px;
   }
   
@@ -454,3 +599,4 @@
     border-radius: 5px;
     cursor: pointer;
   }
+  

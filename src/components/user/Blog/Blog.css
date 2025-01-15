@@ -1,102 +1,193 @@
-body {
-    font-family: 'Arial', sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #ffffff;
-    color: #000000;
-  }
-  
-  .container {
+.blog-containers {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
-    width: 80vw;
+    flex-wrap: wrap;
+    margin-top: 20px;
+    width: 90vw;
+    height: 97vh;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     margin: auto;
-    height: 100vh;
-  }
-  
-  .header {
-    text-align: center;
-    display: flex;
-    margin-bottom: 30px;
-  }
-  
-  .logo {
-    font-weight: bold;
-    font-size: 36px;
-    line-height: 1.2;
-    margin-bottom: 10px;
-  }
-  
-  .title h1 {
-    font-size: 24px;
-    margin: 0;
-  }
-  
-  .title p {
-    font-size: 14px;
-    color: #555555;
-  }
-  
-  .main {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
+    border-radius: 30px;
+    position: relative;
+}
+
+/* Left Section */
+.blog-left {
+    width: 50%;
+    border-radius: 30px;
+    box-sizing: border-box;
+    padding: 20px;
+    background-color: white;
+}
+
+.blog-header {
     width: 100%;
-    max-width: 900px;
-  }
-  
-  .content {
-    flex: 1;
-  }
-  
-  .content h2 {
-    font-size: 28px;
-    margin-bottom: 20px;
-  }
-  
-  .content ul {
-    list-style-type: none;
-    padding: 0;
-  }
-  
-  .content ul li {
-    font-size: 18px;
-    margin-bottom: 10px;
-  }
-  
-  .footer-text {
-    font-size: 14px;
-    color: #aaaaaa;
-    margin-top: 20px;
-  }
-  
-  .image-container {
-    flex: 1;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: 5%;
+}
+
+.blog-subHeading {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.blog-heading span {
+    font-size: 2.5rem;
+}
+
+.textLogo {
+    font-size: 2.5rem;
+}
+
+/* Main Heading Section */
+.blog-SubMainHeading {
+    width: 60%;
+    height: 100px;
+    margin: auto;
+    margin-top: 5%;
+    font-size: 2.5rem;
     text-align: center;
-  }
+}
+.blog-details{
+    width: 50%;
+    margin: auto;
+    margin-top: 5%;
+}
+.blog-details ul {
+    list-style-type: none;
+    font-size: 1.4rem;
+    font-weight: 500;
+    padding: 0; /* Ensure there's no default padding on the list */
+}
+
+.blog-details ul li {
+    margin-top: 10px; /* Add spacing between the list items */
+}
+.blog-SearchBox{
+    width: 100%;
+    height: 50px;
+    margin: auto;
+    margin-top: 3.7%;
+    position: absolute;
+}
+.blog-SearchBox h2{
+    margin-left: 10%;
+    margin-top: 3%;
+    color: gray;
+}
+/* Right Section */
+.blog-right {
   
-  .planet-image {
-    max-width: 100%;
-    border-radius: 10px;
-  }
-  
-  .footer {
+    width: 50%;
+    border-radius: 30px;
+}
+.searchBox-blog {
+    display: flex;
+    align-items: center;
+    width: 80%;
+    margin: auto;
     margin-top: 20px;
-  }
-  
-  .search-button {
+    position: relative;
+}
+
+.search-input {
+    flex: 1; /* Makes the input take up the remaining space */
+    padding: 10px;
+    height: 100px;
+    font-size: 1rem;
+    background-color: white;
+    border: 1px solid black;
+    display: flex;
+    justify-content: flex-end;
+    border-radius: 5px 0 0 5px; /* Rounded corners for the input */
+    outline: none;
+    box-sizing: border-box;
+    border-radius: 20px;
+}
+
+.search-button {
     background-color: #28a745;
+    width: 250px;
+    height: 80px;
+    font-size: 2rem;
+    border-radius: 15px;
+    border:none;
     color: white;
-    border: none;
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-    border-radius: 5px;
-  }
-  
-  .search-button:hover {
+}
+
+.search-button:hover {
     background-color: #218838;
-  }
-  
+}
+.blog-right{
+    width: 50%;
+}
+.blog-right img{
+    width: 100%;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .blog-left,
+    .blog-right {
+        width: 100%;
+        border-radius: 0; /* Remove rounded corners on smaller devices for cleaner stacking */
+    }
+
+    .blog-header {
+        flex-direction: column;
+        height: auto;
+        text-align: center;
+    }
+
+    .blog-heading span {
+        font-size: 2rem;
+    }
+
+    .textLogo {
+        font-size: 2rem;
+    }
+
+    .blog-SubMainHeading {
+        font-size: 2rem;
+        height: auto;
+    }
+}
+
+@media (max-width: 768px) {
+    .blog-heading span {
+        font-size: 1.8rem;
+    }
+
+    .textLogo {
+        font-size: 1.8rem;
+    }
+
+    .blog-SubMainHeading {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .blog-containers {
+        width: 100%;
+        height: auto;
+    }
+
+    .blog-header {
+        padding: 10px;
+        flex-direction: column;
+        height: auto;
+    }
+
+    .blog-heading span,
+    .textLogo {
+        font-size: 1.5rem;
+    }
+
+    .blog-SubMainHeading {
+        font-size: 1.2rem;
+        margin-top: 10px;
+    }
+}

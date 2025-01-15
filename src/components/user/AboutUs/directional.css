@@ -120,7 +120,7 @@
   }
 
   .bottomImage {
-    width: 200%;
+    width:100%;
     height: 100%;
     border-radius: 30px;
     border: 1px solid black;
@@ -130,12 +130,15 @@
   }
   
   .bottomImage img {
-    height: 100%;
-    width: 100%;
+    height: 90%;
+    width: 80%;
     border-radius: 15px; /* Optional, to add curvature to the image */
     object-fit: contain; /* Ensures the image maintains aspect ratio */
     border-top-right-radius: 170px;
     border-bottom-left-radius: 170px;
+  }
+  .leftB{
+    height: 300px;
   }
   .imgD{
     width: 80%;

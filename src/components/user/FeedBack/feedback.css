@@ -1,19 +1,22 @@
-.feedback{
+.feedback {
     width: 80%;
     margin: auto;
     height: 100vh;
     display: flex;
+    flex-wrap: wrap;
 }
+
 .leftB {
     width: 50%;
-    padding: 0; /* Remove any padding from the left box */
+    padding: 0;
 }
+
 
 .rightB {
     width: 50%;
     height: 100%;
     background-color: rgb(22, 210, 235);
-    padding: 0; /* Remove any padding from the right box */
+    padding: 0;
 }
 
 .leftB h1 {
@@ -23,22 +26,22 @@
     font-weight: 400;
     line-height: 88.05px;
     text-align: left;
-    margin: 0; /* Remove any margin */
-    padding: 0; /* Remove any padding */
+    margin: 0;
+    padding: 0;
 }
 
 .ShortLine {
-    width: 70px;
+    width: 10%;
     height: 10px;
     background-color: rgba(218, 0, 55, 1);
-    margin: 10px 0; /* Optional: You can adjust the margin here to control spacing */
+    margin: 10px 0;
 }
 
 .bottomBox {
     width: 70%;
     height: 300px;
-    margin-top: 50px; /* Reduced margin-top to eliminate unnecessary gap */
-    padding: 0; /* Remove any padding */
+    margin-top: 50px;
+    padding: 0;
 }
 
 .thousand {
@@ -47,18 +50,18 @@
     font-weight: 400;
     line-height: 89.32px;
     text-align: left;
-    margin: 0; /* Remove margin */
-    padding: 0; /* Remove padding */
+    margin: 0;
+    padding: 0;
 }
 
 .bottomBox h2 {
     font-family: 'Raleway', sans-serif;
-    font-size: 40px;
+    font-size: 35px;
     font-weight: 400;
     line-height: 51.04px;
     text-align: left;
-    margin: 10px 0 0; /* Adjust margin to reduce space between h2 and content */
-    padding: 0; /* Remove padding */
+    margin: 10px 0 0;
+    padding: 0;
     color: black;
 }
 
@@ -66,27 +69,17 @@
     height: 190px;
     width: 250px;
     display: flex;
-    flex-direction: column; /* Align the children vertically */
-    justify-content: center; /* Center the items vertically */
-    align-items: flex-start; /* Align the items to the left */
-    text-align: center; /* Center the text */
-    padding: 0; /* Remove any unnecessary padding */
-    margin: 0; /* Remove margin */
-}
-
-.thousand {
-    font-size: 2.5rem; /* Adjust the font size of "1000 +" */
-    margin: 0; /* Remove default margin */
-}
-
-.thousand span {
-    font-weight: bold;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    text-align: center;
+    padding: 0;
+    margin: 0;
 }
 
 .build {
     color: black;
-    margin: 5px 0 0; /* Reduce margin between "1000 +" and "Completed Builds" */
-    font-size: 1.2rem; /* Adjust the font size */
+    margin: 5px 0 0;
     font-family: Raleway;
     font-size: 25px;
     font-weight: 400;
@@ -101,21 +94,14 @@
     justify-content: space-around;
     width: 80%;
     height: 150px;
-    color: black ;
-    gap :80px;
-    margin-top: 5px; /* Reduced margin-top for less space */
-    padding: 0; /* Remove unnecessary padding */
+    color: black;
+    gap: 80px;
+    margin-top: 5px;
+    padding: 0;
 }
-.entinies span{
-    font-family: Space Grotesk;
-    font-size: 30px;
-    font-weight: 400;
-    text-align: left;
-    text-underline-position: from-font;
-    text-decoration-skip-ink: none;
-    
-}
-.activeCustomers span{
+
+.entinies span,
+.activeCustomers span {
     font-family: Space Grotesk;
     font-size: 30px;
     font-weight: 400;
@@ -123,9 +109,112 @@
     text-underline-position: from-font;
     text-decoration-skip-ink: none;
 }
-.rightB{
+
+.rightB {
     width: 48%;
     height: 95%;
     background-color: rgba(57, 57, 57, 0.7);
     border-radius: 30px;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 1200px) {
+    .leftB h1 {
+        font-size: 50px;
+        line-height: 65px;
+    }
+    
+    .bottomBox h2 {
+        font-size: 30px;
+        line-height: 40px;
+    }
+    
+    .thousand {
+        font-size: 60px;
+        line-height: 75px;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .feedback {
+        width: 90%;
+    }
+    
+    .numbers {
+        gap: 40px;
+    }
+    
+    .entinies span,
+    .activeCustomers span {
+        font-size: 25px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .feedback {
+        width: 95%;
+    }
+    
+    .leftB, .rightB {
+        width: 100%;
+    }
+    
+    .rightB {
+        height: 400px;
+        margin-top: 30px;
+    }
+    
+    .bottomBox {
+        width: 90%;
+    }
+    
+    .numbers {
+        width: 100%;
+        flex-direction: column;
+        gap: 20px;
+        height: auto;
+    }
+    
+    .build {
+        font-size: 20px;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .leftB h1 {
+        font-size: 30px;
+        line-height: 50px;
+        width: 90%;
+    }
+    .leftB div{
+        width: 90%;
+        margin: auto;
+    }
+    
+    .bottomBox h2 {
+        font-size: 25px;
+        line-height: 35px;
+    }
+    
+    .thousand {
+        font-size: 50px;
+        line-height: 65px;
+    }
+    
+    .ShortLine {
+        width: 50px;
+        height: 8px;
+    }
+}
+
+/* Handle very small screens */
+@media screen and (max-width: 360px) {
+    .leftB h1 {
+        font-size: 35px;
+        line-height: 45px;
+    }
+    
+    .contentsTokio {
+        width: 100%;
+    }
 }
