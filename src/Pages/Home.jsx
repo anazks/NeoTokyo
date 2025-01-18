@@ -10,7 +10,7 @@ import Footer from '../components/user/Footer/Footer'
 import PriorityOne from '../components/user/PriorityOne/PriorityOne'
 import Blog from '../components/user/Blog/Blog'
 // <<<<<<< supportPage
-// import Support from '../components/user/Support/Support'
+ import Support from '../components/user/Support/Support'
 // =======
 // import Subscription from '../components/user/Subscription/Subscription'
 // >>>>>>> master
@@ -26,12 +26,9 @@ function Home() {
         <Quality/>
         <Directional/>
         <PriorityOne/>
-        <Blog/>
-// <<<<<<< supportPage
-//         <Support/>
-// =======
-        {/* <Subscription/> */}
-// >>>>>>> master
+        {/* <Blog/> */}
+        <Support/>
+
         <Footer/>
     </div>
   )
