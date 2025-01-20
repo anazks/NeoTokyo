@@ -9,6 +9,7 @@ import Directional from '../components/user/AboutUs/Directional'
 import Footer from '../components/user/Footer/Footer'
 import PriorityOne from '../components/user/PriorityOne/PriorityOne'
 import Blog from '../components/user/Blog/Blog'
+import Support from '../components/user/Support/Support'
 // <<<<<<< supportPage
 // import Support from '../components/user/Support/Support'
 // =======
@@ -27,11 +28,7 @@ function Home() {
         <Directional/>
         <PriorityOne/>
         <Blog/>
-// <<<<<<< supportPage
-//         <Support/>
-// =======
-        {/* <Subscription/> */}
-// >>>>>>> master
+        <Support/>
         <Footer/>
     </div>
   )

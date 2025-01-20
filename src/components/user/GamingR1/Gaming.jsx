@@ -1,17 +1,52 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import './gaming.css'
 export default function Gaming() {
+    const [text, setText] = useState('');
+  const fullText = [
+    "DOESN’T HAVE TO BE A BOX...",
+    "  IN A CORNER. IT CAN BE A..",
+    "GAMING RI",
+  ];
+  const subHeadingText =
+    '"Built with latest in PC hardware, highest quality components and backed by lifetime support"';
+
+  useEffect(() => {
+    let i = 0;
+    let j = 0;
+    let currentText = fullText[i];
+    let currentSubText = '';
+
+    const intervalId = setInterval(() => {
+      if (j < currentText.length) {
+        setText((prevText) => prevText + currentText[j]);
+        j++;
+      } else if (i < fullText.length - 1) {
+        setText('');
+        i++;
+        j = 0;
+        currentText = fullText[i];
+      } else if (i === fullText.length - 1) {
+        // Start displaying subheading after the last main text
+        if (currentSubText.length < subHeadingText.length) {
+          currentSubText += subHeadingText[j];
+          setText(currentSubText);
+          j++;
+        } else {
+          clearInterval(intervalId);
+        }
+      }
+    }, 1000); // Adjust typing speed here
+
+    return () => clearInterval(intervalId);
+  }, []);
   return (
     <div>
             <div className="head">
-                   <div className="textContent">
-                        <h1 style={{textAlign:'center'}}>DOESN’T HAVE TO BE A BOX  </h1>
-                        <h1 style={{textAlign:'center'}}> IN A CORNER. IT CAN BE A..</h1>
-                        <h2 className='Gaming'>GAMING RI</h2>
-                        <br /><br />
-                        <h5 className='subHeading'>"Built with latest in PC hardware, highest quality components and backed by lifetime support"</h5>
-                        <div className="line"></div>
-                   </div>
+            <div className="textContent">
+                <h1 style={{ textAlign: 'center' }}>{text}</h1>
+                <h5 className="subHeading">{text}</h5>
+                <div className="line"></div>
+            </div>
             </div>
             <div className="containerBox">
                     <div className="leftBox">

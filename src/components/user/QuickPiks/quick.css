@@ -47,8 +47,22 @@
     flex-direction: row;
     align-items: center;
   }
-}
 
+  .newRow {
+    position: absolute;
+    bottom: -90px; /* Move the row slightly higher to exceed the mainBox */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 91%; /* Full width */
+    height: 270px; /* Increased height to exceed the mainBox */
+    z-index: 2; /* Ensures it's above the mainBox */
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    overflow-x: scroll;
+    overflow-y: hidden;
+  }
+}
 .imageContainer {
   width: 100%;
   min-height: 100px;
