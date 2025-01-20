@@ -1,48 +1,121 @@
-import React from 'react';
-import './footer.css';
-import { IoArrowForwardCircleSharp } from 'react-icons/io5';
+import React from 'react'
+import './footer.css'
+import { ImArrowUpRight2 } from "react-icons/im"
+import { CiLocationArrow1 } from "react-icons/ci";
+import { FaWhatsapp } from "react-icons/fa";
+import { SlSocialFacebook } from "react-icons/sl";
+import { FaInstagram } from "react-icons/fa";
+import { BsShieldLock } from "react-icons/bs";
+
 
 function Footer() {
   return (
-    <div className="footer">
-      {/* Top Div */}
-      <div className="top-div">
-      <div className="left-content">
-        <span style={{color:'white'}}>
-            Building Experiences<br />
-            <span className="subtext" style={{color:'white'}}>Since ‘20s</span>
-        </span>
+    <div className="Main-Footer">
+      <div className="BoxInsideMain-Footer">
+        <div className="About-Footer">
+          <div className="Forabout-Footer">
+            <h1 className="Aboutheading-Footer">Building Experiences <br />Sice 20s </h1>
+          </div>
+          <div className="Getintouch-Footer">
+            <div className="Boxinsidegetintouch-Footer">
+              <div className="Getintouchslider-Footer">
+                  <div className="Boxinsideslider-Footer">
+                    <ImArrowUpRight2 className='Uprightarrow-Footer' />
+                  </div>
+              </div>
+            </div>
+          </div>
         </div>
-        <button className="team-button">
-                    <IoArrowForwardCircleSharp className='iconsbtn-team' />
-                    <span className='Team' style={{ color: 'black' }} >Get in Touch </span>
-        </button>
-      </div>
 
-      {/* Banner Div */}
-      <div className="banner-div">
-        <div className='lefrtBanner'>
-
+        {/* SEECOND DIV FOR CONTACT */}
+        <div className="Contact-Footer">
+          <div className="Boxinsidecontact-Footer">
+            <div className="Logo-Footer">
+                <h1 className="Heading-Footer">NT <br />KO </h1>
+            </div>
+            <div className="Description-Footer">
+                <span className="Secheading-Footer">Priority One By Neo Tokyo </span>
+            </div>
+            <div className="Support-Footer">
+                <span className="ThirdHeading-Footer">+91 7920938981 <br />support@neotokyo.in</span>
+            </div>
+          </div>
         </div>
-        <div className='righttBanner'>
-            <img src="https://s3-alpha-sig.figma.com/img/13ad/e3d6/80bfabc003d683a5e33d97232beb0275?Expires=1734912000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=Gj~l2gR2RydNH5eWpYyAh0gT3ZOfiYG4Jmoj119jnKnPCHHy~06lQWgz78FWVWwWKFf3LczsRo5MMaXPwgUSzB6tWypSt~TPd7xkwHpCBm95fzLBADtKJd4R-mEDR89KYQqvNZmhcdk9WrIDiCZR2YMs1PRwMRPcND55xYCDW5TgsLief8TazV6xTeNmcJmqpfnRnsuT8apdRyNAaQ5vN~rWQV1gpNUGf6~ejYjCFStQi4YG~YWnOgOdklmnq13JGXZdXQ0-ehdp9V~a-gYJWg7h9CKUlzxJZT-royrr5rOp5UyrXW2nt0ke6AtVv1v7uHA4mBrcsjN4GqvCbkXPYQ__" alt="" />
+
+        {/* THIRD DIV FOR SITEOPTIONS */}
+        <div className="Option-Footer">
+          <div className="Boxinsideoption-Footer">
+            <div className="Firstbox-Footer">
+              <div className="Fstbox-Footer">
+                <span className="Heading-Company">Company</span><br /><br />
+                <ul className="List-Comapny">About</ul><br />
+                <ul className="List-Comapny">FAQ's</ul><br />
+                <ul className="List-Comapny">Blog</ul><br />
+                <ul className="List-Comapny">Careers</ul>
+              </div>
+              <div className="Sdbox-Footer">
+                <span className="Enterprise-Solutions">Enterprise Solutions</span><br /><br /><br />
+                <span className="Enterprise-Solutions">Gaming Rigs</span><br /><br /><br />
+                <span className="Enterprise-Solutions">Accounts</span><br /><br />
+              </div>
+              <div className="Thrdbox-Footer">
+              <span className="Store">Store</span><br /><br />
+              <ul className="List-Company">PC's</ul><br />
+              <ul className="List-Comapny">Peripherals</ul><br />
+              <ul className="List-Comapny">Gear</ul><br />
+              <ul className="List-Comapny">Accessories</ul>
+              
+              </div>
+              <div className="Forthbox-Footer">
+              <span className="Soluthions">Solutions</span><br /><br />
+              <ul className="List-Company">Home PC's</ul><br />
+              <ul className="List-Company">Gaming PC's</ul><br />
+              <ul className="List-Company">Workstations </ul><br />
+              <ul className="List-Company">Enterprise Solutions</ul><br />
+              </div>
+              <div className="Fifthbox-Footer">
+              <span className="Legal">Legal</span><br /><br />
+              <ul className="List-Company">Privacy Policy</ul><br />
+              <ul className="List-Company">Cookie Policy</ul><br />
+              <ul className="List-Company">Trems And Conditions</ul><br />
+              <ul className="List-Company">Return And Refunds</ul><br />
+              </div>
+            </div>
+            <div className="Secondbox-Footer">
+              <div className="FbiSecondbox-Footer">
+                <div className="Reachus-Footer">
+                  <span className="Reachus">Reach Us</span>
+                </div>
+                <div className="Location-Footer">
+                  <span className="Neotokyo">NEO TOKYO</span> <CiLocationArrow1 className='Location-icon'/><br />
+                  <span className="Neotokyo">Head Quarters</span>
+                </div>
+              </div>
+              <div className="SbiSecondbox-Footer">
+                <span className="DetailedLocation">Floor no. 2, Koroth Arcade, </span><br />
+                <span className="DetailedLocation">Vennala High School Rd, </span><br />
+                <span className="DetailedLocation">opposite to V-Guard, Vennala,</span><br />
+                <span className="DetailedLocation">Kochi, Kerala 682028 </span>
+              </div>
+            </div>
+            <div className="Thirdbox-Footer">
+              <div className="Social">
+                <span className="Heading-Social">Social</span>
+              </div>
+              <div className="Social-Icons">
+                <FaWhatsapp className="Social-Iconszz"/>
+                <SlSocialFacebook className="Social-Iconszz"/>
+                <FaInstagram className="Social-Iconszz"/>
+              </div>
+              <div className="All-Rights">
+                <span className="All-Rights"><BsShieldLock className='Shield-Icon'/>All Rights Reserved. 2024 Neo Tokyo</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-
-      {/* Footer Section */}
-      <div className="footer-section">
-        <div className="footer-links">
-          <a href="#about">About Us</a>
-          <a href="#services">Services</a>
-          <a href="#contact">Contact</a>
-        </div>
-        <div className="footer-info">
-          <p>&copy; 2024 Your Company. All Rights Reserved.</p>
-        </div>
-      </div>
-      <br /><br />
     </div>
-  );
+  )
 }
 
-export default Footer;
+export default Footer
