@@ -1,196 +1,194 @@
-/* nav.css */
 .navbar {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    height: 100px;
-    background-color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0 20px;
-    box-sizing: border-box;
-    z-index: 100;
-    border-bottom-left-radius: 20px;
-    border-bottom-right-radius: 20px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
-  }
-  
-  .nav-links {
-    display: flex;
-    gap: 2rem;
-    font-size: 18px;
-    color: black;
-    align-items: center;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100px;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  box-sizing: border-box;
+  z-index: 100;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
+}
 
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  font-size: 18px;
+  color: black;
+  align-items: center;
+  flex: 1; /* Allow nav-links to take remaining space */
+}
+
+.nav-links div {
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.nav-links div:hover {
+  color: #E7013C;
+  transform: translateY(-2px);
+}
+
+.nav-buttons {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.cart-btn {
+  background: none;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.cart-btn:hover {
+  transform: scale(1.1);
+}
+
+.login-btn {
+  width: 100px;
+  height: 30px;
+  background-color: black;
+  color: white;
+  border-radius: 15px;
+  border: 1px solid white;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.login-btn:hover {
+  background-color: white;
+  color: black;
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.menu-btn {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.menu-btn:hover {
+  transform: rotate(90deg);
+}
+
+.Logo-Responsive {
+  display: none;
+  position: absolute;
+  left: 20px; /* Align to the left corner */
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: -100%;
+  height: 100%;
+  width: 250px;
+  background-color: white;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 1000;
+  opacity: 0;
+}
+
+.sidebar.open {
+  left: 0;
+  opacity: 1;
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.sidebar-links {
+  padding: 60px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.sidebar-links div {
+  cursor: pointer;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.sidebar-links div:hover {
+  color: #E7013C;
+  transform: translateX(10px);
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  opacity: 0;
+  animation: fadeIn 0.3s ease forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
   }
-  
-  .nav-links div {
-    cursor: pointer;
-    transition: transform 0.3s ease;
+  to {
+    opacity: 1;
   }
-  
-  .nav-links div:hover {
-    color: #E7013C;
-    transform: translateY(-2px);
-  }
-  
-  .nav-buttons {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-  }
-  
-  .cart-btn {
-    background: none;
-    border: none;
-    font-size: 16px;
-    cursor: pointer;
-    transition: transform 0.3s ease;
-  }
-  
-  .cart-btn:hover {
-    transform: scale(1.1);
-  }
-  
-  .login-btn {
-    width: 100px;
-    height: 30px;
-    background-color: black;
-    color: white;
-    border-radius: 15px;
-    border: 1px solid white;
-    cursor: pointer;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-  
-  .login-btn:hover {
-    background-color: white;
-    color: black;
-    transform: scale(1.05);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-  }
-  
-  .menu-btn {
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .nav-links {
     display: none;
-    background: none;
-    border: none;
-    font-size: 24px;
-    cursor: pointer;
-    transition: transform 0.3s ease;
   }
-  
-  .menu-btn:hover {
-    transform: rotate(90deg);
-  }
-  
+
   .Logo-Responsive {
+    display: block;
+  }
+
+  .menu-btn {
+    display: block;
+    position: absolute;
+    right: 20px; /* Align to the right corner */
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .nav-buttons .cart-btn,
+  .nav-buttons .login-btn {
     display: none;
   }
-  
-  .sidebar {
-    position: fixed;
-    top: 0;
-    left: -100%;
-    height: 100%;
-    width: 250px;
-    background-color: white;
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-    z-index: 1000;
-    opacity: 0;
+}
+
+@media (max-width: 480px) {
+  .navbar {
+    height: 70px;
+    padding: 0 15px;
   }
-  
-  .sidebar.open {
-    left: 0;
-    opacity: 1;
+
+  .menu-btn {
+    font-size: 20px;
   }
-  
-  .close-btn {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background: none;
-    border: none;
-    font-size: 24px;
-    cursor: pointer;
-    transition: transform 0.3s ease;
-  }
-  
-  .close-btn:hover {
-    transform: rotate(90deg);
-  }
-  
-  .sidebar-links {
-    padding: 60px 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-  }
-  
-  .sidebar-links div {
-    cursor: pointer;
-    transition: transform 0.3s ease, color 0.3s ease;
-    transform: translateX(-100%);
-    opacity: 0;
-  }
-  
-  .sidebar.open .sidebar-links div {
-    transform: translateX(0);
-    opacity: 1;
-  }
-  
-  .sidebar-links div:nth-child(1) { transition-delay: 0.1s; }
-  .sidebar-links div:nth-child(2) { transition-delay: 0.2s; }
-  .sidebar-links div:nth-child(3) { transition-delay: 0.3s; }
-  .sidebar-links div:nth-child(4) { transition-delay: 0.4s; }
-  .sidebar-links div:nth-child(5) { transition-delay: 0.5s; }
-  .sidebar-links button { transition-delay: 0.6s; }
-  
-  .sidebar-links div:hover {
-    color: #E7013C;
-    transform: translateX(10px);
-  }
-  
-  .overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 999;
-    opacity: 0;
-    animation: fadeIn 0.3s ease forwards;
-  }
-  
-  @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-  }
-  
-  @media (max-width: 768px) {
-    .nav-links {
-      display: none;
-    }
-  
-    .Logo-Responsive {
-      display: block;
-    }
-  
-    .nav-buttons .cart-btn,
-    .nav-buttons .login-btn {
-      display: none;
-    }
-  
-    .menu-btn {
-      display: block;
-    }
-  }
-  
-  @media (max-width: 480px) {
-    .navbar {
-      height: 70px;
-      padding: 0 15px;
-    }
-  }
+}

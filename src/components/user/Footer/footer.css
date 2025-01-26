@@ -1,12 +1,22 @@
 
+
 .Main-Footer{
   height: 100vh;
   margin: auto;
   display: flex;
   justify-content: space-around;
   align-items: center;
-  /* background-color: white; */
 }
+  /* background-color: white; */
+
+/* .Main-Footer{
+  height: 100vh;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: white;
+>>>>>>> 06219633d1a5343b8500088d385e3d19f9ad82d2
+} */
 .Main-Footer .BoxInsideMain-Footer{
   height: 95vh;
   width: 80vw;

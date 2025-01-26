@@ -9,10 +9,12 @@ import Directional from '../components/user/AboutUs/Directional'
 import Footer from '../components/user/Footer/Footer'
 import PriorityOne from '../components/user/PriorityOne/PriorityOne'
 import Blog from '../components/user/Blog/Blog'
-import Support from '../components/user/Support/Support'
-import WelcomeHome from '../components/user/WelcomeHome/WelcomeHome'
-
-
+// <<<<<<< supportPage
+ import Support from '../components/user/Support/Support'
+// =======
+// import Subscription from '../components/user/Subscription/Subscription'
+// >>>>>>> master
+ import  WelcomeHome from '../components/user/WelcomeHome/WelcomeHome'
 function Home() {
   return (
     <div>
@@ -26,7 +28,10 @@ function Home() {
         <Directional/>
         <PriorityOne/>
         <Blog/>
-        {/* <Support/> */}
+       <Support/>
+
+        {/* <Subscription/> */}
+
         <Footer/>
     </div>
   )
