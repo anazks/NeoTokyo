@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import './feedback.css';
-import CylinderGrid from '../../Animation/CylnederEff';
+// import CylinderGrid from '../../Animation/CylnederEff';
 import Grid2Background from "https://cdn.jsdelivr.net/npm/threejs-components@0.0.17/build/backgrounds/grid2.cdn.min.js";
 
 function FeedBack() {
