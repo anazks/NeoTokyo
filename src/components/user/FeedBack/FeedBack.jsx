@@ -39,7 +39,7 @@ function FeedBack() {
         </div>
         <div className="ShortLine"></div>
         <div className="bottomBox">
-          <h2>𝙽𝚎𝚘 𝚃𝚘𝚔𝚢𝚘 𝙸𝚗 𝙽𝚞𝚖𝚋𝚎𝚛𝚜</h2>
+          <h2>𝙽𝚎𝚘 𝚃𝚘𝚔𝚢𝚘 𝙸𝚗 𝙽𝚞𝚖𝚋𝚎𝚛𝚜 </h2>
           <div className="contentsTokio">
             <h1 className="thousand">1000 <span><b>+</b></span></h1>
             <span className="build">Completed Builds</span>
