@@ -1,6 +1,23 @@
+
+
+.gaming{
+  text-align: center;
+  color: red;
+}
+
+.feedback {
+  width: 80%;
+  margin: auto;
+  height: 100vh;
+  display: flex;
+  flex-wrap: wrap;
+}
+.color-black {
+  color: black !important; /* Force the color to black */
+}
+
 .head {
   width: 80%;
-  height: auto;
   margin: auto;
   margin-top: 5%;
   padding: 20px 0;
@@ -10,19 +27,16 @@
   text-align: center;
   font-size: 50px;
   font-weight: 700;
-  line-height: 40px;
+  line-height: 1.2;
   letter-spacing: 0.2em;
-  text-align: center;
-  text-underline-position: from-font;
-  text-decoration-skip-ink: none;
   color: rgba(229, 229, 229, 0.6);
 }
 
 .textContent {
   width: 100%;
-  height: 100%;
   margin: auto;
   color: black;
+  font-size: 2rem;
 }
 
 .textContent h1 {
@@ -32,14 +46,12 @@
 .Gaming {
   color: rgba(218, 0, 55, 1);
   text-align: center;
-  font-family: Radio Canada;
-  font-size: 40px;
+  font-family: 'Radio Canada', sans-serif;
+  font-size: 1.7rem;
+  margin-top: 20px;
   font-weight: 700;
-  line-height: 48px;
+
   letter-spacing: 0.2em;
-  text-align: center;
-  text-underline-position: from-font;
-  text-decoration-skip-ink: none;
 }
 
 .subHeading {
@@ -49,81 +61,86 @@
 
 .line {
   width: 80%;
-  height: 0;
   border-top: 2px solid rgba(218, 0, 55, 1);
   margin: 10px auto;
 }
 
 .containerBox {
   width: 75%;
-  height: auto;
-  min-height: 200px;
   margin: auto;
   margin-top: 5%;
   display: flex;
+  flex-wrap: wrap;
   gap: 20px;
+  align-items: center;
+  justify-content: center;
+
 }
 
 .ProjectEden {
-  width: 80%;
-  height: auto;
-  min-height: 200px;
+  width: 75vw;
   margin: auto;
   margin-top: 10%;
   display: flex;
+  flex-wrap: wrap;
   gap: 20px;
-  align-items: center;
-}
-
-.Left {
-  width: 50%;
-  height: 100%;
-  background: rgba(57, 57, 57, 0.7);
-  border-radius: 30px;
-  display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.leftBox {
-  color: white;
-  width: 40%;
-  height: 100%;
-  border: none;
-  border-right: 2px solid rgba(218, 0, 55, 1);
+.Left {
+  width: 50%;
+  margin: auto;
+  background: #D9D9D9;
+  height: 200px;
+  border-radius: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-align: center;
-  font-size: 15px;
-  font-weight: 700;
-  letter-spacing: 0.2em;
-  text-align: left;
+  padding: 20px;
 }
 
-.leftBox h4 {
-  font-family: Raleway;
-  font-size: 20px;
-  font-weight: 500;
-  line-height: 23.48px;
-  letter-spacing: 0.2em;
-  text-align: left;
+.Left h2 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: rgba(218, 0, 55, 1);
 }
 
 .right {
-  width: 100%;
-  font-family: Raleway;
-  font-size: 12px;
+  width: 40%;
+  margin: auto;
+  font-family: 'Raleway', sans-serif;
+  font-size: 10px;
   font-weight: 300;
-  line-height: 23.48px;
-  letter-spacing: 0.09em;
-  text-align: justified;
+  line-height: 1.5;
+  text-align: justify;
 }
 
-.rightBox {
-  width: 100%;
+.right h1 {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 400;
+}
+
+.right span {
+  color: rgba(255, 3, 94, 1);
+}
+.line-c{
+  height: 300px;
+  width: 2px;
+  background-color: #eb4747;
+}
+.right-Box {
+  width: 55%;
   background: rgba(57, 57, 57, 0.7);
-  height: 100%;
   border-radius: 21px;
   display: flex;
+  justify-content: center;
   align-items: center;
+}
+
+.right-Box img {
+  width: 100%;
 }
 
 .trangleDiv {
@@ -134,7 +151,6 @@
 }
 
 .triangl {
-  position: relative;
   width: 200px;
   aspect-ratio: 1;
   clip-path: polygon(97.87% 64.45%, 13.55% 84.23%, 38.58% 1.32%);
@@ -149,9 +165,6 @@
   clip-path: polygon(0% 100%, 100% 100%, 50% 0%);
   border-radius: 20px 20px 0 0;
   transform: rotate(-11deg);
-  transform-origin: center;
-  top: 0;
-  left: 0;
 }
 
 .leftDivText h1 {
@@ -164,130 +177,159 @@
   color: black;
 }
 
-.right h1 {
-  font-family: 'Raleway', sans-serif;
-  color: black;
-}
-
 /* Responsive Styles */
 @media screen and (max-width: 1200px) {
+  .line-c{
+    display: none;
+  }
+  .Left{
+    width: 90%;
+  }
+  .bottomSection{
+    /* box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; */
+    width: 95%;
+    margin: auto;
+    border-radius: 30px;
+    padding: 5px;
+  }
+.G-Text{
+  font-size: 1.3rem;
+}
   .head h1 {
-      font-size: 40px;
-      line-height: 35px;
+    font-size: 40px;
+    line-height: 1.2;
   }
 
   .Gaming {
-      font-size: 35px;
-      line-height: 40px;
+    font-size: 35px;
   }
 
   .leftDivText h1 {
-      font-size: 35px;
+    font-size: 35px;
   }
 
   .triangl {
-      width: 150px;
+    width: 150px;
+  }
+
+  .ProjectEden {
+    justify-content: center;
   }
 }
 
 @media screen and (max-width: 992px) {
-  .containerBox, .ProjectEden {
-      width: 90%;
+  .line-c{
+    display: none;
+  }
+  .containerBox,
+  .ProjectEden {
+    width: 90%;
+    flex-wrap: wrap;
+    justify-content: center;
   }
 
   .head h1 {
-      font-size: 35px;
-      line-height: 30px;
+    font-size: 35px;
   }
 
   .Gaming {
-      font-size: 30px;
-      line-height: 35px;
+    font-size: 30px;
   }
 
-  .leftBox h4 {
-      font-size: 18px;
+  .leftDivText h1 {
+    font-size: 30px;
+  }
+  .right{
+    width: 90%;
   }
 
   .right h1 {
-      font-size: 14px;
-      line-height: 20px;
+    font-size: 1.5rem;
+    line-height: 1.4;
   }
 }
 
 @media screen and (max-width: 768px) {
-  .containerBox, .ProjectEden {
-      flex-direction: column;
-      height: auto;
+  .line-c{
+    display: none;
+  }
+  .containerBox,
+  .ProjectEden {
+    flex-direction: column;
+    width: 100%;
+    gap: 20px;
   }
 
-  .leftBox {
-      width: 100%;
-      border-right: none;
-      border-bottom: 2px solid rgba(218, 0, 55, 1);
-      padding-bottom: 20px;
-  }
-
-  .Left {
-      width: 100%;
-  }
-
-  .rightBox {
-      min-height: 200px;
-  }
-
-  .trangleDiv {
-      padding: 20px;
+  .Left,
+  .right-Box {
+    width: 100%;
   }
 
   .triangl {
-      width: 120px;
-      margin: 10px;
+    width: 120px;
+  }
+
+  .right h1 {
+    font-size: 12px;
   }
 }
 
 @media screen and (max-width: 576px) {
-  .head {
-      width: 90%;
+  .line-c{
+    display: none;
+  }
+  .right-Box{
+    width: 90%;
+    margin: auto;
+  }
+  .right-Box img{
+    width: 95%;
+  }
+  .Left{
+    width: 90%;
+  }
+  .ProjectEden {
+    gap: 15px;
+    align-items: center;
+    justify-content: center;
   }
 
   .head h1 {
-      font-size: 25px;
-      line-height: 25px;
-      letter-spacing: 0.1em;
+    font-size: 25px;
   }
 
   .Gaming {
-      font-size: 25px;
-      line-height: 30px;
+    font-size: 25px;
   }
 
   .leftDivText h1 {
-      font-size: 30px;
+    font-size: 25px;
   }
 
   .triangl {
-      width: 100px;
+    width: 100px;
   }
 
   .right h1 {
-      font-size: 12px;
-      line-height: 18px;
+    font-size: 12px;
+    line-height: 1.2;
   }
 }
 
 @media screen and (max-width: 360px) {
+  .line-c{
+    display: none;
+  }
   .head h1 {
-      font-size: 20px;
-      line-height: 20px;
+    font-size: 20px;
   }
 
   .Gaming {
-      font-size: 20px;
-      line-height: 25px;
+    font-size: 20px;
   }
 
   .triangl {
-      width: 80px;
+    width: 80px;
   }
 }
+

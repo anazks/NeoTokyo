@@ -1,6 +1,6 @@
 import React from 'react';
 import { IoArrowForwardCircleSharp } from "react-icons/io5";
-import './about.css';
+import './quality.css';
 
 function Quality() {
   return (
@@ -29,9 +29,9 @@ function Quality() {
           At our company, we pride ourselves on providing personalized service, expert advice, and after-sales support. With our team of experienced professionals, we ensure that every custom PC we build meets the unique needs and preferences of our customers. Whether you're a gamer, a content creator, or a professional in need of a powerful workstation, we have the expertise to deliver the perfect solution.
           </p>
         </div>
-        <button className="team-button">
+        <button className="team-button-quality">
                     <IoArrowForwardCircleSharp className='iconsbtn-team' />
-                    <span className='Team' style={{ color: 'black' }} >Blog </span>
+                    <span className='Team'  >Blog </span>
                 </button>
                 <br />
                 <br />

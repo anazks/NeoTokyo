@@ -1,47 +1,48 @@
+// NavBar.jsx
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import logo from '../../../Images/LoginWith/neo_tokyo-logo.png'
 import './nav.css';
 
 function NavBar() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const navigate = useNavigate();
-  const toggleSidebar = () => {
-    setIsSidebarOpen(!isSidebarOpen);
-  };
-const openCartPage = ()=>{
-  navigate("/cart")
-}
+
   return (
-    <div className='NavBar'>
-      <div className='left'>
-        {/* Add logo or branding here */}
+    <nav className="navbar">
+     
+      
+      <div className="nav-links">
+        <div><Link to={'/products'}>Products</Link></div>
+        <div>Solutions</div>
+        <div> <img src={logo} style={{height:'70px',width:'90px'}} alt="Logo" className="logo-img" /> </div>
+        <div>Store</div>
+        <div><Link to={'/support'}>Support</Link></div>
+      <div className="nav-buttons">
+        <button className="cart-btn" onClick={() => navigate('/cart')}>Cart</button>
+        <button className="login-btn">Login</button>
+        <button className="menu-btn" onClick={() => setIsSidebarOpen(true)}>☰</button>
       </div>
-        <div className='contents'>
-          <div>Products</div>
-          <div>Solutions</div>
-          <div>Logo</div>
-          <div>Store</div>
-          <div>Support</div>
-        </div>
-      <div className='right' style={{width:'30%'}}>
-        <div className='buttons'>
-          <button className='cartText' onClick={openCartPage}>Cart</button>
-          <button className='loginBtn'>Login</button>
-        </div>
-        <button className='menuBtn' onClick={toggleSidebar}>
-          ☰
-        </button>
       </div>
+      <div className='Logo-Responsive'> <Link to={'/'}><img src={logo} style={{height:'70px',width:'90px'}} alt="Logo" className="logo-img" /></Link> </div>
+
+
+      <div className={`sidebar ${isSidebarOpen ? 'open' : ''}`}>
+        <button className="close-btn" onClick={() => setIsSidebarOpen(false)}>×</button>
+        <div className="sidebar-links">
+          <div onClick={() => setIsSidebarOpen(false)}>Products</div>
+          <div onClick={() => setIsSidebarOpen(false)}>Solutions</div>
+          <div onClick={() => setIsSidebarOpen(false)}>Store</div>
+          <div onClick={() => setIsSidebarOpen(false)}>Support</div>
+          <div onClick={() => setIsSidebarOpen(false)}>Cart</div>
+          <button className="login-btn">Login</button>
+        </div>
+      </div>
+
       {isSidebarOpen && (
-        <div className='sidebar'>
-          <div onClick={toggleSidebar}>Products</div>
-          <div onClick={toggleSidebar}>Solutions</div>
-          <div onClick={toggleSidebar}>Logo</div>
-          <div onClick={toggleSidebar}>Store</div>
-          <div onClick={toggleSidebar}>Support</div>
-        </div>
+        <div className="overlay" onClick={() => setIsSidebarOpen(false)} />
       )}
-    </div>
+    </nav>
   );
 }
 

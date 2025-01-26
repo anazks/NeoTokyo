@@ -10,7 +10,6 @@ import ProductFooter from '../../components/user/Footer/ProductFooter'
         <div>
             <NavBar/>
             <ProductBanner/>
-            <Recomends/>
             <ProductsList/>
             <ProductFooter/>
         </div>
