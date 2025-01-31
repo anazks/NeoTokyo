@@ -11,6 +11,7 @@ import PriorityOne from '../components/user/PriorityOne/PriorityOne'
 import Blog from '../components/user/Blog/Blog'
 // <<<<<<< supportPage
  import Support from '../components/user/Support/Support'
+import Gamingpage from '../components/user/Gamingpage/Gamingpage'
 // =======
 // import Subscription from '../components/user/Subscription/Subscription'
 // >>>>>>> master
@@ -28,7 +29,7 @@ function Home() {
         <PriorityOne/>
         {/* <Blog/> */}
         <Support/>
-
+        <Gamingpage/>
         <Footer/>
     </div>
   )
