@@ -6,19 +6,17 @@
   padding: 1rem;
 }
 .fullWindow::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: url('../../../Images//city.png') no-repeat center center; /* Replace with your image URL */
+  /* background: url('../../../Images//city.png') no-repeat center center; Replace with your image URL */
   background-size: cover;
   filter: blur(10px); /* Adjust the blur intensity as needed */
   z-index: -1; /* Places the pseudo-element behind the content */
 }
-
-
 
 .mainBox {
   width: 100%;
@@ -43,17 +41,17 @@
 }
 
 @media (min-width: 768px) {
-  .fullWindow{
+  .fullWindow {
     height: 80vh;
   }
-  .subBoxes{
+  .subBoxes {
     display: flex;
   }
   .banner {
     flex-direction: row;
     align-items: center;
   }
-  .mainBox{
+  .mainBox {
     width: 90%;
     margin: auto;
   }
@@ -81,10 +79,10 @@
 }
 
 @media (min-width: 768px) {
-  .fullWindow{
+  .fullWindow {
     height: 80vh;
   }
-  .mainBox{
+  .mainBox {
     width: 90%;
     margin: auto;
   }
@@ -104,7 +102,7 @@
 }
 
 @media (min-width: 768px) {
-  .mainBox{
+  .mainBox {
     width: 90%;
     margin: auto;
   }
@@ -124,7 +122,7 @@
 }
 
 @media (min-width: 768px) {
-  .mainBox{
+  .mainBox {
     width: 90%;
     margin: auto;
   }
@@ -137,7 +135,10 @@
 .aspire {
   width: 100%;
   min-height: 300px;
-  background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8));
+  background: linear-gradient(
+    rgba(255, 255, 255, 0.8),
+    rgba(255, 255, 255, 0.8)
+  );
   border-radius: 30px;
   position: relative;
   padding: 1rem;
@@ -174,13 +175,16 @@
 .subRight {
   width: 100%;
   min-height: 200px;
-  background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8));
+  background: linear-gradient(
+    rgba(255, 255, 255, 0.8),
+    rgba(255, 255, 255, 0.8)
+  );
   border-radius: 30px;
   padding: 1rem;
 }
 
 @media (min-width: 768px) {
-  .newRow{
+  .newRow {
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -194,486 +198,496 @@
 }
 
 /* Maintain existing color and button styles */
-.pink { background: rgba(221, 124, 116, 1); }
-.yellow { background: rgba(231, 225, 86, 1); }
-.blue { background: rgba(80, 85, 211, 1); }
-.black { background-color: black; }
+.pink {
+  background: rgba(221, 124, 116, 1);
+}
+.yellow {
+  background: rgba(231, 225, 86, 1);
+}
+.blue {
+  background: rgba(80, 85, 211, 1);
+}
+.black {
+  background-color: black;
+}
 
 /* Additional responsive utilities */
 @media (max-width: 480px) {
-  .heading { font-size: 1.2rem; }
-  .subheading { font-size: 0.6rem; }
-  .gaming { font-size: 24px; }
-  .iconsbtn { font-size: 24px; }
-}
-  
-  /* New Row Above the Banner */
-  .newRow {
-    position: absolute;
-    bottom: -90px; /* Move the row slightly higher to exceed the mainBox */
-    left: 50%;
-    transform: translateX(-50%);
-    width: 91%; /* Full width */
-    height: 270px; /* Increased height to exceed the mainBox */
-    z-index: 2; /* Ensures it's above the mainBox */
-    border-radius: 30px;
-    display: flex;
-    align-items: center;
-    overflow-x: scroll;
-    overflow-y: hidden;
+  .heading {
+    font-size: 1.2rem;
   }
- 
-  .newRow::-webkit-scrollbar{
-    display: none;
+  .subheading {
+    font-size: 0.6rem;
   }
-  .aspire {
-    width: 450px;
-    height: 300px;
-    background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8));
-    background-size: cover;
-    border-radius: 50px;
-    position: relative;
-    clip-path: polygon(0 0, 100% 0, 81% 59%, 67% 99%, 0 100%, 0% 25%);
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    padding: 20px;
-    transition: all 0.3s ease;
+  .gaming {
+    font-size: 24px;
+  }
+  .iconsbtn {
+    font-size: 24px;
+  }
 }
 
-  
-  .aspire:hover {
-    background-color: rgba(75, 75, 75, 1); /* Slightly lighter background on hover */
-    transform: scale(1.03); /* Adds a subtle zoom effect */
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5), 
-                0 0 20px rgba(255, 255, 255, 0.3); /* Glow and depth effect */
-  }
-  
-  .aspire:hover::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    clip-path: inherit; /* Ensures the glow matches the custom shape */
-    border-radius: inherit;
-    background: rgba(255, 255, 255, 0.1); /* Subtle inner glow overlay */
-    z-index: -1; /* Keeps it behind the main content */
-  }
-  
-  
-  .img {
-    position: absolute;
-    right: 0; /* Positions the image to the right side */
-    top: 0; /* Aligns the image to the top */
-    height: 96%; /* Ensures the image covers the height of the box */
-    width: auto; /* Maintains the aspect ratio of the image */
-    object-fit: cover; /* Ensures the image fills the space without distortion */
-  }
-  
-  .content {
-    z-index: 1; /* Ensures text is above the background */
-    color: white; /* Makes text visible on the dark background */
-    max-width: 60%; /* Limits content width to avoid overlapping the image */
-  }
-  
-  .heading {
-    font-size: 1.5rem; /* Larger font size for the heading */
-    font-weight: bold;
-    margin: 0 0 5px; /* Small margin below the heading */
-  }
-  
-  .subheading {
-    font-size: .7rem; /* Slightly smaller font size for the subheading */
-    font-weight: 500;
-    margin: 0; /* No extra margin */
-  }
-  .subheading-prebuild{
-    font-size: .8rem; /* Slightly smaller font size for the subheading */
-    font-weight: 300;
-    margin: 0; /* No extra margin */
-    color: black;
-  }
-  .description {
-    font-size: 0.9rem; /* Smaller font for the description */
-    margin-top: 10px; /* Adds a gap between subheading and description */
-    line-height: 1.4; /* Improves readability of the description text */
-  }
-.rowCIricle{
+/* New Row Above the Banner */
+.newRow {
+  position: absolute;
+  bottom: -90px; /* Move the row slightly higher to exceed the mainBox */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 91%; /* Full width */
+  height: 270px; /* Increased height to exceed the mainBox */
+  z-index: 2; /* Ensures it's above the mainBox */
+  border-radius: 30px;
+  display: flex;
+  align-items: center;
+  overflow-x: scroll;
+  overflow-y: hidden;
+}
+
+.newRow::-webkit-scrollbar {
+  display: none;
+}
+.aspire {
+  width: 450px;
+  height: 300px;
+  background: linear-gradient(
+    rgba(255, 255, 255, 0.8),
+    rgba(255, 255, 255, 0.8)
+  );
+  background-size: cover;
+  border-radius: 50px;
+  position: relative;
+  clip-path: polygon(0 0, 100% 0, 81% 59%, 67% 99%, 0 100%, 0% 25%);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  transition: all 0.3s ease;
+}
+
+.aspire:hover {
+  background-color: rgba(
+    75,
+    75,
+    75,
+    1
+  ); /* Slightly lighter background on hover */
+  transform: scale(1.03); /* Adds a subtle zoom effect */
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(255, 255, 255, 0.3); /* Glow and depth effect */
+}
+
+.aspire:hover::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  clip-path: inherit; /* Ensures the glow matches the custom shape */
+  border-radius: inherit;
+  background: rgba(255, 255, 255, 0.1); /* Subtle inner glow overlay */
+  z-index: -1; /* Keeps it behind the main content */
+}
+
+.img {
+  position: absolute;
+  right: 0; /* Positions the image to the right side */
+  top: 0; /* Aligns the image to the top */
+  height: 96%; /* Ensures the image covers the height of the box */
+  width: auto; /* Maintains the aspect ratio of the image */
+  object-fit: cover; /* Ensures the image fills the space without distortion */
+}
+
+.content {
+  z-index: 1; /* Ensures text is above the background */
+  color: white; /* Makes text visible on the dark background */
+  max-width: 60%; /* Limits content width to avoid overlapping the image */
+}
+
+.heading {
+  font-size: 1.5rem; /* Larger font size for the heading */
+  font-weight: bold;
+  margin: 0 0 5px; /* Small margin below the heading */
+}
+
+.subheading {
+  font-size: 0.7rem; /* Slightly smaller font size for the subheading */
+  font-weight: 500;
+  margin: 0; /* No extra margin */
+}
+.subheading-prebuild {
+  font-size: 0.8rem; /* Slightly smaller font size for the subheading */
+  font-weight: 300;
+  margin: 0; /* No extra margin */
+  color: black;
+}
+.description {
+  font-size: 0.9rem; /* Smaller font for the description */
+  margin-top: 10px; /* Adds a gap between subheading and description */
+  line-height: 1.4; /* Improves readability of the description text */
+}
+.rowCIricle {
   display: flex;
   gap: 5px;
   margin-top: 5px;
 }
-.pink{
+.pink {
   background: rgba(221, 124, 116, 1);
 }
-.yellow{
+.yellow {
   background: rgba(231, 225, 86, 1);
 }
-.blue{
+.blue {
   background: rgba(80, 85, 211, 1);
-
 }
-.black{
+.black {
   background-color: black;
 }
-.rowCIricle div{
+.rowCIricle div {
   width: 20px;
   height: 20px;
   border-radius: 50px;
 }
 
-  
-  /* Blurred background using ::before */
-  .mainBox::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url('../../../Images/tokyo.jfif');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    filter: blur(2px); /* Slight blur effect */
-    z-index: -1; /* Keeps it behind content */
-    border-radius: 30px;
-  }
+/* Blurred background using ::before */
+.mainBox::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* background-image: url('../../../Images/tokyo.jfif'); */
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  filter: blur(2px); /* Slight blur effect */
+  z-index: -1; /* Keeps it behind content */
+  border-radius: 30px;
+}
 
-  .subRight {
-    clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%);
-    height: 200px;
-    width: 200px;
-    background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8));
-    border-radius: 30px;
-    transition: all 0.3s ease; /* Smooth transition for hover effects */
-    position: relative;
-    z-index: 1;
-    cursor: pointer;
+.subRight {
+  clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%);
+  height: 200px;
+  width: 200px;
+  background: linear-gradient(
+    rgba(255, 255, 255, 0.8),
+    rgba(255, 255, 255, 0.8)
+  );
+  border-radius: 30px;
+  transition: all 0.3s ease; /* Smooth transition for hover effects */
+  position: relative;
+  z-index: 1;
+  cursor: pointer;
+}
 
-  }
-  
-  .subRight:hover {
-    background: rgba(75, 75, 75, 1); /* Slightly lighter background on hover */
-    transform: scale(1.05); /* Slight scaling */
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4); /* Adds a shadow effect */
-    z-index: 2; /* Ensures it appears on top of other elements */
-  }
-  
-  /* Optional: Glow effect */
-  .subRight:hover::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    clip-path: inherit; /* Ensures the glow matches the custom shape */
-    border-radius: inherit;
-    background: rgba(255, 255, 255, 0.1); /* Subtle glow overlay */
-    z-index: -1;
-  }
-  
-  .PcName{
-    width: 100%;
-    height: 30px;
-    color: black;
-    font-size: 1.4rem;
-    margin-left: 10%;
+.subRight:hover {
+  background: rgba(75, 75, 75, 1); /* Slightly lighter background on hover */
+  transform: scale(1.05); /* Slight scaling */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4); /* Adds a shadow effect */
+  z-index: 2; /* Ensures it appears on top of other elements */
+}
 
-  }
-  .subRight2 {
-    height: 80%;
-    width: 100%;
-    display: flex;
-    justify-content: flex-end;
-    /* background-color: yellow; */
-  }
-  .imgage{
-    width: 200px;
-    height: 180px;
-  }
-  
-  .subRight2 img {
-    height: 100%; /* Makes the image fill the container height */
-    width: auto; /* Maintains the aspect ratio */
-    object-fit: cover; /* Ensures the image fits well */
-  }
-  
-  .subRight h3 {
-    font-size: 1.2rem; /* Adjusts text size */
-    margin-right: 10px; /* Adds spacing between text and image */
-    flex: 1; /* Allows the text to take up remaining space */
-    text-align: left; /* Aligns text to the left */
-  }
-  
+/* Optional: Glow effect */
+.subRight:hover::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  clip-path: inherit; /* Ensures the glow matches the custom shape */
+  border-radius: inherit;
+  background: rgba(255, 255, 255, 0.1); /* Subtle glow overlay */
+  z-index: -1;
+}
 
-  /* Banner Style */
-  .banner {
-    position: absolute; /* Required for centering */
-    width: 1123px;
-    height: 273px;  
-    background: rgba(236, 230, 230, 0.7); /* Semi-transparent background */
-    color: white;
-    top: 30%; /* Move to the middle vertically */
-    left: 50%; /* Move to the middle horizontally */
-    transform: translate(-50%, -50%); /* Adjust position to center perfectly */
-    border-radius: 15px;
-    display: flex; /* Flexbox for centering content inside */
-    align-items: center; /* Center content vertically */
-    justify-content: center; /* Center content horizontally */
-    text-align: center;
-    z-index: 1; /* Ensures it's above the blurred background */
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  
-  .imageContainer {
-    width: 60%;
-    height: 90%;
-    border-radius: 30px;
-    background-image: url('../../../Images/subscribeImge.jfif');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-  }
-  
-  .subcribe {
-    width: 35%;
-    height: 90%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    background:white;
-    opacity: .5;
-    color: black;
-    border-radius: 30px;
-  }
-  
-  .contentsdiv {
-    width: 100%;
-    height: 30%;
-    display: flex;
-    align-items: start;
-    justify-content: flex-start;
-  }
-  
-  .contentsdiv div {
-    width: 90%;
-    height: 10px;
-    margin: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: start;
-  }
-  
-  .contentsdiv p {
-    font-size: 10px;
-  }
-  
-  .contentsdiv {
-    padding: 10px;
-  }
-  
-  .contentsdiv p,
-  .contentsdiv h2 {
-    margin: 0;
-    line-height: 1;
-  }
-  
-  .contentsdiv h2 {
-    font-size: 1.5em;
-  }
-  
-  .arrow {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    width: 98%;
-    padding-right: 10px;
-  }
-  
-  .arrowText {
-    font-size: 30px;
-  }
-  
-  .gaming {
-    font-size: 30px;
-  }
-  
-  .subscribe-button {
-    display: flex;
-    align-items: center;
-    justify-content: center; /* Centers the content */
-    padding: 8px 16px;
-    background-color: black;
-    color: white;
-    border: none;
-    border-radius: 30px;
-    font-size: 16px;
-    cursor: pointer;
-    width: 60%;
-    margin: auto;
-    transition: background-color 0.3s ease; /* Smooth transition for background color */
-  }
-  
-  .subscribe-button .iconsbtn {
-    transition: transform 0.3s ease; /* Smooth transition for icon movement */
-  }
-  
- 
-  
-  .subscribe-button:hover .iconsbtn {
-    transform: translateX(10px); /* Moves the icon to the right */
-  }
-  
-  .buyNow-button {
-    display: flex;
-    align-items: center;
-    gap: 10px; /* Reduced gap for smoother transition */
-    padding: 3px 5px;
-    background-color: black;
-    color: white;
-    border: none;
-    border-radius: 30px;
-    font-size: 10px;
-    cursor: pointer;
-    width: 96%;
-    margin: auto;
-    transition: all 0.3s ease; /* Smooth transition for hover effects */
-  }
+.PcName {
+  width: 100%;
+  height: 30px;
+  color: black;
+  font-size: 1.4rem;
+  margin-left: 10%;
+}
+.subRight2 {
+  height: 80%;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  /* background-color: yellow; */
+}
+.imgage {
+  width: 200px;
+  height: 180px;
+}
 
-  .buyNow-button .iconsbtn-buynow {
-    transition: transform 0.3s ease; /* Smooth transition for icon movement */
-  }
-  
- 
-  
-  .buyNow-button:hover .iconsbtn-buynow {
-    transform: translateX(20px); /* Moves the icon to the right */
-  }
-  
-  .buyNow-button:hover span {
-    visibility: hidden; /* Hides the 'Buy Now' text on hover */
-  }
-  
-  .iconsbtn {
-    font-size: 30px;
-  }
-  .iconsbtn-buynow{
-    font-size: 40px;
+.subRight2 img {
+  height: 100%; /* Makes the image fill the container height */
+  width: auto; /* Maintains the aspect ratio */
+  object-fit: cover; /* Ensures the image fits well */
+}
 
-  }
-  .subscribe-button svg {
-    margin-right: 30px;
-    font-size: 2.2em;
-  }
-  
+.subRight h3 {
+  font-size: 1.2rem; /* Adjusts text size */
+  margin-right: 10px; /* Adds spacing between text and image */
+  flex: 1; /* Allows the text to take up remaining space */
+  text-align: left; /* Aligns text to the left */
+}
 
-  .container {
-      width: 400px; /* Adjust width as needed */
+/* Banner Style */
+.banner {
+  position: absolute; /* Required for centering */
+  width: 1123px;
+  height: 273px;
+  background: rgba(236, 230, 230, 0.7); /* Semi-transparent background */
+  color: white;
+  top: 30%; /* Move to the middle vertically */
+  left: 50%; /* Move to the middle horizontally */
+  transform: translate(-50%, -50%); /* Adjust position to center perfectly */
+  border-radius: 15px;
+  display: flex; /* Flexbox for centering content inside */
+  align-items: center; /* Center content vertically */
+  justify-content: center; /* Center content horizontally */
+  text-align: center;
+  z-index: 1; /* Ensures it's above the blurred background */
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.imageContainer {
+  width: 60%;
+  height: 90%;
+  border-radius: 30px;
+  background-image: url("../../../Images/subscribeImge.jfif");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.subcribe {
+  width: 35%;
+  height: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  background: white;
+  opacity: 0.5;
+  color: black;
+  border-radius: 30px;
+}
+
+.contentsdiv {
+  width: 100%;
+  height: 30%;
+  display: flex;
+  align-items: start;
+  justify-content: flex-start;
+}
+
+.contentsdiv div {
+  width: 90%;
+  height: 10px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+}
+
+.contentsdiv p {
+  font-size: 10px;
+}
+
+.contentsdiv {
+  padding: 10px;
+}
+
+.contentsdiv p,
+.contentsdiv h2 {
+  margin: 0;
+  line-height: 1;
+}
+
+.contentsdiv h2 {
+  font-size: 1.5em;
+}
+
+.arrow {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 98%;
+  padding-right: 10px;
+}
+
+.arrowText {
+  font-size: 30px;
+}
+
+.gaming {
+  font-size: 30px;
+}
+
+.subscribe-button {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Centers the content */
+  padding: 8px 16px;
+  background-color: black;
+  color: white;
+  border: none;
+  border-radius: 30px;
+  font-size: 16px;
+  cursor: pointer;
+  width: 60%;
+  margin: auto;
+  transition: background-color 0.3s ease; /* Smooth transition for background color */
+}
+
+.subscribe-button .iconsbtn {
+  transition: transform 0.3s ease; /* Smooth transition for icon movement */
+}
+
+.subscribe-button:hover .iconsbtn {
+  transform: translateX(10px); /* Moves the icon to the right */
+}
+
+.buyNow-button {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Reduced gap for smoother transition */
+  padding: 3px 5px;
+  background-color: black;
+  color: white;
+  border: none;
+  border-radius: 30px;
+  font-size: 10px;
+  cursor: pointer;
+  width: 96%;
+  margin: auto;
+  transition: all 0.3s ease; /* Smooth transition for hover effects */
+}
+
+.buyNow-button .iconsbtn-buynow {
+  transition: transform 0.3s ease; /* Smooth transition for icon movement */
+}
+
+.buyNow-button:hover .iconsbtn-buynow {
+  transform: translateX(20px); /* Moves the icon to the right */
+}
+
+.buyNow-button:hover span {
+  visibility: hidden; /* Hides the 'Buy Now' text on hover */
+}
+
+.iconsbtn {
+  font-size: 30px;
+}
+.iconsbtn-buynow {
+  font-size: 40px;
+}
+.subscribe-button svg {
+  margin-right: 30px;
+  font-size: 2.2em;
+}
+
+.container {
+  width: 400px; /* Adjust width as needed */
   height: 300px; /* Adjust height as needed */
   border-radius: 10px; /* Adjust corner radius as needed */
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3); /* Add a subtle shadow */
 
-    background-color: #222;
-    background-image: linear-gradient(to bottom, #222, #111);
-    padding: 40px;
-    text-align: center;
-  }
-  
-  .title {
-    color: white;
-    font-size: 36px;
-    font-weight: bold;
-    margin: 0;
-  }
-  
-  .subtitle {
-    color: white;
-    font-size: 18px;
-    margin: 10px 0;
-  }
-  
-  .price {
-    color: white;
-    font-size: 24px;
-    font-weight: bold;
-    margin: 20px 0;
-  }
-  
-  .image {
-    width: 300px;
-    height: auto;
-    margin: 20px 0;
-  }
-  
-  .color-options {
-    display: flex;
-    justify-content: center;
-    margin: 10px 0;
-  }
-  
-  .color-option {
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    margin: 0 5px;
-  }
-  
-  .color-option:nth-child(1) {
-    background-color: #FF5733; /* Red */
-  }
-  
-  .color-option:nth-child(2) {
-    background-color: #007BFF; /* Blue */
-  }
-  
-  .color-option:nth-child(3) {
-    background-color: #000; /* Black */
-  }
-  
-  .button {
-    background-color: white;
-    color: black;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  @media (max-width: 480px) {
-    .fullWindow{
-      height: 80vh;
-    }
-    .subBoxes{
-      display: flex;
-      height: 300px;
-      background-color: yellow;
-      display: none;
-    }
-    .newRow{
-      width: 350px;
-      display: flex;
+  background-color: #222;
+  background-image: linear-gradient(to bottom, #222, #111);
+  padding: 40px;
+  text-align: center;
+}
 
-    }
-    .banner .subscribe .contentsdiv p {
-      font-size: 0.8rem;
-    }
-  
-    .aspire {
-      clip-path: none;
-      border-radius: 15px;
-      min-height: 150px;
-      width: 90%;
-      height: 190px;
-      padding: 10px;
-    
-    }
-    .aspire .content {
-      font-size: 0.2rem;
-    }
+.title {
+  color: white;
+  font-size: 36px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.subtitle {
+  color: white;
+  font-size: 18px;
+  margin: 10px 0;
+}
+
+.price {
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  margin: 20px 0;
+}
+
+.image {
+  width: 300px;
+  height: auto;
+  margin: 20px 0;
+}
+
+.color-options {
+  display: flex;
+  justify-content: center;
+  margin: 10px 0;
+}
+
+.color-option {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  margin: 0 5px;
+}
+
+.color-option:nth-child(1) {
+  background-color: #ff5733; /* Red */
+}
+
+.color-option:nth-child(2) {
+  background-color: #007bff; /* Blue */
+}
+
+.color-option:nth-child(3) {
+  background-color: #000; /* Black */
+}
+
+.button {
+  background-color: white;
+  color: black;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+@media (max-width: 480px) {
+  .fullWindow {
+    height: 80vh;
   }
-  
+  .subBoxes {
+    display: flex;
+    height: 300px;
+    background-color: yellow;
+    display: none;
+  }
+  .newRow {
+    width: 350px;
+    display: flex;
+  }
+  .banner .subscribe .contentsdiv p {
+    font-size: 0.8rem;
+  }
+
+  .aspire {
+    clip-path: none;
+    border-radius: 15px;
+    min-height: 150px;
+    width: 90%;
+    height: 190px;
+    padding: 10px;
+  }
+  .aspire .content {
+    font-size: 0.2rem;
+  }
+}
