@@ -35,12 +35,11 @@
 .textContent {
   width: 100%;
   margin: auto;
-  color: black;
   font-size: 2rem;
 }
 
 .textContent h1 {
-  color: black;
+  color: white;
 }
 
 .Gaming {
@@ -169,12 +168,12 @@
 
 .leftDivText h1 {
   font-size: 45px;
-  color: black;
+  color: white;
   font-family: 'Radio Canada', sans-serif;
 }
 
 .leftDivText h4 {
-  color: black;
+  color: white;
 }
 
 /* Responsive Styles */

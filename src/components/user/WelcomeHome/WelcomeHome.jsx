@@ -198,7 +198,7 @@ const WelcomeHome = () => {
         Directional,
         PriorityOne,
         GamingPage,
-        Support,
+        // Support,
         Footer,
       ].map((Component, index) => (
         <motion.div

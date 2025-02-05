@@ -29,7 +29,7 @@ height: 100%;
   
   .leftB h1 {
     font-family: 'Raleway', sans-serif;
-    color: black;
+    color: white;
     font-size: 55px;
     font-weight: 400;
     line-height: 88.05px;
@@ -69,7 +69,7 @@ height: 100%;
     text-align: left;
     margin: 10px 0 0;
     padding: 0;
-    color: black;
+    color: white;
   }
   
   .contentsTokio {
@@ -85,7 +85,7 @@ height: 100%;
   }
   
   .build {
-    color: black;
+    color: white;
     margin: 5px 0 0;
     font-family: 'Raleway', sans-serif;
     font-size: 25px;
