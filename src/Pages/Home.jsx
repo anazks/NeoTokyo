@@ -15,11 +15,12 @@ import Gamingpage from '../components/user/Gamingpage/Gamingpage'
 // =======
 // import Subscription from '../components/user/Subscription/Subscription'
 // >>>>>>> master
-
+ import  WelcomeHome from '../components/user/WelcomeHome/WelcomeHome'
 function Home() {
   return (
     <div>
-         <NavBar/>
+         <NavBar />
+         <WelcomeHome/>
         <Quick/>
         <Gaming/>
         <FeedBack/>
@@ -27,9 +28,17 @@ function Home() {
         <Quality/>
         <Directional/>
         <PriorityOne/>
-        {/* <Blog/> */}
-        <Support/>
-        <Gamingpage/>
+// <<<<<<< newdesign
+//         {/* <Blog/> */}
+//         <Support/>
+//         <Gamingpage/>
+// =======
+//         <Blog/>
+//        <Support/>
+
+//         {/* <Subscription/> */}
+
+// >>>>>>> master
         <Footer/>
     </div>
   )

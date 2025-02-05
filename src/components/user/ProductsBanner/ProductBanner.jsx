@@ -2,6 +2,8 @@ import React from 'react'
 import './Pbanner.css'
 import image from '../../../Images/Rectangle 532.jpg'
 import { IoArrowForwardCircleSharp } from 'react-icons/io5'
+import "@fontsource/rajdhani"; // Default font weight
+import "@fontsource/rajdhani/700.css"; // Optional: specific font weight (600)
 function ProductBanner() {
   return (
    <>

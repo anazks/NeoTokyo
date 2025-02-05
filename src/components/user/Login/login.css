@@ -1,0 +1,409 @@
+/* General Styles */
+/* General Styles for Register Container */
+.Register-Container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 97%;
+    margin: auto;
+    border-radius: 30px;
+    background: #f5f5f5;
+    padding: 20px;
+  }
+  
+  /* Header Text */
+  .Register-Container h2 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #000;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  
+  .Register-Container p {
+    font-size: 1rem;
+    color: #555;
+    text-align: center;
+    margin-bottom: 15px;
+  }
+  
+  /* Input Box */
+  .input-box {
+    width: 100%;
+    max-width: 380px;
+    padding: 10px;
+    border-radius: 20px;
+    border: 2px solid black;
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+  }
+  
+  /* Checkbox and Text */
+  .Register-Container input[type='checkbox'] {
+    margin-right: 10px;
+  }
+  
+  .Register-Container span {
+    font-size: 0.9rem;
+    color: #555;
+    text-align: left;
+    display: block;
+    max-width: 380px;
+    margin: 10px 0;
+  }
+  
+  /* Social Icons */
+  .icons {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 20px 0;
+    width: 100%;
+    max-width: 380px;
+  }
+  
+  .icons div {
+    border: 1px solid gray;
+    width: 100px;
+    height: 50px;
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .icons div img {
+    width: 30px;
+    height: 30px;
+  }
+  
+  /* Sign-Up Button */
+  .team-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 20px;
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    font-size: 1rem;
+    cursor: pointer;
+    width: 100%;
+    max-width: 380px;
+    margin: 20px 0;
+    transition: all 0.3s ease;
+  }
+  
+  .team-buttons:hover {
+    background-color: #333;
+    transform: scale(1.05);
+  }
+  
+  .teams {
+    margin-left: 10px;
+    font-size: 1rem;
+  }
+  
+  /* Footer Text */
+  .Register-Container h3 {
+    font-size: 1rem;
+    color: #000;
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .Register-Container {
+      padding: 15px;
+    }
+  
+    .Register-Container h2 {
+      font-size: 2rem;
+    }
+  
+    .Register-Container p {
+      font-size: 0.9rem;
+    }
+  
+    .icons div {
+      width: 80px;
+      height: 40px;
+    }
+  
+    .icons div img {
+      width: 25px;
+      height: 25px;
+    }
+  
+    .team-buttons {
+      font-size: 0.9rem;
+    }
+  }
+  .check {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  @media (max-width: 480px) {
+    .Register-Container h2 {
+      font-size: 1.8rem;
+    }
+  
+    .icons div {
+      width: 70px;
+      height: 35px;
+    }
+  
+    .icons div img {
+      width: 20px;
+      height: 20px;
+    }
+  
+    .team-buttons {
+      font-size: 0.8rem;
+    }
+  }
+  
+.login-container {
+    display: flex;
+    height: 100vh;
+    width: 97%;
+    margin: auto;
+    border-radius: 30px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  }
+  
+  /* Left Section */
+  .left-section {
+    flex: 3;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    color: #fff;
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+    overflow: hidden;
+  }
+  
+  .left-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../../../Images/LoginWith/Loginbg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: blur(2px);
+    opacity: 0.5;
+    z-index: 1;
+  }
+  
+  .logo {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 2;
+  }
+  
+  .logo img {
+    width: 120px; /* Adjust the logo size */
+    height: auto;
+  }
+  
+  .quote-container {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    width: 80%;
+    margin: auto;
+  }
+  
+  .quote {
+    font-size: 3.5rem;
+    font-style: italic;
+    font-weight: 600;
+    color: #fff;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+    margin-top: 16%;
+  }
+  
+  /* Right Section */
+  .right-section {
+    flex: 2;
+    background: #f5f5f5;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+
+  }
+  
+  .button-container {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .btn {
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 30px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .black-btn {
+    background: #000;
+    color: #fff;
+  }
+  
+  .black-btn:hover {
+    background: #333;
+  }
+  
+  .form-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 380px;
+    gap: 10px;
+    margin-bottom: 20px;
+    margin-top: 10%;
+  }
+  
+  .input-box {
+    padding: 10px;
+    border-radius: 20px;
+    border: 2px solid black;
+    font-size: 1.3rem;
+    width: 100%;
+  }
+  
+  .icons {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+  
+  .icons div {
+    border: 1px solid gray;
+    width: 100px;
+    height: 50px;
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .icons div img {
+    width: 30px;
+    height: 30px;
+  }
+  
+  .team-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+    padding: 10px 20px;
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    font-size: 14px;
+    cursor: pointer;
+    width: 100%;
+    height: auto;
+    margin: 20px 0;
+    transition: all 0.3s ease;
+  }
+  
+  .teams {
+    margin-left: 30%;
+    font-size: 1.5rem;
+  }
+  
+  .team-buttons:hover {
+    background-color: black;
+    color: white;
+    transform: scale(1.05);
+  }
+  
+  /* Social Login */
+  .social-login {
+    text-align: center;
+  }
+  
+  .icon-container {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 10px;
+  }
+  
+  .icon-container i {
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #555;
+    transition: color 0.3s;
+  }
+  
+  .icon-container i:hover {
+    color: #000;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .login-container {
+      flex-direction: column;
+    }
+  
+    .left-section {
+      flex: 1;
+      height: 40%;
+      border-radius: 0;
+    }
+  
+    .right-section {
+      flex: 1;
+      height: 60%;
+    }
+  
+    .quote {
+      font-size: 2.5rem;
+    }
+  
+    .form-container {
+      max-width: 90%;
+      margin-top: 5%;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .quote {
+      font-size: 2rem;
+    }
+  
+    .icons div {
+      width: 80px;
+      height: 40px;
+    }
+  
+    .icons div img {
+      width: 20px;
+      height: 20px;
+    }
+  }
+  

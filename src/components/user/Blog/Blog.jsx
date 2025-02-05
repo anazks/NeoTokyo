@@ -29,7 +29,7 @@ function Blog() {
       </ul>
    </div>
    <div className="blog-SearchBox">
-        <h2>Found What you are Looking For</h2>
+        <h4>Found What you are Looking For</h4>
         <div className="searchBox-blog">
             
           <div className="search-input">

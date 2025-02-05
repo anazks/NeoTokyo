@@ -1,22 +1,24 @@
 .blog-containers {
     display: flex;
     flex-wrap: wrap;
-    margin-top: 20px;
-    width: 90vw;
-    height: 97vh;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+     width: 90vw;
+    height: 100vh;
+    /* box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; */
     margin: auto;
+    margin-top: 5%;
     border-radius: 30px;
     position: relative;
+   
 }
 
 /* Left Section */
 .blog-left {
     width: 50%;
-    border-radius: 30px;
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
     box-sizing: border-box;
     padding: 20px;
-    background-color: white;
+    
 }
 
 .blog-header {
@@ -44,7 +46,7 @@
 /* Main Heading Section */
 .blog-SubMainHeading {
     width: 60%;
-    height: 100px;
+    height: 70px;
     margin: auto;
     margin-top: 5%;
     font-size: 2.5rem;
@@ -69,19 +71,19 @@
     width: 100%;
     height: 50px;
     margin: auto;
-    margin-top: 3.7%;
+    bottom: 30%;
     position: absolute;
 }
-.blog-SearchBox h2{
-    margin-left: 10%;
-    margin-top: 3%;
+.blog-SearchBox h4{
+    margin-top: 13px;
+    margin-left: 15%;
     color: gray;
 }
 /* Right Section */
 .blog-right {
-  
     width: 50%;
     border-radius: 30px;
+    height: 100%;
 }
 .searchBox-blog {
     display: flex;
@@ -90,6 +92,7 @@
     margin: auto;
     margin-top: 20px;
     position: relative;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 
 .search-input {
@@ -124,11 +127,15 @@
     width: 50%;
 }
 .blog-right img{
-    width: 100%;
+    width: 90%;
+    height: 100%;
 }
 
 /* Responsive Design */
 @media (max-width: 1024px) {
+    .blog-SearchBox,.blog-right{
+        display: none;
+    }
     .blog-left,
     .blog-right {
         width: 100%;
@@ -156,6 +163,9 @@
 }
 
 @media (max-width: 768px) {
+    .blog-SearchBox, .blog-right{
+        display: none;
+    }
     .blog-heading span {
         font-size: 1.8rem;
     }
@@ -170,6 +180,9 @@
 }
 
 @media (max-width: 480px) {
+    .blog-SearchBox, .blog-right{
+        display: none;
+    }
     .blog-containers {
         width: 100%;
         height: auto;

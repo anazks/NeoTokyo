@@ -1,5 +1,6 @@
 .priority-one-container {
-    background-color: #fff;
+    background-color: white;
+    border-radius: 20px;
     text-align: center;
     padding: 2rem 1rem;
     font-family: Arial, sans-serif;

@@ -2,8 +2,11 @@ import React from 'react'
 import './Rec.css'
 import Recoments from '../../../Images/Recoments.png'
 import { IoArrowForwardCircleSharp } from 'react-icons/io5'
+import NavBar from '../NavBar/NavBar'
 function Recomends() {
   return (
+<>
+<NavBar/>
 <div className='recomends'>
   <div className="top-box">
     <div className="leftSide">
@@ -42,6 +45,7 @@ function Recomends() {
   
   <img src={Recoments} alt="Recommendation Background" />
 </div>
+</>
 
   )
 }

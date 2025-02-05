@@ -15,7 +15,7 @@ import { IoArrowForwardCircleSharp } from 'react-icons/io5';
           </div>
           <button className="team-button">
                     <IoArrowForwardCircleSharp className='iconsbtn-team' />
-                    <span className='Team' style={{ color: 'black' }} >Blog </span>
+                    <span className='Team' style={{ color: 'white' }} >Blog </span>
         </button>
           <div className='leftB'>
                 <div className="bottomImage">

@@ -1,70 +1,68 @@
 /* Main Header container */
 .Header {
-    width: 80%;
-    height: 180px;
-    margin: auto;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
-    margin-top: 5%;
-    gap: 10px; /* Add spacing between buttons */
-  }
-  
-  /* General Button Styling */
-  .Header button {
-    flex: 0 1 calc(25% - 20px); /* Each button takes 25% width minus spacing */
-    height: auto;
-    background: none;
-    border: none;
-    font-size: 13px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: black;
-    position: relative;
-    cursor: pointer;
-    text-align: center;
-  }
-  
-  /* Hover effect: Add a small border and shadow */
-  .Header button:hover {
-    border: 1px solid #A36391;
-    background-color: #AB6698;
-    width: 100PX;
-    /* box-shadow: 0 4px 10px rgba(255, 255, 255, 0.3); */
-    border-radius: 5px;
-    padding: 5px;
-  }
-  
-  /* Special buttons with always-visible border and shadow */
-  .Header button.special {
-    flex: 0 1 calc(50% - 20px); /* Centered on their own row */
-    color: black;
-    border: 1px solid black;
-    border-radius: 5px;
-    box-shadow: 0 4px 10px rgba(255, 255, 255, 0.3);
-    padding: 5px;
-    margin: auto;
-    text-align: center;
+  width: 80%;
+  height: 180px;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 5%;
+  gap: 10px; /* Add spacing between buttons */
+}
 
-  }
-  
-  /* Responsive Styling */
-  @media (max-width: 768px) {
-    .Header button {
+/* General Button Styling */
+.Header button {
+  flex: 0 1 calc(25% - 20px); /* Each button takes 25% width minus spacing */
+  height: auto;
+  background: none;
+  border: none;
+  font-size: 13px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: black;
+  position: relative;
+  cursor: pointer;
+  text-align: center;
+}
+
+/* Hover effect: Add a small border and shadow */
+.Header button:hover {
+  border: 1px solid #A36391;
+  background-color: #AB6698;
+  width: 100px;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+/* Special buttons with always-visible border and shadow */
+.Header button.special {
+  flex: 0 1 calc(50% - 20px); /* Centered on their own row */
+  color: black;
+  border: 1px solid black;
+  border-radius: 5px;
+  box-shadow: 0 4px 10px rgba(255, 255, 255, 0.3);
+  padding: 5px;
+  margin: auto;
+  text-align: center;
+}
+
+/* Responsive Styling */
+@media (max-width: 768px) {
+  .Header button {
       flex: 0 1 calc(50% - 20px); /* Two buttons per row */
-    }
   }
-  
-  @media (max-width: 480px) {
-    .Header button {
+}
+
+@media (max-width: 480px) {
+  .Header button {
       flex: 0 1 calc(100% - 20px); /* One button per row */
-    }
-  
-    .Header button.special {
-      flex: 0 1 calc(80%); /* Wider centered row for the special buttons */
-    }
   }
-  /* Products container */
+
+  .Header button.special {
+      flex: 0 1 calc(80%); /* Wider centered row for the special buttons */
+  }
+}
+
 /* Products container */
 .products {
   display: flex;
@@ -165,7 +163,7 @@
   color: white;
 }
 
-
+/* Sort */
 .sort{
   display: flex;
   justify-content: space-between;
@@ -179,32 +177,34 @@
   padding: 10px;
 }
 
-.category{
+.category {
   width: 50%;
   height: 100%;
-
 }
-.category div{
+
+.category div {
   padding: 15px;
 }
-.options{
+
+.options {
   width: 40%;
   height: 100%;
 }
+
 .options {
   width: 50%;
   height: 84%;
   margin: auto;
-  
 }
-.options div{
+
+.options div {
   width: 90%;
   gap: 10px;
   display: flex;
   justify-content: flex-end;
-
 }
-.options div select{
+
+.options div select {
   width: 200px;
   height: 16px;
   border-radius: 10px;
@@ -212,10 +212,43 @@
   margin-top: 10px;
 }
 
-.apply{
+/* Apply button */
+.apply {
   width: 100px;
   height: 25px;
   border-radius: 10px;
   background-color: #E4D1DE;
   border: none;
+}
+
+/* Responsive filter text and select box alignment */
+@media (max-width: 768px) {
+  .options div {
+      display: flex;
+      justify-content: space-between;
+      align-items: center; /* Align the text and select box */
+  }
+
+  .options div label {
+      font-size: 14px; /* Adjust font size for better readability */
+  }
+
+  .options div select {
+      width: 70%; /* Adjust the width of the select box */
+  }
+}
+
+@media (max-width: 480px) {
+  .options div {
+      flex-direction: column;
+      align-items: flex-start; /* Stack the filter text and select box */
+  }
+
+  .options div label {
+      margin-bottom: 5px; /* Add space between label and select box */
+  }
+
+  .options div select {
+      width: 100%; /* Full width select box on small screens */
+  }
 }
