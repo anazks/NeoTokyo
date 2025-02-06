@@ -5,7 +5,7 @@ import Typewriter from 'typewriter-effect';
 
 export default function Gaming() {
   return (
-    <div>
+    <div className='gaming'>
       <div className="head">
         <div className="textContent">
           <h1 style={{ textAlign: 'center' }}>

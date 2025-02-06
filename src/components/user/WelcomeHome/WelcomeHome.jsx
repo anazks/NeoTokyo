@@ -77,6 +77,8 @@ import NavBar from "../NavBar/NavBar";
 import GamingPage from "../../user/Gamingpage/Gamingpage";
 import WelcomeSection from "./welcomepage";
 
+
+// import './WelcomeHome.css';
 const WelcomeHome = () => {
   const [scrollY, setScrollY] = useState(0);
   const wrapperRef = useRef(null);
