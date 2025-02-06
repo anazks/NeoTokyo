@@ -1,14 +1,15 @@
-
-/* 
-.gaming{
+.gaming-container{
   text-align: center;
   color: red;
   width: 96vw;
-  height: 197vh;
-  background-color: black;
+  height: 100vh;
+  /* padding: px; */
+  background-color: white;
   margin: auto;
   color: black;
-} */
+  border-radius: 30px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+} 
 
 .feedback {
   width: 80%;
@@ -22,9 +23,9 @@
 }
 
 .head {
-  width: 80%;
+  width: 100%;
   margin: auto;
-  margin-top: 5%;
+  /* margin-top: 5%; */
   padding: 20px 0;
 }
 
@@ -40,11 +41,11 @@
 .textContent {
   width: 100%;
   margin: auto;
-  font-size: 2rem;
+  font-size: 1.5rem;
 }
 
 .textContent h1 {
-  color: white;
+  color: black;
 }
 
 .Gaming {
@@ -84,7 +85,6 @@
 .ProjectEden {
   width: 75vw;
   margin: auto;
-  margin-top: 10%;
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
@@ -136,7 +136,7 @@
 }
 .right-Box {
   width: 55%;
-  background: rgba(57, 57, 57, 0.7);
+  /* background: rgba(57, 57, 57, 0.7); */
   border-radius: 21px;
   display: flex;
   justify-content: center;
@@ -173,12 +173,12 @@
 
 .leftDivText h1 {
   font-size: 45px;
-  color: white;
+  color: black;
   font-family: 'Radio Canada', sans-serif;
 }
 
 .leftDivText h4 {
-  color: white;
+  color: black;
 }
 
 /* Responsive Styles */
@@ -194,7 +194,7 @@
     width: 95%;
     margin: auto;
     border-radius: 30px;
-    padding: 5px;
+    /* padding: 5px; */
   }
 .G-Text{
   font-size: 1.3rem;

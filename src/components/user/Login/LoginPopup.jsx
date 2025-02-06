@@ -45,6 +45,7 @@
 // }
 
 // export default LoginPopup;
+
 import React from "react";
 import "./loginPopup.css";
 
@@ -57,16 +58,16 @@ function LoginPopup({ isOpen, onClose }) {
       {/* Sidebar Popup */}
       <div className={`sidebar ${isOpen ? "open" : ""}`}>
         {/* Close Button */}
-        <button className="close-btn" onClick={onClose}>
+        {/* <button className="close-btn" onClick={onClose}>
           ×
-        </button>
+        </button> */}
 
         {/* Sidebar Content */}
         <div className="sidebar-content">
-          <div className="auth-buttons">
+          {/* <div className="auth-buttons">
             <button className="register-btn">Register</button>
             <button className="signin-btn">Sign In</button>
-          </div>
+          </div> */}
 
           {/* Sidebar Menu */}
           <ul>

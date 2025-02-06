@@ -8,6 +8,7 @@ import CardPage from "./components/user/CardPage/CartPage";
 import Login from "./Pages/user/Login";
 import Recomends from "./components/user/Recomendation/Recomends";
 import SupportPage from "./Pages/user/SupportPage";
+import AboutUs from "./components/user/AboutUs/AboutUs";
 // import Login from "./components/user/Login/Login";
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path="/cart" element={<CardPage/>} />
         <Route path="/special" element = {<Recomends/>} />
         <Route path="/Support" element = {<SupportPage/>} />
+        <Route path="/about" element = {<AboutUs/>} />
 
       </Routes>
     </>

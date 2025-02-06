@@ -33,9 +33,7 @@ function NavBar() {
           <button className="cart-btn" onClick={() => navigate("/cart")}>
             Cart
           </button>
-          <button className="cart-btn" onClick={() => setIsLoginOpen(true)}>
-            Login
-          </button>
+      
           <button className="menu-btn" onClick={() => setIsSidebarOpen(true)}>
             ☰
           </button>
@@ -44,10 +42,17 @@ function NavBar() {
 
       {/* Sidebar for Mobile */}
       <div className={`sidebar ${isSidebarOpen ? "open" : ""}`}>
-        <button
-          className="close-btn"
-          onClick={() => setIsSidebarOpen(false)}
-        ></button>
+        <button className="close-btn" onClick={() => setIsSidebarOpen(false)}>
+          ✖
+        </button>
+        <div className="buttons-login">
+            <button className="cart-btn" onClick={() => navigate("/cart")}>
+                Login
+            </button>
+            <button className="cart-btn" onClick={() => navigate("/cart")}>
+                Register
+            </button>
+        </div>
         <div className="sidebar-links">
           <Link to={"/products"} onClick={() => setIsSidebarOpen(false)}>
             Products
@@ -58,22 +63,23 @@ function NavBar() {
           <Link to={"/store"} onClick={() => setIsSidebarOpen(false)}>
             Store
           </Link>
+          <Link to={"/about"} onClick={() => setIsSidebarOpen(false)}>
+            About
+          </Link>
           <Link to={"/support"} onClick={() => setIsSidebarOpen(false)}>
             Support
           </Link>
-          <button className="login-btn" onClick={() => setIsLoginOpen(true)}>
-            Login
-          </button>
+
+
+          <div className="soon">
+             <h2>NeoTokyo.Config </h2><span>Coming Soon</span>
+          </div>
         </div>
       </div>
 
       {/* Overlay */}
-      {isSidebarOpen && (
-        <div className="overlay" onClick={() => setIsSidebarOpen(false)} />
-      )}
-      {isLoginOpen && (
-        <div className="overlay" onClick={() => setIsLoginOpen(false)} />
-      )}
+      {isSidebarOpen && <div className="overlay" onClick={() => setIsSidebarOpen(false)} />} 
+      {isLoginOpen && <div className="overlay" onClick={() => setIsLoginOpen(false)} />} 
 
       {/* Login Popup Component */}
       <LoginPopup isOpen={isLoginOpen} onClose={() => setIsLoginOpen(false)} />

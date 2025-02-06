@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import cityImage from "../../../Images/city.png";
-import { useInView } from "react-intersection-observer"; // Import the hook
 
 import Quick from "../../../components/user/QuickPiks/Quick";
 import Gaming from "../../../components/user/GamingR1/Gaming";
@@ -11,59 +10,50 @@ import Quality from "../../../components/user/AboutUs/Quality";
 import Directional from "../../../components/user/AboutUs/Directional";
 import PriorityOne from "../../../components/user/PriorityOne/PriorityOne";
 import GamingPage from "../../user/Gamingpage/Gamingpage";
-import Support from "../../../components/user/Support/Support";
 import Footer from "../../../components/user/Footer/Footer";
 import NavBar from "../NavBar/NavBar";
 import WelcomeSection from "./welcomepage";
 
-
-// import './WelcomeHome.css';
 const WelcomeHome = () => {
   const [scrollY, setScrollY] = useState(0);
   const wrapperRef = useRef(null);
 
-  const { ref, inView } = useInView({
-    triggerOnce: false, // Re-trigger the observer each time the section comes into view
-    threshold: 0.2, // 20% of the component must be in view to trigger
-  });
-
   useEffect(() => {
     const handleScroll = () => {
       if (wrapperRef.current) {
-        const scrollTop = wrapperRef.current.scrollTop;
-        setScrollY(scrollTop);
+        setScrollY(wrapperRef.current.scrollTop);
       }
     };
 
     const wrapper = wrapperRef.current;
-    if (wrapper) {
-      wrapper.addEventListener("scroll", handleScroll);
-    }
+    if (wrapper) wrapper.addEventListener("scroll", handleScroll);
 
     return () => {
-      if (wrapper) {
-        wrapper.removeEventListener("scroll", handleScroll);
-      }
+      if (wrapper) wrapper.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
   return (
-    <div
+    <motion.div
       ref={wrapperRef}
       className="content-wrapper"
+      initial={{ opacity: 0, scale: 0.95 }} // Fade-in and slight zoom-in
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
       style={{
         position: "relative",
         display: "flex",
         flexDirection: "column",
         width: "100vw",
         height: "100vh",
-        overflowY: "auto",
+        overflowY: "scroll",
         scrollbarWidth: "none",
       }}
     >
+      {/* Navigation Bar */}
       <NavBar />
 
-      {/* Background City Image */}
+      {/* Background City Image with Zoom-in Effect */}
       <motion.div
         style={{
           position: "fixed",
@@ -77,15 +67,13 @@ const WelcomeHome = () => {
           zIndex: -1,
           filter: "blur(3px)",
         }}
-        animate={{
-          scale: 1 + scrollY / 1000, // Increase the scale of the image as you scroll
-          y: -scrollY / 3, // Parallax effect to move the image upwards as you scroll
-        }}
-        transition={{ ease: "easeOut", duration: 0.3 }}
+        initial={{ scale: 1.1 }} // Slight zoom-in effect
+        animate={{ scale: 1 }}
+        transition={{ duration: 2, ease: "easeOut" }}
       />
 
-      {/* Dark Overlay */}
-      <div
+      {/* Dark Overlay for Readability */}
+      <motion.div
         style={{
           position: "fixed",
           top: 0,
@@ -95,35 +83,31 @@ const WelcomeHome = () => {
           backgroundColor: "rgba(0, 0, 0, 0.3)",
           zIndex: -1,
         }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1.5 }}
       />
 
-      {/* WelcomeSection */}
+      {/* Welcome Section (First View) */}
       <motion.div
-        ref={ref} // Attach the observer to this section
-        initial="hidden"
-        animate={inView ? "visible" : "hidden"}
-        variants={{
-          hidden: { opacity: 0 },
-          visible: {
-            opacity: 1,
-            transition: { duration: 0.5, ease: "easeOut" },
-          },
-        }}
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
         style={{
           position: "relative",
           minHeight: "100vh",
           width: "100%",
           overflow: "hidden",
           scrollSnapAlign: "start",
-          marginBottom: "80px",
           zIndex: 2,
         }}
       >
         <WelcomeSection />
       </motion.div>
 
-      {/* All Sections */}
+      {/* Stacked Sections with Slide-up Animation */}
       {[
+        WelcomeHome,
         Quick,
         Gaming,
         FeedBack,
@@ -132,29 +116,31 @@ const WelcomeHome = () => {
         Directional,
         PriorityOne,
         GamingPage,
-        // Support,
         Footer,
       ].map((Component, index) => (
         <motion.div
           key={index}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: false, amount: 0.2 }}
-          // variants={fadeInUp}
+          initial={{ opacity: 0, y: 100 }} // Slide-up effect
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false, amount: 0.4 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
           style={{
-            position: "relative",
+            position: "sticky",
+            top: 0,
             minHeight: "100vh",
             width: "100%",
-            overflow: "hidden",
-            scrollSnapAlign: "start",
-            marginBottom: "80px",
-            zIndex: 2,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            background: "rgba(0, 0, 0, 0.6)",
+            zIndex: index + 1,
+            transform: `translateY(${index * 10}px)`,
           }}
         >
           <Component />
         </motion.div>
       ))}
-    </div>
+    </motion.div>
   );
 };
 

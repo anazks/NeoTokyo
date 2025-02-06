@@ -3,10 +3,14 @@
     padding: 0;
 }
 .Gaming-page{
-    height: 100vh;
+    height: 87vh;
+    border-radius: 30px;
     display: flex;
     justify-content: space-around;
     align-items: center;
+    width: 96vw;
+    background-color: white;
+    margin: auto;
 }
 .Gaming-page .Bigaming-page{
     height: 80vh;

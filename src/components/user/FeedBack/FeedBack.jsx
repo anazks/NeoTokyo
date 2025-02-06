@@ -46,10 +46,10 @@ function FeedBack() {
           </div>
           <div className="numbers">
             <div className="entinies">
-              <span style={{color:"white"}}>50+ Business Entities</span>
+              <span style={{color:"black"}}>50+ Business Entities</span>
             </div>
             <div className="activeCustomers">
-              <span style={{color:'white'}}>500+ Active Customers</span>
+              <span style={{color:'black'}}>500+ Active Customers</span>
             </div>
           </div>
         </div>

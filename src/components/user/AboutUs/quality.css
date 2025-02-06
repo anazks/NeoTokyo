@@ -6,13 +6,15 @@
   }
   
   .aboutMianDiv {
-    width: 80%;
+    width: 96vw;
     height: 90vh;
     display: flex;
     margin: auto;
     justify-content: space-between;
     gap: 20px;
     align-items: center;
+    border-radius: 30px;
+    padding: 17px;
   }
   
   .about {
@@ -50,7 +52,7 @@
     gap: 10px;
     padding: 10px 20px;
     background-color: black;
-    color: white;
+    color: black;
     border: none;
     border-radius: 30px;
     font-size: 14px;
@@ -61,7 +63,7 @@
   
   .team-button-quality:hover {
     background-color: rgba(231, 1, 60, 1);
-    color: white;
+    color: black;
     transform: scale(1.05);
   }
   
