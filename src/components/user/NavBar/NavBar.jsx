@@ -2,10 +2,12 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import logo from "../../../Images/LoginWith/neo_tokyo-logo.png";
 import "./nav.css";
+import LoginPopup from "../Login/LoginPopup"; // Import the Login Popup component
 
 function NavBar() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const navigate = useNavigate();
+  const [isLoginOpen, setIsLoginOpen] = useState(false);
 
   return (
     <nav className="navbar">
@@ -31,7 +33,9 @@ function NavBar() {
           <button className="cart-btn" onClick={() => navigate("/cart")}>
             Cart
           </button>
-          <button className="login-btn">Login</button>
+          <button className="cart-btn" onClick={() => setIsLoginOpen(true)}>
+            Login
+          </button>
           <button className="menu-btn" onClick={() => setIsSidebarOpen(true)}>
             ☰
           </button>
@@ -57,7 +61,9 @@ function NavBar() {
           <Link to={"/support"} onClick={() => setIsSidebarOpen(false)}>
             Support
           </Link>
-          <button className="login-btn">Login</button>
+          <button className="login-btn" onClick={() => setIsLoginOpen(true)}>
+            Login
+          </button>
         </div>
       </div>
 
@@ -65,6 +71,12 @@ function NavBar() {
       {isSidebarOpen && (
         <div className="overlay" onClick={() => setIsSidebarOpen(false)} />
       )}
+      {isLoginOpen && (
+        <div className="overlay" onClick={() => setIsLoginOpen(false)} />
+      )}
+
+      {/* Login Popup Component */}
+      <LoginPopup isOpen={isLoginOpen} onClose={() => setIsLoginOpen(false)} />
     </nav>
   );
 }
