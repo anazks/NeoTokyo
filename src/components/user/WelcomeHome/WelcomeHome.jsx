@@ -1,68 +1,8 @@
-// import React, { useEffect, useState } from 'react';
-// import './WelcomeHome.css';
-
-// const WelcomeHome = () => {
-//   const [isScrolled, setIsScrolled] = useState(false);
-
-//   useEffect(() => {
-//     const handleScroll = () => {
-//       setIsScrolled(window.scrollY > 50);
-//     };
-//     window.addEventListener('scroll', handleScroll);
-//     return () => window.removeEventListener('scroll', handleScroll);
-//   }, []);
-
-//   return (
-//     <div className={`welcome-container ${isScrolled ? 'scrolled' : ''}`}>
-//       <div className="line-container">
-//         <div className="vertical-line">
-//           <div className="line-left"></div>
-//           <div className="line-right"></div>
-//         </div>
-//         <div className="sub-welcome">
-//         <div className="waviy">
-//                 <span style={{ "--i": 1 }}>𝙽</span>
-//                 <span style={{ "--i": 2 }}>𝙴</span>
-//                 <span style={{ "--i": 3 }}>𝙾</span>
-//                 <span style={{ "--i": 4 }}> </span>
-//                 <span style={{ "--i": 5 }}>𝚃</span>
-//                 <span style={{ "--i": 6 }}>𝙾</span>
-//                 <span style={{ "--i": 7 }}>𝙺</span>
-//                 <span style={{ "--i": 8 }}>𝚈</span>
-//                 <span style={{ "--i": 9 }}>𝙾</span>
-//         </div>
-//                 {/* <h1 className="titles">𝙽𝙴𝙾 𝚃𝙾𝙺𝚈𝙾</h1> */}
-//                         {/* <div className="subdata">
-//                                 <span>EXPERIENCE NOW</span>
-//                                 <span>Endless Possibilities</span>
-//                         </div> */}
-//                 </div>
-//         {/* <h1 className="title">𝙽𝙴𝙾 𝚃𝙾𝙺𝚈𝙾</h1> */}
-//         {/* <div className="waviy">
-//                 <span style={{ "--i": 1 }}>N</span>
-//                 <span style={{ "--i": 2 }}>E</span>
-//                 <span style={{ "--i": 3 }}>O</span>
-//                 <span style={{ "--i": 4 }}>-</span>
-//                 <span style={{ "--i": 5 }}>T</span>
-//                 <span style={{ "--i": 6 }}>O</span>
-//                 <span style={{ "--i": 7 }}>K</span>
-//                 <span style={{ "--i": 8 }}>Y</span>
-//                 <span style={{ "--i": 9 }}>O</span>
-//         </div> */}
-
-//       </div>
-//       <div className="city-image">
-
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default WelcomeHome;
-
 import React, { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import cityImage from "../../../Images/city.png";
+import { useInView } from "react-intersection-observer"; // Import the hook
+
 import Quick from "../../../components/user/QuickPiks/Quick";
 import Gaming from "../../../components/user/GamingR1/Gaming";
 import FeedBack from "../../../components/user/FeedBack/FeedBack";
@@ -70,11 +10,10 @@ import AboutUs from "../../../components/user/AboutUs/AboutUs";
 import Quality from "../../../components/user/AboutUs/Quality";
 import Directional from "../../../components/user/AboutUs/Directional";
 import PriorityOne from "../../../components/user/PriorityOne/PriorityOne";
-import Blog from "../../../components/user/Blog/Blog";
+import GamingPage from "../../user/Gamingpage/Gamingpage";
 import Support from "../../../components/user/Support/Support";
 import Footer from "../../../components/user/Footer/Footer";
 import NavBar from "../NavBar/NavBar";
-import GamingPage from "../../user/Gamingpage/Gamingpage";
 import WelcomeSection from "./welcomepage";
 
 
@@ -82,6 +21,11 @@ import WelcomeSection from "./welcomepage";
 const WelcomeHome = () => {
   const [scrollY, setScrollY] = useState(0);
   const wrapperRef = useRef(null);
+
+  const { ref, inView } = useInView({
+    triggerOnce: false, // Re-trigger the observer each time the section comes into view
+    threshold: 0.2, // 20% of the component must be in view to trigger
+  });
 
   useEffect(() => {
     const handleScroll = () => {
@@ -103,37 +47,18 @@ const WelcomeHome = () => {
     };
   }, []);
 
-  const fadeInUp = {
-    hidden: { opacity: 0, y: 80 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.8, ease: "easeOut" },
-    },
-  };
-
-  const welcomeImageVariants = {
-    hidden: { x: 0 },
-    visible: {
-      x: scrollY > 300 ? "100%" : 0, // Adjust value (300) based on when to trigger the effect
-      transition: { duration: 0.5, ease: "easeOut" },
-    },
-  };
-
   return (
     <div
       ref={wrapperRef}
       className="content-wrapper"
       style={{
         position: "relative",
-        width: "100vw",
-        height: "100vh", // Ensure full viewport height
-        overflowX: "hidden", // Hide horizontal scrollbar
-        overflowY: "scroll", // Allow vertical scrolling
         display: "flex",
         flexDirection: "column",
-        scrollbarWidth: "none", // Firefox specific: hides scrollbar
-        WebkitOverflowScrolling: "touch", // Smooth scrolling for iOS
+        width: "100vw",
+        height: "100vh",
+        overflowY: "auto",
+        scrollbarWidth: "none",
       }}
     >
       <NavBar />
@@ -153,8 +78,8 @@ const WelcomeHome = () => {
           filter: "blur(3px)",
         }}
         animate={{
-          scale: 1 + scrollY / 1000,
-          y: -scrollY / 3,
+          scale: 1 + scrollY / 1000, // Increase the scale of the image as you scroll
+          y: -scrollY / 3, // Parallax effect to move the image upwards as you scroll
         }}
         transition={{ ease: "easeOut", duration: 0.3 }}
       />
@@ -174,9 +99,16 @@ const WelcomeHome = () => {
 
       {/* WelcomeSection */}
       <motion.div
+        ref={ref} // Attach the observer to this section
         initial="hidden"
-        animate={scrollY > 0 ? "visible" : "hidden"}
-        variants={welcomeImageVariants}
+        animate={inView ? "visible" : "hidden"}
+        variants={{
+          hidden: { opacity: 0 },
+          visible: {
+            opacity: 1,
+            transition: { duration: 0.5, ease: "easeOut" },
+          },
+        }}
         style={{
           position: "relative",
           minHeight: "100vh",
@@ -208,7 +140,7 @@ const WelcomeHome = () => {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: false, amount: 0.2 }}
-          variants={fadeInUp}
+          // variants={fadeInUp}
           style={{
             position: "relative",
             minHeight: "100vh",
