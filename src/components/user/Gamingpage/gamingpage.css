@@ -26,22 +26,24 @@
   flex-direction: column;
 }
 .Bigaming-page .Banner-firstrow {
-  height: 20vh;
-  width: 60vw;
+  height:26vh;
+  width: 65vw;
   border-radius: 30px;
   background-color: black;
   display: flex;
+  padding: 10px;
 }
 .Banner-firstrow .Divfor-heading {
-  height: 20vh;
+  height: 25vh;
   width: 36vw;
   display: flex;
   justify-content: space-around;
   align-items: center;
   clip-path: polygon(0 0, 100% 0, 85% 100%, 0 100%);
+  
 }
 .Divfor-heading h1 {
-  font-size: 55px;
+  font-size: 50px;
   color: white;
 }
 
@@ -49,11 +51,12 @@
   width: 12vw;
   background-color: green;
   clip-path: polygon(30% 0, 100% 0, 70% 100%, 0% 100%);
-  transition: transform 0.2s;
+  transition: transform 0.2 s;
   transform-origin: bottom center;
 }
 .Divfor-image:hover {
   transform: scale(1.3);
+  cursor: pointer;
 }
 .Banner-firstrow .Divfor-imagee {
   width: 12vw;
@@ -68,7 +71,7 @@
 }
 
 .Bigaming-page .Banner-secondrow {
-  width: 60vw;
+  width: 65vw;
   border-radius: 30px;
   background-color: #eaeaea;
   display: flex;
@@ -92,7 +95,13 @@
   background-color: black;
   border-radius: 15px;
 }
-
+.Divfor-image img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 15px;
+ 
+}
 @media (max-width: 900px) {
   .Bibanner-secondrow {
     justify-content: center;

@@ -52,6 +52,9 @@ function NavBar() {
 
         {/* Sidebar Links */}
         <div className="sidebar-links">
+        <Link to="/about" onClick={() => setIsSidebarOpen(false)}>
+            Aboutus
+          </Link>
           <Link to="/store" onClick={() => setIsSidebarOpen(false)}>
             Store
           </Link>
@@ -83,7 +86,7 @@ function NavBar() {
             Vennala High School Rd,
             <br />
             Opposite to V-Guard, Vennala,
-            <br />
+          
             Kochi, Kerala 682028
           </p>
           <p>91 - 8848133939</p>
