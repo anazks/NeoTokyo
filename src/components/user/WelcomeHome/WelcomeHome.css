@@ -1,4 +1,3 @@
-
 @import url("https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap");
 
@@ -8,7 +7,7 @@
   box-sizing: border-box;
 }
 
-.welcome-container {
+/* .welcome-container {
   width: 100vw;
   height: 100vh;
   overflow: hidden;
@@ -16,11 +15,11 @@
   align-items: center;
   justify-content: center;
   background-color: black;
-
-}
+} */
 
 /* Left & Right Panels */
-.left-panel, .right-panel {
+.left-panel,
+.right-panel {
   position: absolute;
   width: 50%;
   height: 100%;
@@ -51,12 +50,33 @@
 /* Neo Tokyo Text */
 .neo-tokyo-text {
   position: absolute;
-  font-size: 8rem;
   font-family: "Alfa Slab One", cursive;
   color: black;
   text-transform: uppercase;
   transition: all 1s ease-in-out;
   z-index: 3;
+  font-size: 8vw; /* Scales font size based on viewport width */
+  letter-spacing: 0.3em;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+/* For smaller devices */
+@media (max-width: 992px) {
+  .neo-tokyo-text {
+    font-size: 6vw; /* Adjust font size for tablet screens */
+  }
+}
+
+@media (max-width: 768px) {
+  .neo-tokyo-text {
+    font-size: 8vw; /* Increase font size for smaller screens */
+  }
+}
+
+@media (max-width: 576px) {
+  .neo-tokyo-text {
+    font-size: 10vw; /* Larger text for very small screens */
+  }
 }
 
 /* Scroll Effect */
@@ -82,7 +102,7 @@
   box-sizing: border-box;
 }
 
-.welcome-container {
+/* .welcome-container {
   margin-top: 7%;
   height: 100vh;
   width: 100%;
@@ -92,7 +112,7 @@
   justify-content: center;
   position: relative;
   overflow: hidden;
-}
+} */
 /* Hide the scrollbar for webkit browsers */
 .content-wrapper::-webkit-scrollbar {
   display: none;
@@ -215,13 +235,13 @@
   transition: transform 0.1s ease-out;
 }
 
-.welcome-container {
+/* .welcome-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  /* background-color: black; */
-}
+  height: 100vh; */
+/* background-color: black; */
+/* } */
 
 /* Futuristic Background */
 .futuristic-background {
@@ -298,7 +318,7 @@
 }
 
 /* Welcome Section Styles */
-.welcome-container {
+/* .welcome-container {
   margin-top: 7%;
   height: 100vh;
   width: 100%;
@@ -308,7 +328,7 @@
   justify-content: center;
   position: relative;
   overflow: hidden;
-}
+} */
 
 /* Scroll Animations */
 .scrolled .line-left {

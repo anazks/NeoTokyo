@@ -34,22 +34,7 @@ const WelcomeHome = () => {
   }, []);
 
   return (
-    <motion.div
-      ref={wrapperRef}
-      className="content-wrapper"
-      initial={{ opacity: 0, scale: 0.95 }} // Fade-in and slight zoom-in
-      animate={{ opacity: 1, scale: 1 }}
-      transition={{ duration: 0.8, ease: "easeOut" }}
-      style={{
-        position: "relative",
-        display: "flex",
-        flexDirection: "column",
-        width: "100vw",
-        height: "100vh",
-        overflowY: "scroll",
-        scrollbarWidth: "none",
-      }}
-    >
+    <motion.div>
       {/* Navigation Bar */}
       <NavBar />
 
@@ -67,9 +52,12 @@ const WelcomeHome = () => {
           zIndex: -1,
           filter: "blur(3px)",
         }}
-        initial={{ scale: 1.1 }} // Slight zoom-in effect
+        // initial={{ scale: 1.1 }} // Slight zoom-in effect
+        // animate={{ scale: 1 }}
+        // transition={{ duration: 2, ease: "easeOut" }}
+        initial={{ scale: 2 }} // Slight zoom-in effect
         animate={{ scale: 1 }}
-        transition={{ duration: 2, ease: "easeOut" }}
+        transition={{ duration: 4, ease: "easeOut" }}
       />
 
       {/* Dark Overlay for Readability */}
@@ -88,31 +76,14 @@ const WelcomeHome = () => {
         transition={{ duration: 1.5 }}
       />
 
-      {/* Welcome Section (First View) */}
-      <motion.div
-        initial={{ opacity: 0, y: 50 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, ease: "easeOut" }}
-        style={{
-          position: "relative",
-          minHeight: "100vh",
-          width: "100%",
-          overflow: "hidden",
-          scrollSnapAlign: "start",
-          zIndex: 2,
-        }}
-      >
-        <WelcomeSection />
-      </motion.div>
-
       {/* Stacked Sections with Slide-up Animation */}
       {[
-        WelcomeHome,
+        WelcomeSection,
         Quick,
         Gaming,
         FeedBack,
-        AboutUs,
-        Quality,
+        // AboutUs,
+        // Quality,
         Directional,
         PriorityOne,
         GamingPage,
@@ -132,7 +103,7 @@ const WelcomeHome = () => {
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            background: "rgba(0, 0, 0, 0.6)",
+            backgroundImage: `url(${cityImage})`,
             zIndex: index + 1,
             transform: `translateY(${index * 10}px)`,
           }}

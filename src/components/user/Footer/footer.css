@@ -1,139 +1,114 @@
-
-
-.Main-Footer{
-  height: 100vh;
+.Main-Footer {
+  width: 70vw;
+  min-height: 50vh;
+  height: auto;
   margin: auto;
+  padding: 20px;
+  background-color: white;
+  border-radius: 20px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  margin-top: 5%;
   display: flex;
-  justify-content: space-around;
+  flex-wrap: wrap;
+  justify-content: space-between;
   align-items: center;
 }
-  /* background-color: white; */
 
-/* .Main-Footer{
-  height: 100vh;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  background-color: white;
->>>>>>> 06219633d1a5343b8500088d385e3d19f9ad82d2
-} */
-.Main-Footer .BoxInsideMain-Footer{
-  height: 95vh;
-  width: 80vw;
+.Main-Footer .BoxInsideMain-Footer {
+  width: 100%;
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
-.BoxInsideMain-Footer .About-Footer{
-  height: 10vh;
+
+.BoxInsideMain-Footer .About-Footer {
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.About-Footer .Forabout-Footer{
-  height: 10vh;
-  width: 30vw;
+
+.About-Footer .Forabout-Footer {
+  width: 40%;
 }
-.About-Footer .Getintouch-Footer{
-  height: 10vh;
-  width: 30vw;
+
+.About-Footer .Getintouch-Footer {
+  width: 25%;
   display: flex;
   justify-content: flex-end;
   align-items: center;
 }
-.Getintouch-Footer .Boxinsidegetintouch-Footer{
-  height: 6vh;
-  width: 13vw;
+
+.Getintouch-Footer .Boxinsidegetintouch-Footer {
+  height: 40px;
+  width: 100px;
   border-radius: 50px;
   display: flex;
   justify-content: left;
   align-items: center;
   background-color: black;
 }
-.Boxinsidegetintouch-Footer .Getintouchslider-Footer{
-  height: 40px;
-  width: 40px;
-  margin-left: 3px;
+
+.Boxinsidegetintouch-Footer .Getintouchslider-Footer {
+  height: 30px;
+  width: 30px;
+  margin-left: 5px;
   border-radius: 50px;
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
   background-color: white;
 }
-.Getintouchslider-Footer .Boxinsideslider-Footer{
-  height: 30px;
-  width: auto;
-  border-radius: 50px;
-}
-.Getintouchslider-Footer .Uprightarrow-Footer{
-  font-size: 30px;
-}
 
-
-.BoxInsideMain-Footer .Contact-Footer{
-  height: 30vh;
+.BoxInsideMain-Footer .Contact-Footer {
+  height: auto;
   width: 100%;
-  border-radius: 30px;
+  border-radius: 20px;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-around;
   align-items: center;
   background-color: black;
-}
-.Contact-Footer .Boxinsidecontact-Footer{
-  height: 10vh;
-  width: 70vw;
-  display: flex;
-}
-.Boxinsidecontact-Footer .Logo-Footer{
-  height: 10vh;
-  width: 10vw;
-}
-.Logo-Footer .Heading-Footer{
-  font-size: 38px;
-  color: white;
-}
-.Boxinsidecontact-Footer .Description-Footer{
-  height: 10vh;
-  width: 30vw;
-}
-.Description-Footer .Secheading-Footer{
-  font-size: 25px;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-  color: white;
-}
-.Boxinsidecontact-Footer .Support-Footer{
-  height: 10vh;
-  width: 30vw;
-  display: flex;
-  justify-content: flex-end;
-}
-.Support-Footer .ThirdHeading-Footer{
-  font-size: 25px;
-  text-align: right;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-  color: white;
-  
-}
-/* FOR NAVOPTIONS IN FOOTER */
-
-
-.Option-Footer {
-  height: auto;
-  width: 100%;
-  border-radius: 30px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: #FFFFFF;
-  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
   padding: 20px;
 }
 
-.Option-Footer .Boxinsideoption-Footer {
+.Contact-Footer .Boxinsidecontact-Footer {
   width: 90%;
   display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.Boxinsidecontact-Footer .Logo-Footer {
+  width: 15%;
+}
+
+.Logo-Footer .Heading-Footer {
+  font-size: 32px;
+  color: white;
+}
+
+.Boxinsidecontact-Footer .Description-Footer {
+  width: 40%;
+  color: white;
+}
+
+.Boxinsidecontact-Footer .Support-Footer {
+  width: 30%;
+  text-align: right;
+  color: white;
+}
+
+.Option-Footer {
+  width: 100%;
+  border-radius: 20px;
+  display: flex;
   flex-direction: column;
+  align-items: center;
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 4px 6px;
+  padding: 20px;
 }
 
 .Firstbox-Footer {
@@ -148,177 +123,52 @@
   margin-bottom: 20px;
 }
 
-.Firstbox-Footer span {
-  font-weight: bold;
-}
-.Secondbox-Footer{
-  height: 10vh;
+.Secondbox-Footer {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 10%;
   align-items: center;
   margin-bottom: 20px;
 }
-.Secondbox-Footer .FbiSecondbox-Footer{
-  height: 10vh;
-}
 
-.Reachus-Footer .Reachus{
-  font-weight: bold;
-}
-.Reachus-Footer .Neotokyo{
-  display: flex;
-}
-.Thirdbox-Footer {
-  display: flex;
-  gap: 15%;
-  align-items: center;
-  margin-bottom: 20px;
-}
-.Thirdbox-Footer .Social{
-  height: 20px;
-  width: auto;
-}
-.Social .Heading-Social{
-  font-weight: bold;
-  font-size: 18px;
-}
-.Social-Iconszz{
-  font-size: 20px;
-}
-
-
-@media (max-width: 1100px){
-  .Forabout-Footer{
-    width: 40vw !important;
-  }
-  .Aboutheading-Footer{
-    font-size: 25px;
+@media (max-width: 1100px) {
+  .Forabout-Footer {
+    width: 50%;
   }
 
-  .Boxinsidegetintouch-Footer{
-    height: 5vh !important;
-    width: 12vw !important;
-  }
-  .Getintouchslider-Footer{
-    height: 30px !important;
-    width: 30px !important;
-  }
-  .Boxinsideslider-Footer{
-    height: 20px !important;
-    width: auto;
-  }
-  .Uprightarrow-Footer{
-    font-size: 20px !important;
-  }
-
-  .Heading-Footer {
-    font-size: 30px !important;
-  }
-  .Secheading-Footer{
-    font-size: 20px !important;
-  }
-  .ThirdHeading-Footer{
-    font-size: 20px !important;
-  }
-  .Neotokyo{
-    font-size: 15px;
-  }
-  .DetailedLocation{
-    font-size: 15px;
-  }
-  .Social{
-  width: 10vw !important;
-  }
-  .Social-Icons{
-    width: 10vw !important;
-    gap: 10px !important;
-  }
-  .Thirdbox-Footer {
-    gap: 10% !important;
-  }
-  .Social .Heading-Social{
-    font-weight: bold;
-    font-size: 15px !important;
-  }
-  .Social-Iconszz{
-    font-size: 15px !important;
-  }
-  .All-Rights {
-    font-size: 15px !important;
-  }
-  .Shield-Icon{
-    font-size: 12px !important;
+  .Getintouch-Footer {
+    width: 35%;
   }
 }
+
 @media (max-width: 768px) {
   .Firstbox-Footer > div {
     width: 48%;
   }
-  .Aboutheading-Footer{
-    font-size: 20px;
+
+  .Contact-Footer {
+    flex-direction: column;
   }
-  .Boxinsidegetintouch-Footer{
-    height: 5vh !important;
-    width: 18vw !important;
-  }
-  .Getintouchslider-Footer{
-    height: 30px !important;
-    width: 30px !important;
-  }
-  .Contact-Footer{
-    border-radius: 20px !important;
-  }
-  .Heading-Footer{
-    font-size: 20px !important;
-    margin-top: 8px !important;
-  }
-  .Description-Footer{
-    display: flex;
+
+  .Boxinsidecontact-Footer {
+    flex-direction: column;
     align-items: center;
   }
-  .Secheading-Footer{
-    font-size: 15px !important;
 
-  }
-  .ThirdHeading-Footer{
-    margin-top: 15px;
-    font-size: 15px !important;
-  }
-  .Secondbox-Footer .FbiSecondbox-Footer,
-  .Secondbox-Footer .SbiSecondbox-Footer {
-    flex: 1 1 100%;
+  .Boxinsidecontact-Footer > div {
+    width: 100%;
     text-align: center;
-  }
-  .All-Rights {
-    font-size: 12px !important;
-  }
-  .Shield-Icon{
-    font-size: 10px !important;
-  }
-  .DetailedLocation{
-    font-size: 13px !important;
+    margin-bottom: 10px;
   }
 }
+
 @media (max-width: 480px) {
   .Firstbox-Footer > div {
     width: 100%;
   }
-  .SbiSecondbox-Footer{
-    height: 5vh;
-    width: 100%;
-  }
-  .Secondbox-Footer,
-  .Thirdbox-Footer {
-    flex-direction: column;
-  }
-  .Thirdbox-Footer{
-    margin-top: 8vh;
-  }
-  .Social-Icons .Social-Iconszz {
-    font-size: 16px;
-  }
 
-  .All-Rights .Shield-Icon {
-    font-size: 12px;
+  .Secondbox-Footer {
+    flex-direction: column;
   }
 }

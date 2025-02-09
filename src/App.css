@@ -2,6 +2,20 @@
   font-family: "Awanzman", sans-serif;
 }
 /* App.css */
+html {
+  overflow-y: scroll;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer/Edge */
+}
+
+html::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+body {
+  overflow-y: auto; /* Ensures scrolling is possible */
+}
+
 body {
   font-family: "Awanzman", sans-serif;
 }
@@ -22,4 +36,4 @@ body {
   }
 }
 @import url("https://fonts.googleapis.com/css2?family=Radio+Canada:wght@400;500;700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap"); */
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap");

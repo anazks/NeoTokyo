@@ -1,282 +1,205 @@
 /* General Styles */
-
-.webgl-canvas{
-width: 100%;
-height: 100%;
-}
 .feedback {
-    width: 96%;
-    padding: 10px;
-    margin: auto;
-    height: 100vh;
-    display: flex;
-    flex-wrap: wrap;
-    background-color: white;
-    border-radius: 30px;
-    padding: 17px;
+  width: 70vw;
+  min-height: 80vh; /* Increased height */
+  height: auto;
+  margin: auto;
+  padding: 40px; /* Increased padding for better spacing */
+  background-color: white;
+  border-radius: 20px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  margin-top: 5%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Left Box */
+.leftB {
+  width: 48%;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.leftB h1 {
+  font-family: "Raleway", sans-serif;
+  color: black;
+  font-size: 45px;
+  font-weight: 600;
+  line-height: 1.2;
+  margin: 0;
+  padding: 0;
+}
+
+/* Short colored line under the heading */
+.ShortLine {
+  width: 50px;
+  height: 6px;
+  background-color: rgba(218, 0, 55, 1);
+  margin: 15px 0;
+}
+
+/* Text Content */
+.bottomBox {
+  width: 100%;
+  margin-top: 30px;
+}
+
+.thousand {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 70px; /* Increased font size */
+  font-weight: 700;
+  line-height: 80px;
+  text-align: left;
+  color: black;
+}
+
+.bottomBox h2 {
+  font-family: "Raleway", sans-serif;
+  font-size: 30px; /* Slightly bigger */
+  font-weight: 500;
+  line-height: 42px;
+  text-align: left;
+  color: black;
+}
+
+/* Small text description */
+.description {
+  font-family: "Raleway", sans-serif;
+  font-size: 18px; /* Increased size */
+  font-weight: 400;
+  line-height: 1.8;
+  text-align: left;
+  color: #555;
+  margin-top: 10px;
+}
+
+/* Right Box */
+/* .rightB {
+  width: 48%;
+  min-height: 78vh;
+  background-color: rgba(57, 57, 57, 0.7);
+  border-radius: 20px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  box-shadow: 0px 8px 18px rgba(0, 0, 0, 0.5);
+  border: 2px solid rgba(218, 0, 55, 0.8);
+  padding-bottom: 40px;
+} */
+
+.rightB {
+  width: 48%;
+  height: 85vh; /* Change from % to vh for better height control */
+  min-height: 78vh;
+  border-radius: 35px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: 40px;
+}
+
+#app {
+  width: 100%;
+  height: 100%;
+  border-radius: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+canvas {
+  width: 100%;
+  height: 100%;
+  border-radius: 30px;
+  display: block; /* Removes unwanted space around canvas */
+}
+
+/* Highlighted Text */
+.highlight {
+  color: rgba(218, 0, 55, 1);
+  font-weight: bold;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 1200px) {
+  .feedback {
+    width: 80vw;
+    min-height: 85vh; /* Slightly increased */
   }
-  
-  .leftB {
-    width: 50%;
-    padding: 0;
-  }
-  
-  .rightB {
-    width: 50%;
-    height: 100%;
-    background-color: rgb(22, 210, 235);
-    padding: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .leftB h1 {
-    font-family: 'Raleway', sans-serif;
-    color: black;
-    font-size: 55px;
-    font-weight: 400;
-    line-height: 88.05px;
-    text-align: left;
-    margin: 0;
-    padding: 0;
-  }
-  
-  .ShortLine {
-    width: 10%;
-    height: 10px;
-    background-color: rgba(218, 0, 55, 1);
-    margin: 10px 0;
-  }
-  
-  .bottomBox {
-    width: 70%;
-    margin-top: 50px;
-    padding: 0;
-  }
-  
   .thousand {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 70px;
-    font-weight: 400;
-    line-height: 89.32px;
-    text-align: left;
-    margin: 0;
-    padding: 0;
+    font-size: 60px;
   }
-  
-  .bottomBox h2 {
-    font-family: 'Raleway', sans-serif;
-    font-size: 35px;
-    font-weight: 400;
-    line-height: 51.04px;
-    text-align: left;
-    margin: 10px 0 0;
-    padding: 0;
-    color: black;
-  }
-  
-  .contentsTokio {
-    height: 190px;
-    width: 250px;
-    display: flex;
+}
+
+@media screen and (max-width: 992px) {
+  .feedback {
+    width: 85vw;
     flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
+    align-items: center;
     text-align: center;
-    padding: 0;
-    margin: 0;
+    min-height: 90vh;
   }
-  
-  .build {
-    color: black;
-    margin: 5px 0 0;
-    font-family: 'Raleway', sans-serif;
-    font-size: 25px;
-    /* font-weight: 400; */
-    line-height: 29.35px;
-    text-align: left;
-  }
-  
-  .numbers {
-    display: flex;
-    justify-content: space-around;
-    width: 80%;
-    gap: 80px;
-    margin-top: 5px;
-    padding: 0;
-  }
-  
-  .entinies span,
-  .activeCustomers span {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 30px;
-    font-weight: 400;
-    text-align: left;
-  }
-  
-  /* Right Box Styles */
+  .leftB,
   .rightB {
-    width: 48%;
-    height: 95%;
-    background-color: rgba(57, 57, 57, 0.7);
-    border-radius: 30px;
+    width: 100%;
   }
-  
-  /* Responsive Design */
-  @media screen and (max-width: 1200px) {
-    .feedback{
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-    }
-    .rightB {
-        height:220px; 
-        width: 100%;
-      }
-    
-    .leftB div  h1 {
-      font-size:1.5rem;
-    }
-    
-    .bottomBox h2 {
-      font-size: 30px;
-      line-height: 40px;
-    }
-    
-    .thousand {
-      font-size: 60px;
-      line-height: 75px;
-    }
+  .rightB {
+    min-height: 50vh; /* Adjusted for responsiveness */
   }
-  
-  @media screen and (max-width: 992px) {
-    .feedback{
-        
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-    }
-    .rightB {
-        height:220px; 
-        width: 100%;
-      }
-    .numbers {
-      gap: 40px;
-    }
-    
-    .entinies span,
-    .activeCustomers span {
-      font-size: 25px;
-    }
-  }
-  
-  @media screen and (max-width: 768px) {
+}
 
-   .feedback{
-        
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-    }
-    .rightB {
-        height:220px; 
-        width: 100%;
-      }
-  
-    
-    .leftB, .rightB {
-      width: 100%;
-    }
-    
-    .rightB {
-      height: 400px;
-      margin-top: 30px;
-    }
-    
-    .bottomBox {
-      width: 90%;
-    }
-    
-    .numbers {
-      width: 100%;
-      flex-direction: column;
-      gap: 20px;
-    }
-    
-    .build {
-      font-size: 20px;
-    }
-    .leftB div h1{
-      font-size:1.5rem;
-    }
-     .contentsTokio {
-      width: 100%;
-      height: 150px;
-    }
+@media screen and (max-width: 768px) {
+  .feedback {
+    width: 90vw;
+    min-height: auto;
+    padding: 30px;
   }
-  
-  /* Small screen adjustments */
-  @media screen and (max-width: 576px) {
-    .feedback{
-   
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-    }
-    .rightB {
-        height:220px; 
-        width: 100%;
-      }
-        
-    .leftB h1 {
-      font-size: 30px;
-      line-height: 45px; /* Adjusted for smaller screens */
-      width: 90%;
-    }
-    
-    .leftB div {
-      width: 90%;
-      margin: auto;
-    }
-    
-    .bottomBox h2 {
-      font-size: 20px;
-    }
-    
-    .thousand {
-      font-size: 100px;
+  .thousand {
+    font-size: 55px;
+  }
+}
 
-    }
-    
-    .ShortLine {
-      width: 10px;
-      height: 8px;
-    }
+@media screen and (max-width: 576px) {
+  .feedback {
+    width: 95vw;
+    padding: 20px;
   }
-  
-  /* Very small screens */
-  @media screen and (max-width: 360px) {
-    .feedback{
-        
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-    }
-    .rightB {
-        height:220px; 
-        width: 100%;
-      }
-        
-    .leftB h1 {
-      font-size: 25px;
-      line-height: 40px;
-    }
-    
-    .contentsTokio {
-      width: 100%;
-      height: 150px;
-    }
+  .leftB h1 {
+    font-size: 35px;
   }
-  
- 
+  .thousand {
+    font-size: 45px;
+  }
+  .bottomBox h2 {
+    font-size: 25px;
+    line-height: 36px;
+  }
+  .description {
+    font-size: 16px;
+  }
+  .rightB {
+    min-height: 40vh; /* Adjusted */
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .feedback {
+    width: 98vw;
+  }
+  .leftB h1 {
+    font-size: 30px;
+  }
+  .bottomBox h2 {
+    font-size: 22px;
+  }
+  .description {
+    font-size: 14px;
+  }
+  .rightB {
+    min-height: 35vh;
+  }
+}
