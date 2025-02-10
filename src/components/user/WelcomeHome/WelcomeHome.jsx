@@ -117,7 +117,7 @@
 
 // export default WelcomeHome;
 
-import React, { useState, useEffect, useRef } from "react";
+import React, {  useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import cityImage from "../../../Images/city.png";
 
