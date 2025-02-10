@@ -1,116 +1,128 @@
 .priority-one-container {
-    background-color: white;
+  /* background-color: white;
     border-radius: 20px;
     text-align: center;
     padding: 2rem 1rem;
     font-family: Arial, sans-serif;
     width: 90vw;
-    margin: auto;
-  }
-  
-  .header {
-    margin-bottom: 2rem;
-  }
-  
-  .title {
-    font-family: 'Raleway', sans-serif; /* Optional: Customize font family */
-    font-size: 2rem; /* Adjust font size */
-    font-weight: 700; /* Bold text */
-    line-height: .1; /* Adjust line height for tight spacing */
-    margin: 0; /* Remove default margin */
-    text-align: left; /* Align text to the left */
-    color: black; /* Text color */
-  }
-  
-  .subtitle {
-    font-family: 'Raleway', sans-serif; /* Optional: Customize font family */
-    font-size: 1rem; /* Adjust font size */
-    font-weight: 400; /* Regular text */
-    margin: 5px 0 0; /* Small gap between h1 and p */
-    text-align: left; /* Align text to the left */
-    color: gray; /* Text color */
-  }
-  
-  .header div {
-    display: flex;
-    flex-direction: column; /* Stack h1 and p vertically */
-    align-items: flex-start; /* Align text to the left */
-  }
-  
-  
+    margin: auto; */
+  width: 70vw;
+  min-height: 90vh; /* Increased height */
+  height: auto;
+  margin: auto;
+  padding: 40px; /* Increased padding for better spacing */
+  background-color: white;
+  border-radius: 20px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  margin-top: 5%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  font-family: Arial, sans-serif;
+}
+
+.header {
+  margin-bottom: 2rem;
+}
+
+.title {
+  font-family: "Raleway", sans-serif; /* Optional: Customize font family */
+  font-size: 3rem; /* Adjust font size */
+  font-weight: 700; /* Bold text */
+  line-height: 0.1; /* Adjust line height for tight spacing */
+  margin: 0; /* Remove default margin */
+  text-align: left; /* Align text to the left */
+  color: black; /* Text color */
+}
+
+.subtitle {
+  font-family: "Raleway", sans-serif; /* Optional: Customize font family */
+  font-size: 2rem; /* Adjust font size */
+  font-weight: 400; /* Regular text */
+  margin: 5px 0 0; /* Small gap between h1 and p */
+  text-align: left; /* Align text to the left */
+  color: gray; /* Text color */
+}
+
+.header div {
+  display: flex;
+  flex-direction: column; /* Stack h1 and p vertically */
+  align-items: flex-start; /* Align text to the left */
+}
+
+.team-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 2.5rem;
+  margin-top: 10px;
+}
+
+.team-member {
+  width: 290px;
+  height: 300px;
+  text-align: center;
+}
+
+.image-wrapper {
+  width: 80%;
+  height: 250px;
+  overflow: hidden;
+  border-radius: 16px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1rem;
+}
+
+.person-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s;
+}
+
+.person-image:hover {
+  transform: scale(1.05);
+}
+
+.person-name {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin: 0.5rem 0 0.3rem;
+}
+
+.person-position {
+  font-size: 1rem;
+  color: #555;
+  margin: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
   .team-container {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 2rem;
-    margin-top: 2rem;
+    flex-direction: column;
+    align-items: center;
   }
-  
+
   .team-member {
-    width: 350px;
-    height: 300px;
-    text-align: center;
+    width: 90%;
   }
-  
-  .image-wrapper {
-    width: 100%;
-    height: 250px;
-    overflow: hidden;
-    border-radius: 16px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin-bottom: 1rem;
+}
+
+@media (max-width: 480px) {
+  .title {
+    font-size: 2rem;
   }
-  
-  .person-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.3s;
-  }
-  
-  .person-image:hover {
-    transform: scale(1.05);
-  }
-  
-  .person-name {
-    font-size: 1.2rem;
-    font-weight: bold;
-    margin: 0.5rem 0 0.3rem;
-  }
-  
-  .person-position {
+
+  .subtitle {
     font-size: 1rem;
-    color: #555;
-    margin: 0;
   }
-  
-  /* Responsive Design */
-  @media (max-width: 768px) {
-    .team-container {
-      flex-direction: column;
-      align-items: center;
-    }
-  
-    .team-member {
-      width: 90%;
-    }
+
+  .person-name {
+    font-size: 1rem;
   }
-  
-  @media (max-width: 480px) {
-    .title {
-      font-size: 2rem;
-    }
-  
-    .subtitle {
-      font-size: 1rem;
-    }
-  
-    .person-name {
-      font-size: 1rem;
-    }
-  
-    .person-position {
-      font-size: 0.9rem;
-    }
+
+  .person-position {
+    font-size: 0.9rem;
   }
-  
+}

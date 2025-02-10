@@ -1,4 +1,100 @@
-@import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* .welcome-container {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: black;
+} */
+
+/* Left & Right Panels */
+.left-panel,
+.right-panel {
+  position: absolute;
+  width: 50%;
+  height: 100%;
+  background-color: white;
+  transition: transform 1s ease-in-out;
+}
+
+.left-panel {
+  left: 0;
+}
+
+.right-panel {
+  right: 0;
+}
+
+/* City Image */
+.city-image {
+  position: absolute;
+  width: 50%;
+  height: 100%;
+  background-image: url("../../../Images/city.png");
+  background-size: cover;
+  background-position: center;
+  transition: all 1s ease-in-out;
+  z-index: 2;
+}
+
+/* Neo Tokyo Text */
+.neo-tokyo-text {
+  position: absolute;
+  font-family: "Alfa Slab One", cursive;
+  color: black;
+  text-transform: uppercase;
+  transition: all 1s ease-in-out;
+  z-index: 3;
+  font-size: 8vw; /* Scales font size based on viewport width */
+  letter-spacing: 0.3em;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+/* For smaller devices */
+@media (max-width: 992px) {
+  .neo-tokyo-text {
+    font-size: 6vw; /* Adjust font size for tablet screens */
+  }
+}
+
+@media (max-width: 768px) {
+  .neo-tokyo-text {
+    font-size: 8vw; /* Increase font size for smaller screens */
+  }
+}
+
+@media (max-width: 576px) {
+  .neo-tokyo-text {
+    font-size: 10vw; /* Larger text for very small screens */
+  }
+}
+
+/* Scroll Effect */
+.scrolled .left-panel {
+  transform: translateX(-100%);
+}
+
+.scrolled .right-panel {
+  transform: translateX(100%);
+}
+
+.scrolled .city-image {
+  width: 100%;
+}
+
+.scrolled .neo-tokyo-text {
+  opacity: 0;
+}
 
 * {
   padding: 0;
@@ -6,7 +102,7 @@
   box-sizing: border-box;
 }
 
-.welcome-container {
+/* .welcome-container {
   margin-top: 7%;
   height: 100vh;
   width: 100%;
@@ -16,6 +112,10 @@
   justify-content: center;
   position: relative;
   overflow: hidden;
+} */
+/* Hide the scrollbar for webkit browsers */
+.content-wrapper::-webkit-scrollbar {
+  display: none;
 }
 
 .line-container {
@@ -59,7 +159,7 @@
 }
 
 .waviy span {
-  font-family: 'Alfa Slab One', cursive;
+  font-family: "Alfa Slab One", cursive;
   position: relative;
   display: inline-block;
   color: black;
@@ -83,7 +183,7 @@
   position: absolute;
   width: 0;
   height: 100%;
-  background-image: url('../../../Images/city.png');
+  background-image: url("../../../Images/city.png");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -116,30 +216,147 @@
   width: 100%;
   opacity: 1;
 }
+.waviy {
+  display: flex;
+  font-size: 4rem;
+  font-weight: bold;
+  color: white;
+  letter-spacing: 10px;
+}
 
-/* Initial Load Animation */
-@keyframes lineReveal {
-  from {
-    height: 0;
+.waviy span {
+  display: inline-block;
+  animation: waviy 1s infinite;
+  animation-delay: calc(0.1s * var(--i));
+}
+
+.parallax-letter {
+  display: inline-block;
+  transition: transform 0.1s ease-out;
+}
+
+/* .welcome-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; */
+/* background-color: black; */
+/* } */
+
+/* Futuristic Background */
+.futuristic-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: linear-gradient(135deg, #00c6ff, #0072ff);
+  animation: gradientShift 10s ease infinite, backgroundMove 15s linear infinite;
+  z-index: -1;
+  background-size: 400% 400%;
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
   }
-  to {
-    height: 100%;
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
   }
 }
 
-.line-left,
-.line-right {
-  animation: lineReveal 1s ease forwards;
+@keyframes backgroundMove {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(-50%, -50%);
+  }
+}
+
+/* Futuristic Lines */
+.futuristic-lines {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.1) 1px,
+    transparent 1px
+  );
+  background-size: 20px 20px;
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Glowing Effect */
+.glow-effect {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: rgba(0, 204, 255, 0.6);
+  box-shadow: 0 0 20px rgba(0, 204, 255, 0.8), 0 0 50px rgba(0, 204, 255, 0.5);
+  animation: glowing 1.5s infinite alternate;
+}
+
+@keyframes glowing {
+  0% {
+    box-shadow: 0 0 20px rgba(0, 204, 255, 0.8), 0 0 50px rgba(0, 204, 255, 0.5);
+  }
+  100% {
+    box-shadow: 0 0 30px rgba(0, 204, 255, 1), 0 0 80px rgba(0, 204, 255, 0.6);
+  }
+}
+
+/* Welcome Section Styles */
+/* .welcome-container {
+  margin-top: 7%;
+  height: 100vh;
+  width: 100%;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+} */
+
+/* Scroll Animations */
+.scrolled .line-left {
+  transform: translateX(-30vw);
+}
+
+.scrolled .line-right {
+  transform: translateX(30vw);
+}
+
+.scrolled .waviy {
+  opacity: 0.8;
+  transform: scale(1.1);
+}
+
+.scrolled .city-image {
+  width: 100%;
+  opacity: 1;
 }
 
 /* Responsive Styles */
 @media (max-width: 992px) {
-    ..city-image{
-        height: 100vh;
-    }
-    .welcome-container{
-        height: 80vh;
-    }
+  .city-image {
+    height: 100vh;
+  }
+  .welcome-container {
+    height: 80vh;
+  }
   .waviy {
     font-size: 6rem;
   }
@@ -150,50 +367,218 @@
 }
 
 @media (max-width: 768px) {
-    .welcome-container{
-        height: 80vh;
-    }
+  .welcome-container {
+    height: 80vh;
+  }
   .waviy {
     font-size: 4rem;
   }
 
-  .vertical-line {
-    height: 60vh;
+  @keyframes waviy {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-5px);
+    }
+  }
+
+  /* Initial Load Animation */
+  @keyframes lineReveal {
+    from {
+      height: 0;
+    }
+    to {
+      height: 100%;
+    }
   }
 
   .line-left,
   .line-right {
-    transform: translateX(20vw);
+    animation: lineReveal 1s ease forwards;
+  }
+
+  /* Responsive Styles */
+  @media (max-width: 992px) {
+    .city-image {
+      height: 100vh;
+    }
+    .welcome-container {
+      height: 80vh;
+    }
+    .waviy {
+      font-size: 6rem;
+    }
+
+    .city-image {
+      background-size: contain;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .welcome-container {
+      height: 80vh;
+    }
+    .waviy {
+      font-size: 4rem;
+    }
+
+    .vertical-line {
+      height: 60vh;
+    }
+
+    .line-left,
+    .line-right {
+      transform: translateX(20vw);
+    }
+  }
+
+  @media (max-width: 576px) {
+    .welcome-container {
+      height: 80vh;
+    }
+    .waviy {
+      font-size: 3rem;
+    }
+
+    .vertical-line {
+      height: 50vh;
+    }
+
+    .sub-welcome {
+      justify-content: flex-start;
+    }
+  }
+
+  @media (max-width: 360px) {
+    .welcome-container {
+      height: 80vh;
+    }
+    .waviy {
+      font-size: 2rem;
+    }
+
+    .vertical-line {
+      height: 40vh;
+    }
+  }
+}
+/* Futuristic Background */
+.futuristic-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0, 204, 255, 0.5); /* Glowing blue tint */
+  animation: futuristicGlow 3s infinite alternate;
+  z-index: -1;
+}
+
+/* Overlay to add more futuristic glow */
+.futuristic-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    circle,
+    rgba(0, 204, 255, 0.3) 20%,
+    transparent 70%
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Keyframe animation for glowing effect */
+@keyframes futuristicGlow {
+  0% {
+    background: rgba(0, 204, 255, 0.5);
+  }
+  50% {
+    background: rgba(0, 204, 255, 0.8);
+  }
+  100% {
+    background: rgba(0, 204, 255, 0.5);
+  }
+}
+
+/* Responsive Styles */
+@media (max-width: 992px) {
+  .futuristic-background {
+    height: 100vh;
+  }
+}
+
+@media (max-width: 768px) {
+  .futuristic-background {
+    height: 100vh;
   }
 }
 
 @media (max-width: 576px) {
-    .welcome-container{
-        height: 80vh;
-    }
-  .waviy {
-    font-size: 3rem;
-  }
-
-  .vertical-line {
-    height: 50vh;
-  }
-
-  .sub-welcome {
-    justify-content: flex-start;
+  .futuristic-background {
+    height: 100vh;
   }
 }
 
-@media (max-width: 360px) {
-    .welcome-container{
-        height: 80vh;
-    }
-  .waviy {
-    font-size: 2rem;
-  }
+/* -------------------------------------- */
+/* Fullscreen background with city image & gradient */
+.background-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-image: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.7),
+      rgba(0, 0, 0, 0.3)
+    ),
+    url("../../../Images/city.png");
+  background-size: cover;
+  background-position: center;
+  z-index: -1;
+  animation: pulseGlow 3s infinite alternate;
+}
 
-  .vertical-line {
-    height: 40vh;
+/* Subtle glow effect */
+@keyframes pulseGlow {
+  0% {
+    filter: brightness(0.9) contrast(1);
+  }
+  100% {
+    filter: brightness(1.1) contrast(1.2);
   }
 }
 
+/* Rain Overlay */
+.rain-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("https://i.gifer.com/origin/3c/3c7dc6dc7b0c479009e9d6f44d8a54b1_w200.gif");
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+/* Styling for Sections */
+.welcome-section {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.animated-section {
+  min-height: 100vh;
+}
+
+/* Hides the scrollbar in Webkit-based browsers */
+.content-wrapper::-webkit-scrollbar {
+  display: none;
+}

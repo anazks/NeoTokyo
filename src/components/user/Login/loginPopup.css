@@ -1,0 +1,109 @@
+/* Sidebar Styles */
+.sidebar {
+  position: fixed;
+  right: -50%; /* Initially off-screen on the right */
+  top: 0;
+  width: 30%; /* Adjust width as necessary */
+  height: 100vh;
+  background: rgba(239, 235, 235, 0.1); /* Semi-transparent white background */
+  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.2); /* Adjust shadow for right-side */
+  transition: right 0.3s ease-in-out;
+  padding: 20px;
+  z-index: 200;
+  color: #ffffff; /* Light text color */
+  backdrop-filter: blur(15px); /* Increase blur for glass effect */
+  border-left: 1px solid rgba(255, 255, 255, 0.2); /* Add a subtle border for depth */
+}
+
+.sidebar.open {
+  right: 0; /* Slide in from the right */
+}
+
+/* Overlay Background */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5); /* Semi-transparent gray background */
+  backdrop-filter: blur(10px); /* Apply blur effect to the background */
+  z-index: 150;
+}
+
+/* Close Button Styles */
+.sidebar .close-btn {
+  border: none;
+  background: transparent;
+  font-size: 24px;
+  cursor: pointer;
+  position: absolute;
+  top: 15px;
+  left: 20px; /* Position on the left side since it's on the right side now */
+  color: #ffffff; /* Light text color */
+}
+
+/* Auth Buttons */
+.auth-buttons {
+  margin-bottom: 20px;
+}
+
+/* Login Button Styles */
+.register-btn,
+.signin-btn {
+  background: rgba(0, 0, 0, 0.8); /* Semi-transparent black background */
+  color: white;
+  border-radius: 15px;
+  border: none;
+  padding: 8px 20px;
+  cursor: pointer;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.register-btn:hover,
+.signin-btn:hover {
+  background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white on hover */
+  color: black;
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Sidebar Menu */
+.sidebar-content ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar-content li {
+  padding: 15px 20px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  color: #ffffff; /* Ensure text is visible */
+}
+
+.sidebar-content li:hover {
+  background-color: rgba(255, 255, 255, 0.2); /* Semi-transparent hover effect */
+}
+
+/* Contact Info */
+.contact-info {
+  margin-top: 30px;
+  font-size: 16px;
+  line-height: 1.6;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.5); /* Semi-transparent dark background */
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle border */
+}
+
+.contact-info h3 {
+  margin-bottom: 15px;
+  font-size: 20px;
+  color: #ff6b6b; /* Red accent color */
+}
+
+.contact-info p {
+  margin: 5px 0;
+  color: #ffffff; /* Light text color */
+}
