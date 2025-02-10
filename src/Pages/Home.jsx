@@ -51,7 +51,7 @@ import Gaming from "../components/user/GamingR1/Gaming";
 import FeedBack from "../components/user/FeedBack/FeedBack";
 import AboutUs from "../components/user/AboutUs/AboutUs";
 import Quality from "../components/user/AboutUs/Quality";
-import Directional from "../components/user/AboutUs/Directional";
+// import Directional from "../components/user/AboutUs/Directional";
 import Footer from "../components/user/Footer/Footer";
 import PriorityOne from "../components/user/PriorityOne/PriorityOne";
 import Blog from "../components/user/Blog/Blog";

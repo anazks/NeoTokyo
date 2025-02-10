@@ -124,9 +124,9 @@ import cityImage from "../../../Images/city.png";
 import Quick from "../../../components/user/QuickPiks/Quick";
 import Gaming from "../../../components/user/GamingR1/Gaming";
 import FeedBack from "../../../components/user/FeedBack/FeedBack";
-import AboutUs from "../../../components/user/AboutUs/AboutUs";
-import Quality from "../../../components/user/AboutUs/Quality";
-import Directional from "../../../components/user/AboutUs/Directional";
+// import AboutUs from "../../../components/user/AboutUs/AboutUs";
+// import Quality from "../../../components/user/AboutUs/Quality";
+// import Directional from "../../../components/user/AboutUs/Directional";
 import PriorityOne from "../../../components/user/PriorityOne/PriorityOne";
 import GamingPage from "../../user/Gamingpage/Gamingpage";
 import Footer from "../../../components/user/Footer/Footer";
@@ -134,13 +134,13 @@ import NavBar from "../NavBar/NavBar";
 import WelcomeSection from "./welcomepage";
 
 const WelcomeHome = () => {
-  const [scrollY, setScrollY] = useState(0);
+  // const [scrollY, setScrollY] = useState(0);
   const wrapperRef = useRef(null);
 
   useEffect(() => {
     const handleScroll = () => {
       if (wrapperRef.current) {
-        setScrollY(wrapperRef.current.scrollTop);
+        // setScrollY(wrapperRef.current.scrollTop);
       }
     };
 
@@ -203,7 +203,7 @@ const WelcomeHome = () => {
         FeedBack,
         // AboutUs,
         // Quality,
-        Directional,
+        // Directional,
         PriorityOne,
         GamingPage,
         Footer,
