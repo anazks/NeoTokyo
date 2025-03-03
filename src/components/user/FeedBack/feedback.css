@@ -1,205 +1,204 @@
-/* General Styles */
-.feedback {
-  width: 70vw;
-  min-height: 80vh; /* Increased height */
-  height: auto;
-  margin: auto;
-  padding: 40px; /* Increased padding for better spacing */
-  background-color: white;
-  border-radius: 20px;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  margin-top: 5%;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-}
-
-/* Left Box */
-.leftB {
-  width: 48%;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.leftB h1 {
-  font-family: "Raleway", sans-serif;
-  color: black;
-  font-size: 45px;
-  font-weight: 600;
-  line-height: 1.2;
-  margin: 0;
-  padding: 0;
-}
-
-/* Short colored line under the heading */
-.ShortLine {
-  width: 50px;
-  height: 6px;
-  background-color: rgba(218, 0, 55, 1);
-  margin: 15px 0;
-}
-
-/* Text Content */
-.bottomBox {
-  width: 100%;
-  margin-top: 30px;
-}
-
-.thousand {
-  font-family: "Space Grotesk", sans-serif;
-  font-size: 70px; /* Increased font size */
-  font-weight: 700;
-  line-height: 80px;
-  text-align: left;
-  color: black;
-}
-
-.bottomBox h2 {
-  font-family: "Raleway", sans-serif;
-  font-size: 30px; /* Slightly bigger */
-  font-weight: 500;
-  line-height: 42px;
-  text-align: left;
-  color: black;
-}
-
-/* Small text description */
-.description {
-  font-family: "Raleway", sans-serif;
-  font-size: 18px; /* Increased size */
-  font-weight: 400;
-  line-height: 1.8;
-  text-align: left;
-  color: #555;
-  margin-top: 10px;
-}
-
-/* Right Box */
-/* .rightB {
-  width: 48%;
-  min-height: 78vh;
-  background-color: rgba(57, 57, 57, 0.7);
-  border-radius: 20px;
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  box-shadow: 0px 8px 18px rgba(0, 0, 0, 0.5);
-  border: 2px solid rgba(218, 0, 55, 0.8);
-  padding-bottom: 40px;
-} */
-
-.rightB {
-  width: 48%;
-  height: 85vh; /* Change from % to vh for better height control */
-  min-height: 78vh;
-  border-radius: 35px;
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  padding-bottom: 40px;
-}
-
-#app {
-  width: 100%;
-  height: 100%;
-  border-radius: 30px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-canvas {
-  width: 100%;
-  height: 100%;
-  border-radius: 30px;
-  display: block; /* Removes unwanted space around canvas */
-}
-
-/* Highlighted Text */
-.highlight {
-  color: rgba(218, 0, 55, 1);
-  font-weight: bold;
-}
-
-/* Responsive Design */
-@media screen and (max-width: 1200px) {
-  .feedback {
-    width: 80vw;
-    min-height: 85vh; /* Slightly increased */
-  }
-  .thousand {
-    font-size: 60px;
-  }
-}
-
-@media screen and (max-width: 992px) {
+  /* General Styles */
   .feedback {
     width: 85vw;
-    flex-direction: column;
+    min-height: 80vh; /* Increased height */
+    height: auto;
+    margin: auto;
+    padding: 40px; /* Increased padding for better spacing */
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    margin-top: 5%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
     align-items: center;
-    text-align: center;
-    min-height: 90vh;
   }
-  .leftB,
-  .rightB {
-    width: 100%;
-  }
-  .rightB {
-    min-height: 50vh; /* Adjusted for responsiveness */
-  }
-}
 
-@media screen and (max-width: 768px) {
-  .feedback {
-    width: 90vw;
-    min-height: auto;
-    padding: 30px;
+  /* Left Box */
+  .leftB {
+    width: 48%;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
-  .thousand {
-    font-size: 55px;
-  }
-}
 
-@media screen and (max-width: 576px) {
-  .feedback {
-    width: 95vw;
-    padding: 20px;
-  }
   .leftB h1 {
-    font-size: 35px;
-  }
-  .thousand {
+    font-family: "Raleway", sans-serif;
+    color: black;
     font-size: 45px;
+    line-height: 1.2;
+    margin: 0;
+    padding: 0;
   }
-  .bottomBox h2 {
-    font-size: 25px;
-    line-height: 36px;
-  }
-  .description {
-    font-size: 16px;
-  }
-  .rightB {
-    min-height: 40vh; /* Adjusted */
-  }
-}
 
-@media screen and (max-width: 360px) {
-  .feedback {
-    width: 98vw;
+  /* Short colored line under the heading */
+  .ShortLine {
+    width: 50px;
+    height: 6px;
+    background-color: rgba(218, 0, 55, 1);
+    margin: 15px 0;
   }
-  .leftB h1 {
-    font-size: 30px;
+
+  /* Text Content */
+  .bottomBox {
+    width: 100%;
+    margin-top: 30px;
   }
+
+  .thousand {
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 70px; /* Increased font size */
+    font-weight: 700;
+    line-height: 80px;
+    text-align: left;
+    color: black;
+  }
+
   .bottomBox h2 {
-    font-size: 22px;
+    font-family: "Raleway", sans-serif;
+    font-size: 30px; /* Slightly bigger */
+    font-weight: 500;
+    line-height: 42px;
+    text-align: left;
+    color: black;
   }
+
+  /* Small text description */
   .description {
-    font-size: 14px;
+    font-family: "Raleway", sans-serif;
+    font-size: 18px; /* Increased size */
+    font-weight: 400;
+    line-height: 1.8;
+    text-align: left;
+    color: #555;
+    margin-top: 10px;
   }
+
+  /* Right Box */
+  /* .rightB {
+    width: 48%;
+    min-height: 78vh;
+    background-color: rgba(57, 57, 57, 0.7);
+    border-radius: 20px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    box-shadow: 0px 8px 18px rgba(0, 0, 0, 0.5);
+    border: 2px solid rgba(218, 0, 55, 0.8);
+    padding-bottom: 40px;
+  } */
+
   .rightB {
-    min-height: 35vh;
+    width: 48%;
+    height: 85vh; /* Change from % to vh for better height control */
+    min-height: 78vh;
+    border-radius: 35px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding-bottom: 40px;
   }
-}
+
+  #app {
+    width: 100%;
+    height: 100%;
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  canvas {
+    width: 100%;
+    height: 100%;
+    border-radius: 30px;
+    display: block; /* Removes unwanted space around canvas */
+  }
+
+  /* Highlighted Text */
+  .highlight {
+    color: rgba(218, 0, 55, 1);
+    font-weight: bold;
+  }
+
+  /* Responsive Design */
+  @media screen and (max-width: 1200px) {
+    .feedback {
+      width: 80vw;
+      min-height: 85vh; /* Slightly increased */
+    }
+    .thousand {
+      font-size: 60px;
+    }
+  }
+
+  @media screen and (max-width: 992px) {
+    .feedback {
+      width: 85vw;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      min-height: 90vh;
+    }
+    .leftB,
+    .rightB {
+      width: 100%;
+    }
+    .rightB {
+      min-height: 50vh; /* Adjusted for responsiveness */
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    .feedback {
+      width: 90vw;
+      min-height: auto;
+      padding: 30px;
+    }
+    .thousand {
+      font-size: 55px;
+    }
+  }
+
+  @media screen and (max-width: 576px) {
+    .feedback {
+      width: 95vw;
+      padding: 20px;
+    }
+    .leftB h1 {
+      font-size: 35px;
+    }
+    .thousand {
+      font-size: 45px;
+    }
+    .bottomBox h2 {
+      font-size: 25px;
+      line-height: 36px;
+    }
+    .description {
+      font-size: 16px;
+    }
+    .rightB {
+      min-height: 40vh; /* Adjusted */
+    }
+  }
+
+  @media screen and (max-width: 360px) {
+    .feedback {
+      width: 98vw;
+    }
+    .leftB h1 {
+      font-size: 30px;
+    }
+    .bottomBox h2 {
+      font-size: 22px;
+    }
+    .description {
+      font-size: 14px;
+    }
+    .rightB {
+      min-height: 35vh;
+    }
+  }
