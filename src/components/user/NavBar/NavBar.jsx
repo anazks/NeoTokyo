@@ -46,7 +46,9 @@ function NavBar() {
 
         {/* Register & Sign In Buttons */}
         <div className="buttons-login">
-          <button className="cart-btn">Register</button>
+    
+             <button className="cart-btn"><Link to='/Login'>Register</Link></button>
+          
           <button className="cart-btn">Sign In</button>
         </div>
 

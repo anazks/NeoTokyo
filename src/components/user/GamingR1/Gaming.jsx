@@ -1,21 +1,38 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './gaming.css';
 import triangle from '../../../Images/triangle.png';
 import Typewriter from 'typewriter-effect';
+import { motion } from 'framer-motion';
+import { FaGamepad, FaRocket, FaLaptopCode, FaTrophy } from 'react-icons/fa';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 export default function Gaming() {
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      once: false,
+    });
+  }, []);
+
   return (
     <div className='gaming-container'>
-      <div className="head">
+      <motion.div 
+        className="head"
+        initial={{ opacity: 0, y: -50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+      >
         <div className="textContent">
-          <h1 style={{ textAlign: 'center' }}>
-            "DOESN’T HAVE TO BE A BOX IN A CORNER.",
-            "IT CAN BE A ..."
+          <h1 className="main-title">
+            <span className="quote-marks">"</span>DOESN'T HAVE TO BE A BOX IN A CORNER.<span className="quote-marks">"</span>
+            <br/>
+            <span className="quote-marks">"</span>IT CAN BE A...<span className="quote-marks">"</span>
           </h1>
-          <h1 className="gaming" style={{ fontSize: "40px", color: "rgba(218, 0, 55, 1)" }}>
+          <h1 className="gaming">
             <Typewriter
               options={{
-                strings: ["GAMING R1"],
+                strings: ["GAMING REVOLUTION", "LIFESTYLE", "MASTERPIECE", "STATEMENT"],
                 autoStart: true,
                 loop: true,
                 delay: 50,
@@ -23,50 +40,129 @@ export default function Gaming() {
               }}
             />
           </h1>
-          <br />
-          <h5 className="subHeading">
-            "Built with the latest in PC hardware, highest quality components, and backed by lifetime support"
+          <motion.div 
+            className="icon-row"
+            initial={{ scale: 0 }}
+            animate={{ scale: 1 }}
+            transition={{ duration: 0.5, delay: 0.8 }}
+          >
+            <FaGamepad className="feature-icon" />
+            <FaRocket className="feature-icon" />
+            <FaLaptopCode className="feature-icon" />
+            <FaTrophy className="feature-icon" />
+          </motion.div>
+          <h5 className="subHeading" data-aos="fade-up">
+            Built with the latest in PC hardware, highest quality components, and backed by lifetime support
           </h5>
-          <div className="line"></div>
+          <motion.div 
+            className="line"
+            initial={{ width: 0 }}
+            animate={{ width: "80%" }}
+            transition={{ duration: 0.8, delay: 1 }}
+          ></motion.div>
         </div>
-      </div>
+      </motion.div>
 
       <div className="bottomSection">
-        <div className="containerBox">
-          <div className="leftBox">
+        <div className="containerBox" data-aos="fade-up">
+          <motion.div 
+            className="leftBox"
+            whileHover={{ scale: 1.05 }}
+            transition={{ duration: 0.3 }}
+          >
             <div className="leftDivText">
-              <h1>NEW</h1>
-              <h1>
-                <span style={{ color: "rgba(218, 0, 55, 1)" }}>EXP</span>ERIENCES
+              <h1 className="staggered-text">NEW</h1>
+              <h1 className="staggered-text">
+                <span className="highlight-text">EXP</span>ERIENCES
               </h1>
-              <h1>BEGIN HERE</h1>
-      
-              <h4>Endless Possibilities</h4>
+              <h1 className="staggered-text">BEGIN HERE</h1>
+              <div className="pulsing-circle"></div>
+              <h4 className="possibilities-text">Endless Possibilities</h4>
+              <div className="feature-list">
+                <div className="feature-item">
+                  <FaRocket className="feature-item-icon" />
+                  <span>Performance</span>
+                </div>
+                <div className="feature-item">
+                  <FaGamepad className="feature-item-icon" />
+                  <span>Immersion</span>
+                </div>
+                <div className="feature-item">
+                  <FaTrophy className="feature-item-icon" />
+                  <span>Victory</span>
+                </div>
+              </div>
             </div>
-          </div>
-          <div className="right-Box">
-            <img src={triangle} alt="Triangle Design" />
+          </motion.div>
+          <div className="right-Box" data-aos="fade-left">
+          {/* <motion.img 
+              src={triangle} 
+              alt="Triangle Design" 
+              animate={{ rotate: 360 }}
+              transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+              className="floating-image"
+            /> */}
+            <img 
+              src={triangle} 
+              alt="Triangle Design" 
+              className="floating-image"
+            />
           </div>
         </div>
 
-        {/* Fixed ProjectEden Visibility */}
-        <div className="ProjectEden">
-          <div className="Left">
-            <h2>PROJECT EDEN</h2>
-          </div>
-          <div className="right">
+        <div className="ProjectEden" data-aos="fade-up">
+          <motion.div 
+            className="Left"
+            whileHover={{ 
+              boxShadow: "0px 10px 30px rgba(218, 0, 55, 0.4)",
+            }}
+            transition={{ duration: 0.3 }}
+          >
+     
+            <motion.h2
+              animate={{ 
+                color: ["rgba(218, 0, 55, 1)", "#000000", "rgba(218, 0, 55, 1)"],
+              }}
+              transition={{ duration: 3, repeat: Infinity }}
+            >
+              PROJECT EDEN
+            </motion.h2>
+            <motion.div 
+              className="eden-badge"
+              whileHover={{ scale: 1.1 }}
+              transition={{ duration: 0.2 }}
+            >
+              EXCLUSIVE
+            </motion.div>
+          </motion.div>
+          <motion.div 
+            className="right"
+            whileHover={{ 
+              x: 10,
+              transition: { duration: 0.3 }
+            }}
+          >
             <h1>
-              <span style={{ color: 'rgba(255, 3, 94, 1)' }}>AT</span>{" "}
-              <span style={{ color: 'black' }} className="G-Text">
+              <span className="highlight">AT</span>{" "}
+              <span className="G-Text">
                 𝖯𝗋𝗈𝗃𝖾𝖼𝗍 𝖤𝖽𝖾𝗇 is a revolutionary gaming experience designed to immerse users in a world where technology meets comfort.
               </span>
             </h1>
-          </div>
+            <button className="discover-btn">
+              DISCOVER MORE <span className="btn-arrow">→</span>
+            </button>
+          </motion.div>
         </div>
       </div>
 
-      <br />
-      <br />
+      <motion.div 
+        className="scroll-indicator"
+        animate={{ y: [0, 10, 0] }}
+        transition={{ duration: 1.5, repeat: Infinity }}
+      >
+        <span className="scroll-text">Scroll</span>
+        <span className="scroll-arrow">↓</span>
+      </motion.div>
     </div>
   );
 }
