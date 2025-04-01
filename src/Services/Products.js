@@ -22,5 +22,6 @@ const getSingleProduct = async (id) => {
     }
 };
 
+
 // Correct way to export multiple functions
 export { getAllProduct, getSingleProduct };

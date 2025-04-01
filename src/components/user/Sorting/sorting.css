@@ -1,0 +1,200 @@
+/* Sorting.css */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&display=swap');
+
+:root {
+  --neon-blue: #00f3ff;
+  --neon-pink: #ff00a0;
+  --neon-purple: #bc13fe;
+  --dark-bg: #0a0a0a;
+  --medium-bg: #131313;
+  --light-bg: #1a1a1a;
+  --white-bg:gray;
+}
+
+.sorting-container {
+  font-family: 'Orbitron', sans-serif;
+  background-color: var(--white-bg);
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(0, 243, 255, 0.3);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.8);
+  width: 70%;
+  margin: auto;
+}
+
+.sorting-header {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+  padding: 0.5rem;
+  position: relative;
+}
+
+.category-button {
+  position: relative;
+  background-color: var(--medium-bg);
+  color: white;
+  border: none;
+  padding: 0.7rem 1.2rem;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  overflow: hidden;
+  border-radius: 4px;
+  border-bottom: 2px solid transparent;
+  margin: 0.25rem;
+  z-index: 1;
+}
+
+.category-button:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(0, 243, 255, 0.1),
+    transparent
+  );
+  transition: all 0.6s ease;
+  z-index: -1;
+}
+
+.category-button:hover:before {
+  left: 100%;
+}
+
+.category-button:hover {
+  background-color: var(--light-bg);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  border-bottom: 2px solid var(--neon-blue);
+}
+
+.category-button.active {
+  background-color: rgba(0, 243, 255, 0.15);
+  color: var(--neon-blue);
+  border-bottom: 2px solid var(--neon-blue);
+  box-shadow: 0 0 10px rgba(0, 243, 255, 0.4);
+  font-weight: 700;
+}
+
+.category-button.active:after {
+  content: '';
+  position: absolute;
+  height: 2px;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  background-color: var(--neon-blue);
+  animation: pulse 2s infinite;
+}
+
+.button-glow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  border-radius: 4px;
+  pointer-events: none;
+}
+
+.category-button.active .button-glow {
+  opacity: 1;
+  box-shadow: 0 0 10px 2px var(--neon-blue);
+}
+
+/* Animations */
+@keyframes pulse {
+  0% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.6;
+  }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .sorting-header {
+    flex-direction: row;
+    justify-content: flex-start;
+    overflow-x: auto;
+    white-space: nowrap;
+    padding-bottom: 10px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    scrollbar-color: var(--neon-blue) var(--dark-bg);
+  }
+
+  .sorting-header::-webkit-scrollbar {
+    height: 4px;
+  }
+
+  .sorting-header::-webkit-scrollbar-track {
+    background: var(--dark-bg);
+    border-radius: 4px;
+  }
+
+  .sorting-header::-webkit-scrollbar-thumb {
+    background-color: var(--neon-blue);
+    border-radius: 4px;
+  }
+  
+  .category-button {
+    flex: 0 0 auto;
+    padding: 0.6rem 1rem;
+    font-size: 0.75rem;
+  }
+}
+
+/* Animation for the entire component on load */
+.sorting-container {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Extra animation for category changing */
+@keyframes categoryChange {
+  0% { 
+    transform: scale(0.95);
+    opacity: 0.7;
+  }
+  50% { 
+    transform: scale(1.05);
+    opacity: 1;
+  }
+  100% { 
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.category-button.active {
+  animation: categoryChange 0.3s ease-out;
+}
