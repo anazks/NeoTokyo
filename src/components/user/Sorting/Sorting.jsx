@@ -20,8 +20,8 @@ function Sorting() {
   };
 
   return (
-    <div className="sorting-container">
-        <br />
+    <div className="sorting-containers">
+      <div className="sorting-title">Browse Categories</div>
       <div className="sorting-header">
         {categories.map((category) => (
           <button

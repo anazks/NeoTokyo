@@ -106,7 +106,8 @@ function ProductBanner() {
                     
             </div>
             <div className="rightBox">
-                <div className="image-container">
+           
+                <div className="image-containersx">
                     <img src={image} alt="gaming pc" />
                     <div className="image-overlay">
                         <div className="pulse-circle"></div>

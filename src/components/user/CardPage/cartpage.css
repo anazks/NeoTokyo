@@ -621,3 +621,212 @@ a {
     justify-content: flex-end;
   }
 }
+/* Add these styles to your cartpage.css file */
+
+/* Delivery Address Section */
+.delivery-address-section {
+  margin: 20px 0;
+  padding: 15px;
+  background-color: #f8f8f8;
+  border-radius: 8px;
+}
+
+.address-title {
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 700;
+  margin-bottom: 15px;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  color: #333;
+}
+
+.address-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.address-card {
+  padding: 15px;
+  border-radius: 8px;
+  background-color: white;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.address-card.selected {
+  border-color: #ff4081;
+  background-color: rgba(255, 64, 129, 0.05);
+}
+
+.address-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.address-card h3 {
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 700;
+  margin: 0;
+  font-size: 1rem;
+}
+
+.primary-badge {
+  background-color: #ff4081;
+  color: white;
+  font-size: 0.7rem;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-weight: bold;
+}
+
+.address-phone {
+  margin: 5px 0;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.address-full {
+  margin: 5px 0;
+  font-size: 0.9rem;
+}
+
+.address-location {
+  margin: 5px 0;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.address-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+  justify-content: flex-end;
+}
+
+.edit-address-btn,
+.remove-address-btn {
+  background: none;
+  border: none;
+  font-size: 0.8rem;
+  color: #333;
+  cursor: pointer;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+.edit-address-btn {
+  color: #2196F3;
+}
+
+.remove-address-btn {
+  color: #F44336;
+}
+
+.add-address-btn {
+  width: 100%;
+  padding: 10px;
+  border: 2px dashed #ccc;
+  background: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  color: #333;
+  transition: all 0.3s ease;
+}
+
+.add-address-btn:hover {
+  border-color: #ff4081;
+  color: #ff4081;
+}
+
+/* Address Form */
+.address-form {
+  background-color: white;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  margin-top: 15px;
+  overflow: hidden;
+}
+
+.form-row {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.form-group {
+  flex: 1;
+}
+
+.form-group.full-width {
+  width: 100%;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+
+.checkbox-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.checkbox-group input {
+  width: auto;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 15px;
+}
+
+.save-address-btn {
+  background-color: #333;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.save-address-btn:hover {
+  background-color: #ff4081;
+}
+
+/* Make sure the checkout button is disabled visually when no address is selected */
+.checkout-button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .form-row {
+    flex-direction: column;
+    gap: 10px;
+  }
+}

@@ -23,11 +23,11 @@
 .rightBox {
     width: 100%; /* Default full width for small screens */
     max-width: 500px; /* Limit max width for larger screens */
-    height: 90vh;
+    height: 100vh;
     position: relative;
 }
 
-.image-container {
+.image-containersx {
     position: relative;
     width: 100%;
     height: 100%;

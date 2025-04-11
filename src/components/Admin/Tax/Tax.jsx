@@ -1,16 +1,11 @@
-import React, { useState } from 'react'
-import './tax.css'
+import React, { useEffect, useState } from 'react';
+import './tax.css';
+import { getTax, DeleteTax, AddTax } from '../../../Services/Settings';
 
 function Tax() {
-  // State for tax data
-  const [taxes, setTaxes] = useState([
-    { id: 1, name: 'GST', rate: 18 },
-    { id: 2, name: 'VAT', rate: 12 },
-    { id: 3, name: 'Service Tax', rate: 15 },
-    { id: 4, name: 'CGST', rate: 9 }
-  ]);
-
-  // State for the tax popup
+  const [taxes, setTaxes] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
   const [showTaxPopup, setShowTaxPopup] = useState(false);
   
   // State for form data
@@ -18,6 +13,25 @@ function Tax() {
     name: '',
     rate: ''
   });
+
+  // Fetch tax data only on component mount and when needed
+  useEffect(() => {
+    fetchTax();
+  }, []); // Empty dependency array ensures this runs only once on mount
+
+  const fetchTax = async () => {
+    try {
+      setIsLoading(true);
+      const response = await getTax();
+      setTaxes(response.data);
+      setError(null);
+    } catch (error) {
+      console.error("Error fetching taxes:", error);
+      setError("Failed to load tax data");
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   // Handle input changes
   const handleTaxChange = (e) => {
@@ -29,7 +43,7 @@ function Tax() {
   };
 
   // Handle form submission
-  const handleTaxSubmit = (e) => {
+  const handleTaxSubmit = async (e) => {
     e.preventDefault();
     
     // Validate rate is a number
@@ -41,23 +55,31 @@ function Tax() {
     
     // Create new tax object
     const newTax = {
-      id: taxes.length > 0 ? Math.max(...taxes.map(tax => tax.id)) + 1 : 1,
-      name: taxData.name,
-      rate: rateValue
+      tax_name: taxData.name,
+      tax_percentage: rateValue
     };
     
-    // Add to taxes array
-    setTaxes([...taxes, newTax]);
-    
-    // Reset form and close popup
-    setTaxData({ name: '', rate: '' });
-    setShowTaxPopup(false);
+    try {
+        
+        AddTax(newTax)
+      setShowTaxPopup(false);
+      fetchTax(); // Refresh tax list
+    } catch (error) {
+      console.error("Error creating tax:", error);
+      alert("Failed to create tax");
+    }
   };
 
   // Handle tax deletion
-  const handleDeleteTax = (taxId) => {
+  const handleDeleteTax = async (taxId) => {
     if (window.confirm('Are you sure you want to delete this tax?')) {
-      setTaxes(taxes.filter(tax => tax.id !== taxId));
+      try {
+        await DeleteTax(taxId);
+        fetchTax(); // Refresh tax list after deletion
+      } catch (error) {
+        console.error("Error deleting tax:", error);
+        alert("Failed to delete tax");
+      }
     }
   };
 
@@ -78,39 +100,45 @@ function Tax() {
         
         {/* Tax Table */}
         <div className="table-responsive">
-          <table className="data-table">
-            <thead>
-              <tr>
-                <th>ID</th>
-                <th>Tax Name</th>
-                <th>Tax Rate (%)</th>
-                <th>Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              {taxes.length > 0 ? (
-                taxes.map((tax) => (
-                  <tr key={tax.id}>
-                    <td>{tax.id}</td>
-                    <td>{tax.name}</td>
-                    <td>{tax.rate}%</td>
-                    <td>
-                      <button 
-                        className="btn-delete"
-                        onClick={() => handleDeleteTax(tax.id)}
-                      >
-                        Delete
-                      </button>
-                    </td>
-                  </tr>
-                ))
-              ) : (
+          {isLoading ? (
+            <p>Loading taxes...</p>
+          ) : error ? (
+            <p className="error-message">{error}</p>
+          ) : (
+            <table className="data-table">
+              <thead>
                 <tr>
-                  <td colSpan="4" className="no-data">No taxes found</td>
+                  <th>ID</th>
+                  <th>Tax Name</th>
+                  <th>Tax Rate (%)</th>
+                  <th>Actions</th>
                 </tr>
-              )}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {taxes.length > 0 ? (
+                  taxes.map((tax) => (
+                    <tr key={tax.id}>
+                      <td>{tax.id}</td>
+                      <td>{tax.tax_name}</td>
+                      <td>{tax.tax_percentage}%</td>
+                      <td>
+                        <button 
+                          className="btn-delete"
+                          onClick={() => handleDeleteTax(tax.id)}
+                        >
+                          Delete
+                        </button>
+                      </td>
+                    </tr>
+                  ))
+                ) : (
+                  <tr>
+                    <td colSpan="4" className="no-data">No taxes found</td>
+                  </tr>
+                )}
+              </tbody>
+            </table>
+          )}
         </div>
       </div>
 
@@ -177,4 +205,4 @@ function Tax() {
   );
 }
 
-export default Tax
+export default Tax;

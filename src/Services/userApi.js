@@ -195,8 +195,100 @@ export const  addTocart = async (product_id)=>{
 export const getMyCart = async()=>{
   try {
     let myCart = await Axios.get(`orders/cart_detail/`)
+    console.log(myCart,"cart-")
     return myCart
   } catch (error) {
     return false
   }
 }
+
+export const RemoveFromCart =  async(item_id)=>{
+  try {
+        const removecart = await Axios.post('orders/remove_from_cart/',{item_id})
+        return removecart
+  } catch (error) {
+    console.log(error)
+    return error 
+  }
+}
+export const cartIncrement = async(product_id, cart_id) => {
+  try {
+    console.log( cart_id, product_id, "in user api")
+
+    let increment = await Axios.post(`/orders/cart/${cart_id}/product/${product_id}/increase/`)
+    console.log(increment, "inc")
+    return increment
+  } catch (error) {
+    console.log(error)
+    return error
+  }
+}
+
+export const cartDecrement = async(product_id, cart_id) => {
+  try {
+    console.log( cart_id, product_id, "in user api")
+
+    let increment = await Axios.post(`/orders/cart/${cart_id}/product/${product_id}/decrease/`)
+    console.log(increment, "inc")
+    return increment
+  } catch (error) {
+    console.log(error)
+    return error
+  }
+}
+
+export const CreateOrder = async(id)=>{
+  try {
+    let delivery_address_id = id
+    let payments = await Axios.post(`/orders/order/cart/`,{delivery_address_id})
+    console.log(payments,"paymnets...callback")
+    return payments 
+  } catch (error) {
+    console.log(error)
+    return error
+  }
+}
+
+export const AddDelievryAddress = async(data)=>{
+  try {
+    console.log(data,"in api--------")
+    let address = await Axios.post('/authentication/delivery-addresses/',data)
+    console.log(address)
+    return address
+  } catch (error) {
+    console.log(error)
+    return error
+  }
+}
+
+export const getMyDeliveryAddress = async()=>{
+  try {
+    let address = await Axios.get('/authentication/delivery-addresses')
+    console.log(address,"get my dev address")
+    return address
+    
+  } catch (error) {
+    console.log(error)
+    return error
+  }
+}
+export const getMyPrimaryAddress = async()=>{
+  try {
+    let primaryAddress = await Axios.get('/authentication/delivery-addresses/primary/')
+    return primaryAddress
+  } catch (error) {
+    return error 
+  }
+}
+
+export const getMyOrder = async()=>{
+  try {
+    let orders = await Axios.get('orders/user/orders/')
+    console.log(orders,"my orders")
+    return orders
+  } catch (error) {
+    console.log(error)
+    return error 
+  }
+}
+

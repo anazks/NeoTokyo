@@ -1,118 +1,180 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import './producsList.css';
-import { FaCartPlus } from "react-icons/fa6";
+import { FaCartPlus, FaSearch, FaSpinner } from "react-icons/fa";
 import { getAllProduct } from '../../../Services/Products';
-import baseUrl from '../../../Static/Static'
+import baseUrl from '../../../Static/Static';
 import { useAuth } from '../../../Context/UserContext';
-import { addTocart as addToCartService } from '../../../Services/userApi'; // Correct function import
+import { addTocart as addToCartService } from '../../../Services/userApi';
 import Filter from '../Filter/Filter';
 import Sorting from '../Sorting/Sorting';
-function ProductsList() {
-  const [filter,setFilter] = useState(false)
-  const [sort,setSort] = useState(false)
 
+function ProductsList() {
+  const [filter, setFilter] = useState(false);
+  const [sort, setSort] = useState(false);
   const [products, setProducts] = useState([]);
-  const navigate = useNavigate(); // Hook to navigate
-  const { user, setUser } = useAuth();
+  const [loading, setLoading] = useState(true);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [addingToCart, setAddingToCart] = useState(null);
+  
+  const navigate = useNavigate();
+  const { user } = useAuth();
 
   useEffect(() => {
     const fetchProducts = async () => {
       try {
+        setLoading(true);
         let productData = await getAllProduct();
-        console.log(productData, "products---");
-        setProducts(productData);
+        setProducts(productData || []);
       } catch (error) {
         console.error("Error fetching products:", error);
+      } finally {
+        setLoading(false);
       }
     };
 
     fetchProducts();
   }, []);
 
-  const addTocart = async (id) => {
+  const addTocart = async (id, event) => {
+    event.stopPropagation(); // Prevent navigation when clicking add to cart
     try {
-      console.log("working", user.data);
-      console.log(id, "productid");
-      let addToCart = await addToCartService(id); // Call the correct function here
+      if (!user?.data) {
+        // Handle user not logged in
+        alert("Please log in to add items to cart");
+        navigate("/login");
+        return;
+      }
+      
+      setAddingToCart(id);
+      let addToCart = await addToCartService(id);
       if (addToCart) {
+        // Success notification could be improved with a toast
         alert("Added to cart");
       }
     } catch (error) {
       console.log(error);
       alert("Failed to add to cart");
+    } finally {
+      setAddingToCart(null);
     }
   };
 
-  return (
-    <div>
-      <br /><br />
-      <br /><br />
-      <br /><br />
-      <div className="buttonContainer">
-        <br /><br />
-            <button className="special" onClick={()=>setFilter(filter?false:true)}>FILTERS</button>
-            <button className="special" onClick={()=>setSort(filter?false:true)}>SORT</button> 
-      </div>
-      {
-        sort ?
-        <>
-        <br /><br /><br /><br /> <br /><br />
-        <Sorting/>
-        </> : ""
-      }
-      {
-      filter ?
-     <>
-      <br /><br /><br />  
-      <Filter/>
-     </>
-      :
-      ""
-      }
-      {/* <div className="sort">
-        <div className="category">
-          <h3>NEO TOKYO CERTIFIED</h3>
-          <h3>BY BRAND</h3>
-          <h3>CATEGORY</h3>
-          <h3>PRICE</h3>
-          <h3>AVAILABILITY</h3>
-          <h3>RATING</h3>
-          <h3>NEO TOKYO PRIORITY ONE FULFILLED</h3>
-        </div>
+  const handleBuyNow = (product, event) => {
+    event.stopPropagation(); // Prevent navigation
+    navigate(`/checkout/${product.id}`);
+  };
 
-        <div className="options">
-          {[...Array(7)].map((_, index) => (
-            <div key={index}>
-              <select><option value="">option</option></select>
-              <select><option value="">option</option></select>
-              <select><option value="">option</option></select>
+  const navigateToDetails = (id) => {
+    navigate(`/Details/${id}`);
+  };
+
+  const filteredProducts = products.filter(product => 
+    product.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
+  return (
+    <div className="products-page">
+      <div className="page-header">
+        <h1 style={{color:"black"}}>Our Products</h1>
+        <div className="search-container">
+          <input
+            type="text"
+            placeholder="Search products..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            className="search-input"
+          />
+          <FaSearch className="search-icon" />
+        </div>
+      </div>
+
+      <div className="buttonContainer">
+        <button 
+          className={`special ${filter ? 'active' : ''}`} 
+          onClick={() => {
+            setFilter(!filter);
+            if (sort) setSort(false);
+          }}
+        >
+          FILTERS
+        </button>
+        <button 
+          className={`special ${sort ? 'active' : ''}`} 
+          onClick={() => {
+            setSort(!sort);
+            if (filter) setFilter(false);
+          }}
+        >
+          SORT
+        </button> 
+      </div>
+
+      {sort && (
+        <div className="section-container">
+          <Sorting />
+        </div>
+      )}
+      
+      {filter && (
+        <div className="section-container">
+          <Filter />
+        </div>
+      )}
+
+      {loading ? (
+        <div className="loading-container">
+          <div className="loading-spinner"></div>
+          <p>Loading products...</p>
+        </div>
+      ) : filteredProducts.length === 0 ? (
+        <div className="empty-container">
+          <p>No products found. Try adjusting your filters or search term.</p>
+        </div>
+      ) : (
+        <div className="products">
+          {filteredProducts.map((product) => (
+            <div 
+              className="card" 
+              key={product.id}
+              onClick={() => navigateToDetails(product.id)}
+            >
+              <div className="image-container">
+                <img 
+                  src={product.images?.[0]?.image 
+                    ? baseUrl + product.images[0].image 
+                    : "https://via.placeholder.com/150"
+                  } 
+                  alt={product.name}
+                />
+              </div>
+              <div className="card-content">
+                <h2>{product.name}</h2>
+                <p className="price">₹ {product.price?.toLocaleString()}</p>
+                <div className="buttons">
+                  <button 
+                    className="add-to-cart"
+                    onClick={(e) => addTocart(product.id, e)}
+                    disabled={addingToCart === product.id}
+                  >
+                    {addingToCart === product.id ? (
+                      <><FaSpinner className="spin-icon" /> Adding...</>
+                    ) : (
+                      <><FaCartPlus /> Add To Cart</>
+                    )}
+                  </button>
+                  <button 
+                    className="buy-now"
+                    onClick={(e) => handleBuyNow(product, e)}
+                  >
+                    Buy Now
+                  </button>
+                </div>
+              </div>
             </div>
           ))}
-          <div style={{ marginTop: '10px' }}>
-            <button className='apply'>APPLY</button>
-          </div>
         </div>
-      </div> */}
-
-      <div className="products">
-        {products.map((product, index) => (
-          <div className="card" key={index}>
-            <img 
-              src={product.images?.[0]?.image ? baseUrl + product.images[0].image : "https://via.placeholder.com/150"} 
-              alt={product.name} 
-              onClick={() => navigate(`/Details/${product.id}`)} // Navigate to details page
-              style={{ cursor: "pointer" }} // Make it clear it's clickable
-            />
-            <h2>{product.name}</h2>
-            <p className="price">₹ {product.price?.toLocaleString()}</p>
-            <div className="buttons">
-              <span onClick={() => addTocart(product.id)}><FaCartPlus /> Add To Cart</span>
-              <button className="buy-now">Buy Now</button>
-            </div>
-          </div>
-        ))}
-      </div>
+      )}
     </div>
   );
 }

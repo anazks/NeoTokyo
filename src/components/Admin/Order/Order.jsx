@@ -1,213 +1,284 @@
-import React from 'react';
-import { FiPackage, FiUser, FiCreditCard, FiTruck, FiHome, FiClock, FiCheckCircle } from 'react-icons/fi';
+import React, { useEffect, useState } from 'react';
+import { 
+  FiPackage, 
+  FiUser, 
+  FiCreditCard, 
+  FiTruck, 
+  FiCalendar,
+  FiCheckCircle,
+  FiClock,
+  FiAlertCircle
+} from 'react-icons/fi';
+import { AllOrders } from '../../../Services/Order';
 import './order.css';
 
 function Order() {
-  // Sample order data
-  const order = {
-    id: 'ORD-2023-00145',
-    date: '2023-05-15',
-    status: 'Delivered',
-    paymentStatus: 'Paid',
-    paymentMethod: 'Credit Card',
-    totalAmount: 187.94,
-    user: {
-      id: 'USR-001',
-      name: 'John Doe',
-      email: 'john.doe@example.com',
-      phone: '+1 (555) 123-4567'
-    },
-    shippingAddress: {
-      street: '123 Main Street',
-      city: 'New York',
-      state: 'NY',
-      zipCode: '10001',
-      country: 'United States'
-    },
-    billingAddress: {
-      street: '123 Main Street',
-      city: 'New York',
-      state: 'NY',
-      zipCode: '10001',
-      country: 'United States'
-    },
-    items: [
-      {
-        id: 'PRD-001',
-        name: 'Wireless Headphones',
-        image: 'https://via.placeholder.com/80',
-        price: 129.99,
-        quantity: 1,
-        subtotal: 129.99
-      },
-      {
-        id: 'PRD-002',
-        name: 'Phone Case',
-        image: 'https://via.placeholder.com/80',
-        price: 19.99,
-        quantity: 2,
-        subtotal: 39.98
-      },
-      {
-        id: 'PRD-003',
-        name: 'Screen Protector',
-        image: 'https://via.placeholder.com/80',
-        price: 9.99,
-        quantity: 2,
-        subtotal: 19.98
-      }
-    ],
-    shippingMethod: 'Express Shipping',
-    shippingCost: 15.00,
-    tax: 12.99,
-    trackingNumber: 'EX123456789US',
-    estimatedDelivery: '2023-05-18',
-    actualDelivery: '2023-05-17'
+  const [orders, setOrders] = useState([]);
+  const [selectedOrderIndex, setSelectedOrderIndex] = useState(0);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  const fetchOrders = async () => {
+    try {
+      setLoading(true);
+      const response = await AllOrders();
+      console.log(response.data, "orders...");
+      setOrders(response.data);
+      setLoading(false);
+    } catch (error) {
+      console.error("Error fetching orders:", error);
+      setError("Failed to load orders. Please try again.");
+      setLoading(false);
+    }
   };
 
+  useEffect(() => {
+    fetchOrders();
+  }, []);
+
   const getStatusBadge = (status) => {
+    if (!status) return <span className="badge badge-pending"><FiClock /> Pending</span>;
+    
     switch (status.toLowerCase()) {
       case 'delivered':
-        return <span className="status-badge delivered"><FiCheckCircle /> Delivered</span>;
+        return <span className="badge badge-success"><FiCheckCircle /> Delivered</span>;
       case 'shipped':
-        return <span className="status-badge shipped"><FiTruck /> Shipped</span>;
+        return <span className="badge badge-info"><FiTruck /> Shipped</span>;
       case 'processing':
-        return <span className="status-badge processing"><FiClock /> Processing</span>;
+        return <span className="badge badge-warning"><FiClock /> Processing</span>;
+      case 'pending':
+        return <span className="badge badge-pending"><FiClock /> Pending</span>;
       default:
-        return <span className="status-badge pending">Pending</span>;
+        return <span className="badge badge-pending"><FiClock /> Pending</span>;
     }
   };
 
   const getPaymentBadge = (status) => {
+    if (!status) return <span className="badge badge-danger"><FiAlertCircle /> Unpaid</span>;
+    
     switch (status.toLowerCase()) {
       case 'paid':
-        return <span className="payment-badge paid"><FiCreditCard /> Paid</span>;
+        return <span className="badge badge-success"><FiCheckCircle /> Paid</span>;
       case 'pending':
-        return <span className="payment-badge pending"><FiClock /> Pending</span>;
+        return <span className="badge badge-warning"><FiClock /> Pending</span>;
       case 'failed':
-        return <span className="payment-badge failed">Failed</span>;
+        return <span className="badge badge-danger"><FiAlertCircle /> Failed</span>;
       default:
-        return <span className="payment-badge unpaid">Unpaid</span>;
+        return <span className="badge badge-danger"><FiAlertCircle /> Unpaid</span>;
     }
   };
 
+  if (loading) {
+    return (
+      <div className="admin-container">
+        <div className="loading-spinner">
+          <div className="spinner"></div>
+          <p>Loading orders...</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="admin-container">
+        <div className="error-message">
+          <FiAlertCircle />
+          <p>{error}</p>
+          <button className="btn btn-primary" onClick={fetchOrders}>Try Again</button>
+        </div>
+      </div>
+    );
+  }
+
+  if (orders.length === 0) {
+    return (
+      <div className="admin-container">
+        <div className="empty-state">
+          <FiPackage size={48} />
+          <h2>No Orders Found</h2>
+          <p>There are currently no orders in the system.</p>
+        </div>
+      </div>
+    );
+  }
+
+  // Get the selected order from the Orders array
+  const order = orders[selectedOrderIndex];
+  const formattedDate = new Date(order.created_at).toLocaleDateString('en-US', { 
+    year: 'numeric', 
+    month: 'long', 
+    day: 'numeric', 
+    hour: '2-digit', 
+    minute: '2-digit' 
+  });
+
   return (
-    <div className="order-container">
-      <div className="order-header">
-        <h1>Order Details</h1>
-        <div className="order-meta">
-          <div className="order-id">Order #: {order.id}</div>
-          <div className="order-date">Date: {order.date}</div>
-        </div>
+    <div className="admin-container">
+      <div className="admin-header">
+        <h1>Order Management</h1>
+        
+        {orders.length > 1 && (
+          <div className="order-selector">
+            <select 
+              className="select-dropdown"
+              value={selectedOrderIndex}
+              onChange={(e) => setSelectedOrderIndex(Number(e.target.value))}
+            >
+              {orders.map((order, index) => (
+                <option key={order.id} value={index}>
+                  Order #{order.invoice_number} - {order.user_name}
+                </option>
+              ))}
+            </select>
+          </div>
+        )}
       </div>
 
-      <div className="order-status-section">
-        <div className="status-card">
-          <h3>Order Status</h3>
-          {getStatusBadge(order.status)}
-          {order.status.toLowerCase() === 'delivered' && (
-            <div className="delivery-date">Delivered on: {order.actualDelivery}</div>
-          )}
-          {order.status.toLowerCase() === 'shipped' && (
-            <div className="tracking-info">
-              <div>Tracking #: {order.trackingNumber}</div>
-              <div>Estimated Delivery: {order.estimatedDelivery}</div>
-            </div>
-          )}
-        </div>
-
-        <div className="payment-card">
-          <h3>Payment Information</h3>
-          {getPaymentBadge(order.paymentStatus)}
-          <div className="payment-details">
-            <div>Method: {order.paymentMethod}</div>
-            <div>Total: ${order.totalAmount.toFixed(2)}</div>
-          </div>
-        </div>
-      </div>
-
-      <div className="order-details-grid">
-        <div className="customer-info">
-          <h3><FiUser /> Customer Information</h3>
-          <div className="info-card">
-            <div className="info-row">
-              <strong>Name:</strong> {order.user.name}
-            </div>
-            <div className="info-row">
-              <strong>Email:</strong> {order.user.email}
-            </div>
-            <div className="info-row">
-              <strong>Phone:</strong> {order.user.phone}
+      <div className="order-overview">
+        <div className="overview-header">
+          <div className="overview-title">
+            <h2>Order #{order.invoice_number}</h2>
+            <div className="overview-meta">
+              <span><FiCalendar /> {formattedDate}</span>
+              <span>|</span>
+              <span>Customer: {order.user_name}</span>
             </div>
           </div>
-        </div>
-
-        <div className="shipping-info">
-          <h3><FiTruck /> Shipping Address</h3>
-          <div className="info-card">
-            <div>{order.shippingAddress.street}</div>
-            <div>{order.shippingAddress.city}, {order.shippingAddress.state} {order.shippingAddress.zipCode}</div>
-            <div>{order.shippingAddress.country}</div>
-          </div>
-        </div>
-
-        <div className="billing-info">
-          <h3><FiCreditCard /> Billing Address</h3>
-          <div className="info-card">
-            <div>{order.billingAddress.street}</div>
-            <div>{order.billingAddress.city}, {order.billingAddress.state} {order.billingAddress.zipCode}</div>
-            <div>{order.billingAddress.country}</div>
+          <div className="overview-badges">
+            {getStatusBadge(order.order_status)}
+            {getPaymentBadge(order.payment_status)}
           </div>
         </div>
       </div>
 
-      <div className="order-items">
-        <h3><FiPackage /> Order Items</h3>
-        <table className="items-table">
-          <thead>
-            <tr>
-              <th>Product</th>
-              <th>Price</th>
-              <th>Quantity</th>
-              <th>Subtotal</th>
-            </tr>
-          </thead>
-          <tbody>
-            {order.items.map((item) => (
-              <tr key={item.id}>
-                <td className="product-cell">
-                  <img src={item.image} alt={item.name} className="product-image" />
-                  <span>{item.name}</span>
-                </td>
-                <td>${item.price.toFixed(2)}</td>
-                <td>{item.quantity}</td>
-                <td>${item.subtotal.toFixed(2)}</td>
+      <div className="admin-grid">
+        <div className="grid-item customer-section">
+          <div className="section-header">
+            <FiUser />
+            <h3>Customer Details</h3>
+          </div>
+          <div className="section-content">
+            <div className="detail-row">
+              <span className="detail-label">Full Name</span>
+              <span className="detail-value">{order.user_name}</span>
+            </div>
+            <div className="detail-row">
+              <span className="detail-label">User ID</span>
+              <span className="detail-value">{order.user}</span>
+            </div>
+            <div className="detail-row">
+              <span className="detail-label">Phone</span>
+              <span className="detail-value">{order.delivery_address_details?.phone_number || 'N/A'}</span>
+            </div>
+          </div>
+        </div>
+
+        <div className="grid-item address-section">
+          <div className="section-header">
+            <FiTruck />
+            <h3>Shipping Address</h3>
+          </div>
+          <div className="section-content">
+            <p className="address-line">{order.delivery_address_details?.delivery_person_name || order.user_name}</p>
+            <p className="address-line">{order.delivery_address_details?.address || 'N/A'}</p>
+            <p className="address-line">
+              {order.delivery_address_details?.district || 'N/A'}, {order.delivery_address_details?.state || 'N/A'} {order.delivery_address_details?.postal_code || 'N/A'}
+            </p>
+            <p className="address-line">{order.delivery_address_details?.country || 'N/A'}</p>
+            <p className="address-line">{order.delivery_address_details?.phone_number || 'N/A'}</p>
+          </div>
+        </div>
+
+        <div className="grid-item payment-section">
+          <div className="section-header">
+            <FiCreditCard />
+            <h3>Payment Information</h3>
+          </div>
+          <div className="section-content">
+            <div className="detail-row">
+              <span className="detail-label">Payment Status</span>
+              <span className="detail-value">{getPaymentBadge(order.payment_status)}</span>
+            </div>
+            <div className="detail-row">
+              <span className="detail-label">Payment ID</span>
+              <span className="detail-value">{order.payment_order_id || 'N/A'}</span>
+            </div>
+            <div className="detail-row">
+              <span className="detail-label">Payment Method</span>
+              <span className="detail-value">{order.payment_method || 'N/A'}</span>
+            </div>
+          </div>
+        </div>
+
+        <div className="grid-item summary-section">
+          <div className="section-header">
+            <FiPackage />
+            <h3>Order Summary</h3>
+          </div>
+          <div className="section-content">
+            <div className="detail-row">
+              <span className="detail-label">Subtotal</span>
+              <span className="detail-value">₹{Number(order.price_before_tax).toFixed(2)}</span>
+            </div>
+            <div className="detail-row">
+              <span className="detail-label">Discount</span>
+              <span className="detail-value">₹{Number(order.total_discount).toFixed(2)}</span>
+            </div>
+            <div className="detail-row">
+              <span className="detail-label">Tax</span>
+              <span className="detail-value">₹{Number(order.total_tax).toFixed(2)}</span>
+            </div>
+            <div className="detail-row total-row">
+              <span className="detail-label">Total</span>
+              <span className="detail-value">₹{Number(order.total_price).toFixed(2)}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="grid-full-width">
+        <div className="section-header">
+          <FiPackage />
+          <h3>Order Items</h3>
+        </div>
+        <div className="table-responsive">
+          <table className="admin-table">
+            <thead>
+              <tr>
+                <th className="product-col">Product</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Subtotal</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {order.items && order.items.map((item) => (
+                <tr key={item.id}>
+                  <td className="product-col">
+                    <div className="product-info">
+                      <div className="product-image">
+                        <img src="https://www.pngmart.com/files/23/Gaming-Pc-PNG.png" alt={item.product_name} />
+                      </div>
+                      <div className="product-details">
+                        <span className="product-name">{item.product_name}</span>
+                        <span className="product-id">SKU: {item.product_id || 'N/A'}</span>
+                      </div>
+                    </div>
+                  </td>
+                  <td>₹{Number(item.price).toFixed(2)}</td>
+                  <td>{item.quantity}</td>
+                  <td>₹{(Number(item.price) * item.quantity).toFixed(2)}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
 
-      <div className="order-summary">
-        <div className="summary-card">
-          <h3>Order Summary</h3>
-          <div className="summary-row">
-            <span>Subtotal:</span>
-            <span>${(order.totalAmount - order.tax - order.shippingCost).toFixed(2)}</span>
-          </div>
-          <div className="summary-row">
-            <span>Shipping:</span>
-            <span>${order.shippingCost.toFixed(2)}</span>
-          </div>
-          <div className="summary-row">
-            <span>Tax:</span>
-            <span>${order.tax.toFixed(2)}</span>
-          </div>
-          <div className="summary-row total">
-            <span>Total:</span>
-            <span>${order.totalAmount.toFixed(2)}</span>
-          </div>
-        </div>
+      <div className="admin-actions">
+        <button className="btn btn-secondary">Print Invoice</button>
+        <button className="btn btn-primary">Update Status</button>
       </div>
     </div>
   );

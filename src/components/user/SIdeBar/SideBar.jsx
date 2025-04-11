@@ -1,7 +1,10 @@
 import React, { useEffect } from 'react';
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from '../../../Context/UserContext';
-import { FiHome, FiShoppingBag, FiTool, FiLayers, FiHelpCircle, FiUser, FiLogOut, FiX, FiLogIn, FiUserPlus, FiMapPin } from 'react-icons/fi';
+import { 
+  FiHome, FiShoppingBag, FiTool, FiLayers, FiHelpCircle, 
+  FiUser, FiLogOut, FiX, FiLogIn, FiUserPlus, FiMapPin 
+} from 'react-icons/fi';
 import './Sidebar.css';
 
 function SideBar({ isOpen, onClose }) {
@@ -70,16 +73,16 @@ function SideBar({ isOpen, onClose }) {
                 <span className="menu-text">Services</span>
               </Link>
             </li>
-            <li>
+            {/* <li>
               <Link to="/solutions" onClick={onClose} className="menu-item">
                 <FiLayers className="menu-icon" /> 
                 <span className="menu-text">Solutions</span>
               </Link>
-            </li>
+            </li> */}
             <li>
-              <Link to="/support" onClick={onClose} className="menu-item">
+              <Link to="/myorder" onClick={onClose} className="menu-item">
                 <FiHelpCircle className="menu-icon" /> 
-                <span className="menu-text">Support</span>
+                <span className="menu-text">My Order</span>
               </Link>
             </li>
             <li>
@@ -90,12 +93,13 @@ function SideBar({ isOpen, onClose }) {
             </li>
             {token && (
               <>
-                <li>
+                <li className="divider"></li>
+                {/* <li>
                   <Link to="/profile" onClick={onClose} className="menu-item">
                     <FiUser className="menu-icon" /> 
                     <span className="menu-text">Profile</span>
                   </Link>
-                </li>
+                </li> */}
                 <li>
                   <button 
                     className="menu-item logout-btn"
@@ -113,23 +117,25 @@ function SideBar({ isOpen, onClose }) {
             <h3 className="locations-title">
               <FiMapPin className="title-icon" /> Our Locations
             </h3>
-            <div className="location">
-              <h4>HQ - Kochi</h4>
-              <p>
-                Floor no. 2, Koroth Arcade,<br />
-                Vennala High School Rd,<br />
-                opposite to V-Guard, Vennala,<br />
-                Kochi, Kerala 682028
-              </p>
-            </div>
-            <div className="location">
-              <h4>Kozhikode</h4>
-              <p>
-                New Age Buildings, Mofussil Bus<br />
-                Stand Building, New, 61/1803,<br />
-                Mavoor Rd, Arayidathupalam,<br />
-                Kozhikode, Kerala 673004
-              </p>
+            <div className="locations-wrapper">
+              <div className="location">
+                <h4>HQ - Kochi</h4>
+                <p>
+                  Floor no. 2, Koroth Arcade,<br />
+                  Vennala High School Rd,<br />
+                  opposite to V-Guard, Vennala,<br />
+                  Kochi, Kerala 682028
+                </p>
+              </div>
+              <div className="location">
+                <h4>Kozhikode</h4>
+                <p>
+                  New Age Buildings, Mofussil Bus<br />
+                  Stand Building, New, 61/1803,<br />
+                  Mavoor Rd, Arayidathupalam,<br />
+                  Kozhikode, Kerala 673004
+                </p>
+              </div>
             </div>
           </div>
         </div>

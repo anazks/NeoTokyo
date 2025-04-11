@@ -673,7 +673,7 @@ const Login = () => {
               placeholder="Email" 
               className="input-box" 
             />
-            <button onClick={handleSendOTP}>Sent OTP</button>
+           <button onClick={handleSendOTP} className="send-otp-button">Send OTP</button>
             {/* <input 
               type="number"
               name="password"

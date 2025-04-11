@@ -2,7 +2,7 @@
 .Main-Footer {
   width: 90vw;
   min-height: 60vh;
-  margin: 5% auto;
+  /* margin: 5% auto; */
   padding: 40px 30px;
   background: linear-gradient(145deg, #ffffff, #f5f5f5);
   border-radius: 20px;

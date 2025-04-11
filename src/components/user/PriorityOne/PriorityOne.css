@@ -1,12 +1,11 @@
 .priority-one-container {
-  width: 85vw;
+  width: 90vw;
   margin: auto;
-  min-height: 90vh;
+  height: 100vh;
   padding: 40px;
   background-color: white;
   border-radius: 20px;
   box-shadow: rgba(0, 0, 0, 0.2) 0px 10px 30px;
-  margin-top: 5%;
   font-family: 'Raleway', Arial, sans-serif;
   position: relative;
   overflow: hidden;
@@ -24,7 +23,7 @@
 }
 
 .header {
-  margin-bottom: 3rem;
+  /* margin-bottom: 3rem; */
   position: relative;
 }
 
@@ -101,7 +100,7 @@
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 2.5rem;
-  margin-top: 10px;
+  /* margin-top: 10px; */
 }
 
 .team-member {

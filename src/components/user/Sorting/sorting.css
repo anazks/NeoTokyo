@@ -2,31 +2,41 @@
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&display=swap');
 
 :root {
-  --neon-blue: #00f3ff;
-  --neon-pink: #ff00a0;
-  --neon-purple: #bc13fe;
-  --dark-bg: #0a0a0a;
-  --medium-bg: #131313;
-  --light-bg: #1a1a1a;
-  --white-bg:gray;
+  --primary-color: #AB6698;
+  --primary-glow: rgba(171, 102, 152, 0.5);
+  --dark-bg: #1a1a1a;
+  --medium-bg: #2a2a2a;
+  --light-bg: #393939;
+  --hover-bg: rgba(171, 102, 152, 0.15);
 }
 
 .sorting-container {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: white;
+  padding: 1.5rem;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto 30px;
+  animation: fadeIn 0.4s ease;
+}
+
+.sorting-title {
   font-family: 'Orbitron', sans-serif;
-  background-color: var(--white-bg);
-  padding: 1rem;
-  border-radius: 8px;
-  margin-bottom: 1.5rem;
-  border-bottom: 1px solid rgba(0, 243, 255, 0.3);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.8);
-  width: 70%;
-  margin: auto;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: black;
+  margin-bottom: 1.2rem;
+  text-align: center;
+  letter-spacing: 1px;
+  text-transform: uppercase;
 }
 
 .sorting-header {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
+  gap: 0.8rem;
   justify-content: center;
   padding: 0.5rem;
   position: relative;
@@ -37,16 +47,16 @@
   background-color: var(--medium-bg);
   color: white;
   border: none;
-  padding: 0.7rem 1.2rem;
+  padding: 0.8rem 1.4rem;
   font-family: 'Orbitron', sans-serif;
-  font-size: 0.8rem;
+  font-size: 0.85rem;
   font-weight: 500;
   letter-spacing: 1px;
   cursor: pointer;
   transition: all 0.3s ease;
   overflow: hidden;
-  border-radius: 4px;
-  border-bottom: 2px solid transparent;
+  border-radius: 6px;
+  border: 1px solid transparent;
   margin: 0.25rem;
   z-index: 1;
 }
@@ -61,7 +71,7 @@
   background: linear-gradient(
     90deg,
     transparent,
-    rgba(0, 243, 255, 0.1),
+    rgba(171, 102, 152, 0.1),
     transparent
   );
   transition: all 0.6s ease;
@@ -73,28 +83,28 @@
 }
 
 .category-button:hover {
-  background-color: var(--light-bg);
+  background-color: var(--hover-bg);
   transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-  border-bottom: 2px solid var(--neon-blue);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  border: 1px solid var(--primary-color);
 }
 
 .category-button.active {
-  background-color: rgba(0, 243, 255, 0.15);
-  color: var(--neon-blue);
-  border-bottom: 2px solid var(--neon-blue);
-  box-shadow: 0 0 10px rgba(0, 243, 255, 0.4);
-  font-weight: 700;
+  background-color: var(--primary-color);
+  color: white;
+  border: 1px solid transparent;
+  box-shadow: 0 0 10px var(--primary-glow);
+  font-weight: 600;
 }
 
 .category-button.active:after {
   content: '';
   position: absolute;
   height: 2px;
-  width: 100%;
+  width: 80%;
   bottom: 0;
-  left: 0;
-  background-color: var(--neon-blue);
+  left: 10%;
+  background-color: white;
   animation: pulse 2s infinite;
 }
 
@@ -107,13 +117,13 @@
   z-index: -1;
   opacity: 0;
   transition: opacity 0.4s ease;
-  border-radius: 4px;
+  border-radius: 6px;
   pointer-events: none;
 }
 
 .category-button.active .button-glow {
   opacity: 1;
-  box-shadow: 0 0 10px 2px var(--neon-blue);
+  box-shadow: 0 0 15px 2px var(--primary-glow);
 }
 
 /* Animations */
@@ -130,16 +140,22 @@
 }
 
 /* Responsive design */
+@media (max-width: 992px) {
+  .sorting-container {
+    width: 95%;
+    padding: 1.2rem;
+  }
+}
+
 @media (max-width: 768px) {
   .sorting-header {
-    flex-direction: row;
-    justify-content: flex-start;
+    flex-wrap: nowrap;
     overflow-x: auto;
-    white-space: nowrap;
+    justify-content: flex-start;
     padding-bottom: 10px;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: thin;
-    scrollbar-color: var(--neon-blue) var(--dark-bg);
+    scrollbar-color: var(--primary-color) var(--dark-bg);
   }
 
   .sorting-header::-webkit-scrollbar {
@@ -152,22 +168,34 @@
   }
 
   .sorting-header::-webkit-scrollbar-thumb {
-    background-color: var(--neon-blue);
+    background-color: var(--primary-color);
     border-radius: 4px;
   }
   
   .category-button {
     flex: 0 0 auto;
+    padding: 0.7rem 1.2rem;
+    font-size: 0.8rem;
+    white-space: nowrap;
+  }
+}
+
+@media (max-width: 576px) {
+  .sorting-container {
+    padding: 1rem;
+  }
+  
+  .sorting-title {
+    font-size: 1rem;
+  }
+  
+  .category-button {
     padding: 0.6rem 1rem;
     font-size: 0.75rem;
   }
 }
 
 /* Animation for the entire component on load */
-.sorting-container {
-  animation: fadeIn 0.5s ease-in-out;
-}
-
 @keyframes fadeIn {
   from {
     opacity: 0;

@@ -1,13 +1,23 @@
 import React, { useEffect, useState } from 'react'
-import './settings.css'
+import './settings.css' // Import your main CSS file
 import Tax from '../Tax/Tax';
-import {getBrand} from '../../../Services/Settings'
+import { getBrand, deleteBrand, addBrand, getCategory, addCategory, deleteCategory, getTax } from '../../../Services/Settings'
+// Icons can be imported from a library like react-icons
+// import { FaPlus, FaTrash, FaTimes, FaSpinner } from 'react-icons/fa'
+
 function Settings() {
   // State for popup visibility
   const [showBrandPopup, setShowBrandPopup] = useState(false);
   const [showCategoryPopup, setShowCategoryPopup] = useState(false);
   const [brands, setBrands] = useState([]);
-  
+  const [categories, setCategories] = useState([]);
+  const [tax, setTax] = useState([]);
+
+  // Loading and error states
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [toast, setToast] = useState({ show: false, message: '', type: '' });
+
   // State for form data
   const [brandName, setBrandName] = useState('');
   const [categoryData, setCategoryData] = useState({
@@ -15,34 +25,51 @@ function Settings() {
     description: '',
     parent: ''
   });
+
   const fetchBrands = async () => {
     try {
-      // Fixed: Added await and assumed getBrand is a function that needs to be called
-      const brands = await getBrand();
-      console.log(brands,'brands')
-      setBrands(brands);
+      setIsLoading(true);
+      const Totalbrands = await getBrand();
+      setBrands(Totalbrands.data);
+      setIsLoading(false);
     } catch (error) {
       console.error("Error fetching brands:", error);
+      setError("Failed to load brands. Please try again.");
+      setIsLoading(false);
     }
   };
+
+  const fetchCategory = async () => {
+    try {
+      setIsLoading(true);
+      let category = await getCategory()
+      setCategories(category.data)
+      setIsLoading(false);
+    } catch (error) {
+      console.log(error)
+      setError("Failed to load categories. Please try again.");
+      setIsLoading(false);
+    }
+  }
+
+  const fetchtax = async () => {
+    try {
+      let Taxes = await getTax()
+      setTax(Taxes.data)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   useEffect(() => {
     // Created wrapper function since useEffect callback shouldn't be async directly
     const loadData = () => {
       fetchBrands();
+      fetchCategory();
+      fetchtax();
     };
     loadData();
-    
   }, []);
-  
-
-  // Sample data for brands and categories
-  
-  const [categories, setCategories] = useState([
-    { id: 1, name: 'Electronics', description: 'Electronic devices', parent: null },
-    { id: 2, name: 'Smartphones', description: 'Mobile phones', parent: 1 },
-    { id: 3, name: 'Clothing', description: 'Apparel and fashion', parent: null },
-    { id: 4, name: 'Men\'s Wear', description: 'Clothing for men', parent: 3 }
-  ]);
   
   // Function to find parent category name by id
   const getParentCategoryName = (parentId) => {
@@ -51,29 +78,52 @@ function Settings() {
     return parent ? parent.name : 'Unknown';
   };
 
-  // Handler functions for form submission
-  const handleBrandSubmit = (e) => {
-    e.preventDefault();
-    const newBrand = {
-      id: brands.length + 1, // Simple ID generation for demo
-      name: brandName
-    };
-    setBrands([...brands, newBrand]);
-    setBrandName('');
-    setShowBrandPopup(false);
+  // Show toast notification
+  const showToast = (message, type = 'success') => {
+    setToast({ show: true, message, type });
+    setTimeout(() => {
+      setToast({ show: false, message: '', type: '' });
+    }, 3000);
   };
 
-  const handleCategorySubmit = (e) => {
+  // Handler functions for form submission
+  const handleBrandSubmit = async (e) => {
     e.preventDefault();
-    const newCategory = {
-      id: categories.length + 1, // Simple ID generation for demo
-      name: categoryData.name,
-      description: categoryData.description,
-      parent: categoryData.parent ? parseInt(categoryData.parent) : null
-    };
-    setCategories([...categories, newCategory]);
-    setCategoryData({ name: '', description: '', parent: '' });
-    setShowCategoryPopup(false);
+    try {
+      setIsLoading(true);
+      const newBrand = {
+        name: brandName
+      };
+      let addedBrand = await addBrand(newBrand.name);
+      fetchBrands();
+      setShowBrandPopup(false);
+      setBrandName('');
+      showToast('Brand added successfully!');
+      setIsLoading(false);
+    } catch (error) {
+      setIsLoading(false);
+      showToast('Failed to add brand. Please try again.', 'error');
+    }
+  };
+
+  const handleCategorySubmit = async(e) => {
+    e.preventDefault();
+    try {
+      setIsLoading(true);
+      const newCategory = {
+        name: categoryData.name,
+        description: categoryData.description,
+      };
+      let addedCate = await addCategory(newCategory);
+      fetchCategory();
+      setShowCategoryPopup(false);
+      setCategoryData({ name: '', description: '', parent: '' });
+      showToast('Category added successfully!');
+      setIsLoading(false);
+    } catch (error) {
+      setIsLoading(false);
+      showToast('Failed to add category. Please try again.', 'error');
+    }
   };
 
   // Handler for input changes
@@ -86,37 +136,68 @@ function Settings() {
   };
 
   // Handler for deleting a brand
-  const handleDeleteBrand = (brandId) => {
+  const handleDeleteBrand = async (brandId) => {
     if (window.confirm('Are you sure you want to delete this brand?')) {
-      setBrands(brands.filter(brand => brand.id !== brandId));
+      try {
+        setIsLoading(true);
+        let deleteD = await deleteBrand(brandId);
+        fetchBrands();
+        showToast('Brand deleted successfully!');
+        setIsLoading(false);
+      } catch (error) {
+        console.log(error);
+        setIsLoading(false);
+        showToast('Failed to delete brand. Please try again.', 'error');
+      }
     }
   };
 
   // Handler for deleting a category
-  const handleDeleteCategory = (categoryId) => {
+  const handleDeleteCategory = async (categoryId) => {
     if (window.confirm('Are you sure you want to delete this category?')) {
-      // Check if any category has this as a parent
-      const hasChildren = categories.some(cat => cat.parent === categoryId);
-      
-      if (hasChildren) {
-        alert('Cannot delete this category because it has subcategories. Please delete the subcategories first.');
-        return;
+      try {
+        setIsLoading(true);
+        let catedelete = await deleteCategory(categoryId);
+        fetchCategory();
+        showToast('Category deleted successfully!');
+        setIsLoading(false);
+      } catch (error) {
+        setIsLoading(false);
+        showToast('Failed to delete category. Please try again.', 'error');
       }
-      
-      setCategories(categories.filter(category => category.id !== categoryId));
     }
   };
 
+  // Render loading spinner
+  if (isLoading && !brands.length && !categories.length) {
+    return (
+      <div className="settings-container dark-mode">
+        <div className="loading-spinner">
+          <div className="spinner"></div>
+        </div>
+      </div>
+    );
+  }
+
   return (
-    <div className="settings-container">
+    <div className="settings-container dark-mode">
       <h2>Settings</h2>
+      
+      {/* Toast Notification */}
+      {toast.show && (
+        <div className="toast-container">
+          <div className={`toast ${toast.type}`}>
+            {toast.message}
+          </div>
+        </div>
+      )}
       
       {/* Brands Section */}
       <div className="settings-section">
         <div className="section-header">
           <h3>Brands</h3>
           <button 
-            className="btn-add" 
+            className="btn-add dark" 
             onClick={() => setShowBrandPopup(true)}
           >
             Add Brand
@@ -125,37 +206,47 @@ function Settings() {
         
         {/* Brands Table */}
         <div className="table-responsive">
-          <table className="data-table">
-            <thead>
-              <tr>
-                <th>ID</th>
-                <th>Brand Name</th>
-                <th>Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              {brands.length > 0 ? (
-                brands.map((brand) => (
-                  <tr key={brand.id}>
-                    <td>{brand.id}</td>
-                    <td>{brand.name}</td>
-                    <td>
-                      <button 
-                        className="btn-delete"
-                        onClick={() => handleDeleteBrand(brand.id)}
-                      >
-                        Delete
-                      </button>
+          {error ? (
+            <div className="error-message">{error}</div>
+          ) : (
+            <table className="data-table dark">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Brand Name</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                {brands.length > 0 ? (
+                  brands.map((brand) => (
+                    <tr key={brand.id}>
+                      <td>{brand.id}</td>
+                      <td>{brand.name}</td>
+                      <td>
+                        <button 
+                          className="btn-delete dark"
+                          onClick={() => handleDeleteBrand(brand.id)}
+                          disabled={isLoading}
+                        >
+                          Delete
+                        </button>
+                      </td>
+                    </tr>
+                  ))
+                ) : (
+                  <tr>
+                    <td colSpan="3" className="no-data">
+                      <div className="empty-state">
+                        <h4>No Brands Found</h4>
+                        <p>You haven't added any brands yet. Click "Add Brand" to create your first brand.</p>
+                      </div>
                     </td>
                   </tr>
-                ))
-              ) : (
-                <tr>
-                  <td colSpan="3" className="no-data">No brands found</td>
-                </tr>
-              )}
-            </tbody>
-          </table>
+                )}
+              </tbody>
+            </table>
+          )}
         </div>
       </div>
       
@@ -164,7 +255,7 @@ function Settings() {
         <div className="section-header">
           <h3>Categories</h3>
           <button 
-            className="btn-add" 
+            className="btn-add dark" 
             onClick={() => setShowCategoryPopup(true)}
           >
             Add Category
@@ -173,53 +264,62 @@ function Settings() {
         
         {/* Categories Table */}
         <div className="table-responsive">
-          <table className="data-table">
-            <thead>
-              <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Description</th>
-                <th>Parent</th>
-                <th>Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              {categories.length > 0 ? (
-                categories.map((category) => (
-                  <tr key={category.id}>
-                    <td>{category.id}</td>
-                    <td>{category.name}</td>
-                    <td>{category.description}</td>
-                    <td>{getParentCategoryName(category.parent)}</td>
-                    <td>
-                      <button 
-                        className="btn-delete"
-                        onClick={() => handleDeleteCategory(category.id)}
-                      >
-                        Delete
-                      </button>
+          {error ? (
+            <div className="error-message">{error}</div>
+          ) : (
+            <table className="data-table dark">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Name</th>
+                  <th>Description</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                {categories.length > 0 ? (
+                  categories.map((category) => (
+                    <tr key={category.id}>
+                      <td>{category.id}</td>
+                      <td>{category.name}</td>
+                      <td>{category.description || 'No description'}</td>
+                      <td>
+                        <button 
+                          className="btn-delete dark"
+                          onClick={() => handleDeleteCategory(category.id)}
+                          disabled={isLoading}
+                        >
+                          Delete
+                        </button>
+                      </td>
+                    </tr>
+                  ))
+                ) : (
+                  <tr>
+                    <td colSpan="4" className="no-data">
+                      <div className="empty-state">
+                        <h4>No Categories Found</h4>
+                        <p>You haven't added any categories yet. Click "Add Category" to create your first category.</p>
+                      </div>
                     </td>
                   </tr>
-                ))
-              ) : (
-                <tr>
-                  <td colSpan="5" className="no-data">No categories found</td>
-                </tr>
-              )}
-            </tbody>
-          </table>
+                )}
+              </tbody>
+            </table>
+          )}
         </div>
       </div>
 
       {/* Brand Popup */}
       {showBrandPopup && (
-        <div className="popup-overlay">
-          <div className="popup-content">
+        <div className="popup-overlay dark">
+          <div className="popup-content dark">
             <div className="popup-header">
               <h3>Add New Brand</h3>
               <button 
-                className="btn-close" 
+                className="btn-close dark" 
                 onClick={() => setShowBrandPopup(false)}
+                aria-label="Close"
               >
                 &times;
               </button>
@@ -233,20 +333,27 @@ function Settings() {
                   id="brandName"
                   value={brandName}
                   onChange={(e) => setBrandName(e.target.value)}
+                  className="dark-input"
                   required
+                  placeholder="Enter brand name"
+                  autoFocus
                 />
               </div>
               
               <div className="popup-actions">
                 <button 
                   type="button" 
-                  className="btn-cancel"
+                  className="btn-cancel dark"
                   onClick={() => setShowBrandPopup(false)}
                 >
                   Cancel
                 </button>
-                <button type="submit" className="btn-next">
-                  Next
+                <button 
+                  type="submit" 
+                  className="btn-next dark"
+                  disabled={!brandName.trim() || isLoading}
+                >
+                  {isLoading ? 'Adding...' : 'Add Brand'}
                 </button>
               </div>
             </form>
@@ -256,13 +363,14 @@ function Settings() {
 
       {/* Category Popup */}
       {showCategoryPopup && (
-        <div className="popup-overlay">
-          <div className="popup-content">
+        <div className="popup-overlay dark">
+          <div className="popup-content dark">
             <div className="popup-header">
               <h3>Add New Category</h3>
               <button 
-                className="btn-close" 
+                className="btn-close dark" 
                 onClick={() => setShowCategoryPopup(false)}
+                aria-label="Close"
               >
                 &times;
               </button>
@@ -277,7 +385,10 @@ function Settings() {
                   name="name"
                   value={categoryData.name}
                   onChange={handleCategoryChange}
+                  className="dark-input"
                   required
+                  placeholder="Enter category name"
+                  autoFocus
                 />
               </div>
               
@@ -289,36 +400,25 @@ function Settings() {
                   value={categoryData.description}
                   onChange={handleCategoryChange}
                   rows="3"
+                  className="dark-input"
+                  placeholder="Enter category description (optional)"
                 ></textarea>
-              </div>
-              
-              <div className="form-group">
-                <label htmlFor="categoryParent">Parent Category</label>
-                <select
-                  id="categoryParent"
-                  name="parent"
-                  value={categoryData.parent}
-                  onChange={handleCategoryChange}
-                >
-                  <option value="">None (Top Level Category)</option>
-                  {categories.map((category) => (
-                    <option key={category.id} value={category.id}>
-                      {category.name}
-                    </option>
-                  ))}
-                </select>
               </div>
               
               <div className="popup-actions">
                 <button 
                   type="button" 
-                  className="btn-cancel"
+                  className="btn-cancel dark"
                   onClick={() => setShowCategoryPopup(false)}
                 >
                   Cancel
                 </button>
-                <button type="submit" className="btn-next">
-                  Next
+                <button 
+                  type="submit" 
+                  className="btn-next dark"
+                  disabled={!categoryData.name.trim() || isLoading}
+                >
+                  {isLoading ? 'Adding...' : 'Add Category'}
                 </button>
               </div>
             </form>
@@ -331,4 +431,4 @@ function Settings() {
   );
 }
 
-export default Settings
+export default Settings;

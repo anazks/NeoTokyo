@@ -9,7 +9,7 @@
   width: calc(100% - 70px);
   transition: margin-left 0.3s ease, width 0.3s ease;
   padding: 20px;
-  background-color: #f5f7fa;
+  background-color: #121212;
   min-height: 100vh;
 }
 

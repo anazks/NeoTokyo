@@ -1,14 +1,14 @@
   /* General Styles */
   .feedback {
-    width: 85vw;
-    min-height: 80vh; /* Increased height */
-    height: auto;
-    margin: auto;
-    padding: 40px; /* Increased padding for better spacing */
+    width: 90vw;
+    height: 100vh; /* Increased height */
+    /* height: auto; */
+    /* margin: auto; */
+   padding: 40px;
     background-color: white;
     border-radius: 20px;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    margin-top: 5%;
+   
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -44,7 +44,7 @@
   /* Text Content */
   .bottomBox {
     width: 100%;
-    margin-top: 30px;
+    margin-top: 15px;
   }
 
   .thousand {

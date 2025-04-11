@@ -107,7 +107,6 @@
 
 .containerBox {
   width: 95%;
-  margin: 0.8rem auto;
   display: flex;
   flex-wrap: wrap;
   gap: 15px;
@@ -115,13 +114,13 @@
   justify-content: center;
   background: rgba(249, 249, 249, 0.8);
   border-radius: 15px;
-  padding: 1rem;
+  /* padding: 1rem; */
   box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.05);
 }
 
 .leftBox {
   width: 45%;
-  padding: 1rem;
+  /* padding: 1rem; */
   background: linear-gradient(145deg, #ffffff, #f0f0f0);
   border-radius: 15px;
   box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.05);
