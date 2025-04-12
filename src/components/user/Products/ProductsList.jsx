@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { useNavigate } from "react-router-dom";
 import './producsList.css';
 import { FaCartPlus, FaSearch, FaSpinner } from "react-icons/fa";
@@ -8,6 +8,7 @@ import { useAuth } from '../../../Context/UserContext';
 import { addTocart as addToCartService } from '../../../Services/userApi';
 import Filter from '../Filter/Filter';
 import Sorting from '../Sorting/Sorting';
+import Alert from '../Alert/Alert';
 
 function ProductsList() {
   const [filter, setFilter] = useState(false);
@@ -16,7 +17,8 @@ function ProductsList() {
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
   const [addingToCart, setAddingToCart] = useState(null);
-  
+  const [alertData, setAlertData] = useState(null);
+  const alertTimeoutRef = useRef(null);
   const navigate = useNavigate();
   const { user } = useAuth();
 
@@ -36,25 +38,65 @@ function ProductsList() {
     fetchProducts();
   }, []);
 
+  // Function to show alert with automatic timeout
+  const showAlert = (data) => {
+    // Clear any existing timeout
+    if (alertTimeoutRef.current) {
+      clearTimeout(alertTimeoutRef.current);
+    }
+    
+    // Set the alert data
+    setAlertData(data);
+    
+    // Set timeout to clear the alert after 3 seconds
+    alertTimeoutRef.current = setTimeout(() => {
+      setAlertData(null);
+    }, 3000);
+  };
+
+  // Clean up timeout on component unmount
+  useEffect(() => {
+    return () => {
+      if (alertTimeoutRef.current) {
+        clearTimeout(alertTimeoutRef.current);
+      }
+    };
+  }, []);
+  
   const addTocart = async (id, event) => {
     event.stopPropagation(); // Prevent navigation when clicking add to cart
     try {
       if (!user?.data) {
-        // Handle user not logged in
-        alert("Please log in to add items to cart");
-        navigate("/login");
+        // Show login required alert
+        showAlert({
+          type: "warning",
+          message: "Please log in to add items to cart"
+        });
+        
+        // Navigate after a short delay to allow alert to be seen
+        setTimeout(() => {
+          navigate("/login");
+        }, 1000);
         return;
       }
       
       setAddingToCart(id);
       let addToCart = await addToCartService(id);
       if (addToCart) {
-        // Success notification could be improved with a toast
-        alert("Added to cart");
+        // Success notification
+        showAlert({
+          type: "success",
+          message: "Item successfully added to cart",
+          productId: id
+        });
       }
     } catch (error) {
       console.log(error);
-      alert("Failed to add to cart");
+      // Error notification
+      showAlert({
+        type: "error",
+        message: `Failed to add to cart: ${error.message || "Unknown error"}`,
+      });
     } finally {
       setAddingToCart(null);
     }
@@ -75,6 +117,15 @@ function ProductsList() {
 
   return (
     <div className="products-page">
+      {alertData && (
+        <Alert 
+          type={alertData.type}
+          message={alertData.message}
+          productId={alertData.productId}
+          error={alertData.error}
+          onClose={() => setAlertData(null)}
+        />
+      )}
       <div className="page-header">
         <h1 style={{color:"black"}}>Our Products</h1>
         <div className="search-container">

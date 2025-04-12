@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import NavBar from '../../components/user/NavBar/NavBar';
+import GamingAlertDemo from '../../components/user/Alert/Alert';
+import Alert from '../../components/user/Alert/Alert';
 
 function SimpleRaceGame() {
   const [score, setScore] = useState(0);
@@ -141,6 +143,8 @@ function SimpleRaceGame() {
   return (
     <div className="game-container">
         <NavBar/>
+
+      <Alert/>
       {!gameActive ? (
         <div className="start-screen">
           <h1>Road Racer</h1>

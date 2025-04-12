@@ -67,12 +67,12 @@ function SideBar({ isOpen, onClose }) {
                 <span className="menu-text">Products</span>
               </Link>
             </li>
-            <li>
+            {/* <li>
               <Link to="/services" onClick={onClose} className="menu-item">
                 <FiTool className="menu-icon" /> 
                 <span className="menu-text">Services</span>
               </Link>
-            </li>
+            </li> */}
             {/* <li>
               <Link to="/solutions" onClick={onClose} className="menu-item">
                 <FiLayers className="menu-icon" /> 

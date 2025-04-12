@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import './style.css';
-import Tokyo from '../../../Images/TokyoCity.jpg'
+import Tokyo from '../../../Images/city.png'
+import Drone from "../Drone/Drone";
 
 const ParallaxRevealSection = () => {
   const [scrollY, setScrollY] = useState(0);
@@ -33,30 +34,49 @@ const ParallaxRevealSection = () => {
   const parallaxActive = scrollY > 200;
   const parallaxDeep = scrollY > 300;
   const panelTransformPercentage = Math.min(100, scrollY / 5);
-  const imageWidth = Math.min(100, 20 + scrollY / 3);
+  
+  // Modified: Ensure the image is always full width when revealed
+  const imageWidth = parallaxActive ? 100 : 20;
   const imageOpacity = Math.min(1, scrollY / 300);
   
   // Show subtitle only after reveal (when scrolling is deep)
   const subtitleVisible = parallaxDeep;
 
-  // Dynamic inline styles
+  // Dynamic inline styles for the center image
   const centerImageStyle = {
     width: `${imageWidth}%`,
     opacity: imageOpacity,
-    filter: "grayscale(1) contrast(1.2)" // Black and white effect
+    filter: "grayscale(1) contrast(1.2)", // Keeping the black and white effect
+    backgroundSize: "cover",
+    backgroundPosition: "center"
+  };
+
+  // Drone visibility style - positioned above the NEO TOKYO lettering
+  const droneStyle = {
+    position: "absolute",
+    zIndex: 99, // Higher z-index to ensure it appears on top of all elements
+    top: "0", // Position above the text (which is at 70%)
+    left: "20%", // Center horizontally
+    transform: "translate(-50%, -50%)", // Center the drone
+    opacity: 1, // Always visible
+    transition: "opacity 1s ease-in-out, transform 1.5s ease-in-out",
+    // Add a slight hover animation
+    animation: "droneHover 4s infinite ease-in-out"
   };
 
   return (
     <div 
       ref={sectionRef}
       className={`parallax-container ${inView ? 'in-view' : ''} ${parallaxActive ? 'parallax-active' : ''} ${parallaxDeep ? 'parallax-deep' : ''}`}
+      style={{ position: "relative", overflow: "hidden" }} // Ensure relative positioning
     >
       {/* Left Panel */}
       <div 
         className="panel panel-left"
         style={{ 
           transform: `translateX(-${panelTransformPercentage}%)`,
-          background: "linear-gradient(45deg, #111, #222)" // Darker panels
+          background: "linear-gradient(45deg, #111, #222)", // Darker panels
+          zIndex: 3 // Lower than drone
         }}
       />
 
@@ -65,7 +85,8 @@ const ParallaxRevealSection = () => {
         className="panel panel-right"
         style={{ 
           transform: `translateX(${panelTransformPercentage}%)`,
-          background: "linear-gradient(-45deg, #111, #222)" // Darker panels
+          background: "linear-gradient(-45deg, #111, #222)", // Darker panels
+          zIndex: 3 // Lower than drone
         }}
       />
 
@@ -74,17 +95,23 @@ const ParallaxRevealSection = () => {
         className="center-image"
         style={{
           ...centerImageStyle,
-          backgroundImage: `url(${Tokyo})`
+          backgroundImage: `url(${Tokyo})`,
+          // Ensure the image covers the entire width when revealed
+          left: "0",
+          transform: "none",
+          width: `${imageWidth}%`,
+          zIndex: 1 // Lowest z-index
         }}
       />
-
+      
       {/* Text - NEO */}
       <div
         className="text text-left neo-font"
         style={{ 
           opacity: Math.max(0, 1 - scrollY / 300),
           fontFamily: "'Blade Runner', 'Orbitron', sans-serif",
-          borderBottom: "none" // Remove underline
+          borderBottom: "none", // Remove underline
+          zIndex: 4 // Higher than panels, lower than drone
         }}
       >
         NEO
@@ -96,15 +123,27 @@ const ParallaxRevealSection = () => {
         style={{ 
           opacity: Math.max(0, 1 - scrollY / 300),
           fontFamily: "'Blade Runner', 'Orbitron', sans-serif",
-          borderBottom: "none" // Remove underline
+          borderBottom: "none", // Remove underline
+          zIndex: 4 // Higher than panels, lower than drone
         }}
       >
         TOKYO
       </div>
+      
+      {/* Drone positioned above NEO TOKYO lettering */}
+      <div style={droneStyle}>
+        <Drone />
+      </div>
 
       {/* Subtitle that appears ONLY after scrolling deep */}
       {subtitleVisible && (
-        <div className="subtitle" style={{ opacity: parallaxDeep ? 1 : 0 }}>
+        <div 
+          className="subtitle" 
+          style={{ 
+            opacity: parallaxDeep ? 1 : 0,
+            zIndex: 5 // Above text, below drone
+          }}
+        >
           <div className="tagline">
             Experience the Power of Personalization
           </div>
@@ -119,6 +158,17 @@ const ParallaxRevealSection = () => {
           </div>
         </div>
       )}
+
+      {/* Adding a style tag for the drone hover animation */}
+      <style>
+        {`
+          @keyframes droneHover {
+            0% { transform: translate(-50%, -50%); }
+            50% { transform: translate(-50%, calc(-50% - 10px)); }
+            100% { transform: translate(-50%, -50%); }
+          }
+        `}
+      </style>
     </div>
   );
 };

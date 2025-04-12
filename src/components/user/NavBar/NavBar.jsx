@@ -110,7 +110,7 @@ function NavBar() {
           {/* Left Navigation Links */}
           <div className="nav-links left-links">
             <Link to="/products" className="nav-link-item">Products</Link>
-            <Link to="/solutions" className="nav-link-item">Solutions</Link>
+            <Link to="#" className="nav-link-item">Solutions</Link>
           </div>
 
           {/* Centered Logo */}
