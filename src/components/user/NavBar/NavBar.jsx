@@ -1,20 +1,117 @@
-import React, { useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { FaUser, FaSignOutAlt, FaShoppingCart, FaBars, FaTimes } from "react-icons/fa";
 import logo from "../../../Images/LoginWith/neo_tokyo-logo.png";
 import "./nav.css";
 import LoginPopup from "../Login/LoginPopup";
+import { useAuth } from "../../../Context/UserContext";
+import { getUserInfo as fetchUserInfo } from '../../../Services/userApi';
+import SideBar from "../SIdeBar/SideBar";
 
 function NavBar() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isLoginOpen, setIsLoginOpen] = useState(false);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const { token, setToken, user, setUser } = useAuth();
+  const [userFetched, setUserFetched] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [lastScroll, setLastScroll] = useState(0);
   const navigate = useNavigate();
 
+  // Handle scroll effect for navbar
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScroll = window.pageYOffset;
+      const navbar = document.querySelector('.navbar');
+      
+      if (currentScroll <= 0) {
+        navbar.classList.remove('hidden');
+        return;
+      }
+      
+      if (currentScroll > lastScroll && !navbar.classList.contains('hidden')) {
+        navbar.classList.add('hidden');
+      } else if (currentScroll < lastScroll && navbar.classList.contains('hidden')) {
+        navbar.classList.remove('hidden');
+      }
+      
+      if (currentScroll > 100) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+      
+      setLastScroll(currentScroll);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [lastScroll]);
+
+  // Handle click outside for dropdown
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (isDropdownOpen && !event.target.closest('.user-dropdown')) {
+        setIsDropdownOpen(false);
+      }
+    };
+    
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, [isDropdownOpen]);
+
+  const fetchUserData = useCallback(async () => {
+    if (token && !userFetched) {
+      try {
+        const userInfo = await fetchUserInfo();
+        if (userInfo) {
+          setUser(userInfo);
+          setUserFetched(true);
+        }
+      } catch (error) {
+        console.error("Error fetching user info:", error);
+        setUserFetched(true);
+      }
+    } else if (!token) {
+      setUser(null);
+      setUserFetched(false);
+    }
+  }, [token, userFetched, setUser]);
+
+  useEffect(() => {
+    fetchUserData();
+  }, [fetchUserData]);
+
+  const handleLogout = () => {
+    setToken(null);
+    localStorage.removeItem("token");
+    setUser(null);
+    setUserFetched(false);
+    setIsDropdownOpen(false);
+    navigate("/");
+  };
+
+  const toggleDropdown = () => setIsDropdownOpen(!isDropdownOpen);
+  const toggleSidebar = () => setIsSidebarOpen(!isSidebarOpen);
+  const closeSidebar = () => setIsSidebarOpen(false);
+  const openLogin = () => {
+    setIsLoginOpen(true);
+    closeSidebar(); // Close sidebar when opening login popup
+  };
+  const closeLogin = () => setIsLoginOpen(false);
+
+  const navigateToCart = () => navigate("/cart");
+  const navigateToProfile = () => navigate("/profile");
+
   return (
-    <nav className="navbar">
-      <div className="nav-container">
-        <div className="nav-links">
-          <Link to="/products">Products</Link>
-          <Link to="/solutions">Solutions</Link>
+    <>
+      <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
+        <div className="nav-container">
+          {/* Left Navigation Links */}
+          <div className="nav-links left-links">
+            <Link to="/products" className="nav-link-item">Products</Link>
+            <Link to="#" className="nav-link-item">Solutions</Link>
+          </div>
 
           {/* Centered Logo */}
           <div className="logo-container">
@@ -23,97 +120,67 @@ function NavBar() {
             </Link>
           </div>
 
-          <Link to="/store">Store</Link>
-          <Link to="/support">Support</Link>
+          {/* Right Navigation Links */}
+          <div className="nav-links right-links">
+            <Link to="/store" className="nav-link-item">Store</Link>
+            <Link to="/support" className="nav-link-item">Support</Link>
+          </div>
+
+          {/* Right Side Buttons */}
+          <div className="nav-buttons">
+            <button className="cart-btn" onClick={navigateToCart}>
+              <FaShoppingCart className="cart-icon" />
+            </button>
+
+            {token ? (
+              <div className="user-dropdown">
+                <button className="user-btn" onClick={toggleDropdown}>
+                  <FaUser className="user-icon" />
+                  <span className="user-name">
+                    {user?.data?.first_name || "User"}
+                  </span>
+                  {isDropdownOpen ? '▲' : '▼'}
+                </button>
+
+                {isDropdownOpen && (
+                  <div className="dropdown-menu">
+                    <button onClick={navigateToProfile}>
+                      <FaUser className="dropdown-icon" /> Profile
+                    </button>
+                    <button onClick={handleLogout}>
+                      <FaSignOutAlt className="dropdown-icon" /> Logout
+                    </button>
+                  </div>
+                )}
+              </div>
+            ) : (
+              <button className="login-btn" onClick={openLogin}>
+                Sign In
+              </button>
+            )}
+
+            {/* Menu Button - Always on Right */}
+            <button className="menu-btn" onClick={toggleSidebar}>
+              <FaBars />
+            </button>
+          </div>
         </div>
+      </nav>
 
-        {/* Buttons */}
-        <div className="nav-buttons">
-          <button className="cart-btn" onClick={() => navigate("/cart")}>
-            Cart
-          </button>
-          <button className="menu-btn" onClick={() => setIsSidebarOpen(true)}>
-            ☰
-          </button>
-        </div>
-      </div>
-
-      {/* Sidebar Code Inside NavBar */}
-      <div className={`sidebar ${isSidebarOpen ? "open" : ""}`}>
-        <button className="close-btn" onClick={() => setIsSidebarOpen(false)}>
-          ☰
-        </button>
-
-        {/* Register & Sign In Buttons */}
-        <div className="buttons-login">
-    
-             <button className="cart-btn"><Link to='/Login'>Register</Link></button>
-          
-          <button className="cart-btn">Sign In</button>
-        </div>
-
-        {/* Sidebar Links */}
-        <div className="sidebar-links">
-        <Link to="/about" onClick={() => setIsSidebarOpen(false)}>
-            Aboutus
-          </Link>
-          <Link to="/store" onClick={() => setIsSidebarOpen(false)}>
-            Store
-          </Link>
-          <Link to="/solutions" onClick={() => setIsSidebarOpen(false)}>
-            Solutions
-          </Link>
-          <Link to="/products" onClick={() => setIsSidebarOpen(false)}>
-            Products
-          </Link>
-          <Link to="/support" onClick={() => setIsSidebarOpen(false)}>
-            Support
-          </Link>
-          <Link to="/rtx-pc" onClick={() => setIsSidebarOpen(false)}>
-            RTX Powered PC
-          </Link>
-        </div>
-
-        {/* Coming Soon Section */}
-        <div className="soon">
-          <h2>NeoTokyo.Config</h2> <span>Coming Soon</span>
-        </div>
-
-        {/* HQ Address */}
-        <div className="hq-info">
-          <h3>HQ - Kochi</h3>
-          <p>
-            Floor no. 2, Koroth Arcade,
-            <br />
-            Vennala High School Rd,
-            <br />
-            Opposite to V-Guard, Vennala,
-          
-            Kochi, Kerala 682028
-          </p>
-          <p>91 - 8848133939</p>
-          <p>info@neotokyo.in</p>
-        </div>
-
-        {/* Social Media Buttons */}
-        <div className="social-buttons">
-          <button className="social-btn">IG</button>
-          <button className="social-btn">X</button>
-          <button className="social-btn">IN</button>
-        </div>
-      </div>
-
-      {/* Overlay */}
-      {isSidebarOpen && (
-        <div className="overlay" onClick={() => setIsSidebarOpen(false)} />
-      )}
-      {isLoginOpen && (
-        <div className="overlay" onClick={() => setIsLoginOpen(false)} />
-      )}
-
+      {/* Sidebar */}
+      <SideBar isOpen={isSidebarOpen} onClose={closeSidebar} openLogin={openLogin} />
+      
       {/* Login Popup */}
-      <LoginPopup isOpen={isLoginOpen} onClose={() => setIsLoginOpen(false)} />
-    </nav>
+      <LoginPopup isOpen={isLoginOpen} onClose={closeLogin} />
+      
+      {/* Overlay */}
+      {(isSidebarOpen || isLoginOpen) && (
+        <div className="overlay active" onClick={() => {
+          if (isSidebarOpen) closeSidebar();
+          if (isLoginOpen) closeLogin();
+        }} />
+      )}
+    </>
   );
 }
 

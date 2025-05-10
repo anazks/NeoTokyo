@@ -1,166 +1,176 @@
-import React, { useEffect, useState } from "react";
-import { motion } from "framer-motion";
-import cityImage from "../../../Images/city.png";
+import React, { useEffect, useState, useRef } from "react";
+import './style.css';
+import Tokyo from '../../../Images/city.png'
+import Drone from "../Drone/Drone";
 
-const WelcomeSection = () => {
+const ParallaxRevealSection = () => {
   const [scrollY, setScrollY] = useState(0);
-  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
+  const [inView, setInView] = useState(false);
+  const sectionRef = useRef(null);
 
-  // Update scroll position on scroll event
   useEffect(() => {
     const handleScroll = () => {
-      setScrollY(window.scrollY); // Get the scroll position from the window
+      setScrollY(window.scrollY);
+      
+      // Check if section is in viewport
+      if (sectionRef.current) {
+        const rect = sectionRef.current.getBoundingClientRect();
+        const isInView = rect.top <= window.innerHeight/2 && rect.bottom >= 0;
+        setInView(isInView);
+      }
     };
 
-    const handleResize = () => {
-      setScreenWidth(window.innerWidth); // Update screen width on resize
-    };
+    // Initial check
+    handleScroll();
 
-    window.addEventListener("scroll", handleScroll); // Listen for scroll events
-    window.addEventListener("resize", handleResize); // Listen for window resize
-
+    window.addEventListener("scroll", handleScroll);
+    
     return () => {
-      window.removeEventListener("scroll", handleScroll); // Cleanup on component unmount
-      window.removeEventListener("resize", handleResize); // Cleanup on resize
+      window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
-  // Dynamic styles for image expansion based on scroll
-  const imageWidth = Math.min(900, 250 + scrollY / 2); // Max 900px width, increases as you scroll
-  const imageHeight = Math.min(100, 80 + scrollY / 10); // Max 100vh height, increases as you scroll
+  // Calculate parallax effects based on scroll
+  const parallaxActive = scrollY > 200;
+  const parallaxDeep = scrollY > 300;
+  const panelTransformPercentage = Math.min(100, scrollY / 5);
+  
+  // Modified: Ensure the image is always full width when revealed
+  const imageWidth = parallaxActive ? 100 : 20;
+  const imageOpacity = Math.min(1, scrollY / 300);
+  
+  // Show subtitle only after reveal (when scrolling is deep)
+  const subtitleVisible = parallaxDeep;
 
-  // Determine font size based on screen width
-  let fontSize = "3.8rem"; // Default font size
-  let leftPosition = "28%";
-  let rightPosition = "18%";
+  // Dynamic inline styles for the center image
+  const centerImageStyle = {
+    width: `${imageWidth}%`,
+    opacity: imageOpacity,
+    filter: "grayscale(1) contrast(1.2)", // Keeping the black and white effect
+    backgroundSize: "cover",
+    backgroundPosition: "center"
+  };
 
-  if (screenWidth <= 992) {
-    fontSize = "6vw"; // Adjust font size for tablet screens
-    leftPosition = "22%"; // Adjust left position for tablet screens
-    rightPosition = "22%"; // Adjust right position for tablet screens
-  }
-  if (screenWidth <= 768) {
-    fontSize = "8vw"; // Increase font size for smaller screens
-    leftPosition = "15%"; // Adjust left position for smaller screens
-    rightPosition = "15%"; // Adjust right position for smaller screens
-  }
-  if (screenWidth <= 576) {
-    fontSize = "10vw"; // Larger text for very small screens
-    leftPosition = "10%"; // Adjust left position for very small screens
-    rightPosition = "10%"; // Adjust right position for very small screens
-  }
+  // Drone visibility style - positioned above the NEO TOKYO lettering
+  const droneStyle = {
+    position: "absolute",
+    zIndex: 99, // Higher z-index to ensure it appears on top of all elements
+    top: "0", // Position above the text (which is at 70%)
+    left: "20%", // Center horizontally
+    transform: "translate(-50%, -50%)", // Center the drone
+    opacity: 1, // Always visible
+    transition: "opacity 1s ease-in-out, transform 1.5s ease-in-out",
+    // Add a slight hover animation
+    animation: "droneHover 4s infinite ease-in-out"
+  };
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 50 }} // Fade-in and slide-up effect
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8, ease: "easeOut" }}
-      style={{
-        position: "relative",
-        minHeight: "100vh",
-        width: "100%",
-        overflow: "hidden",
-        scrollSnapAlign: "start",
-        zIndex: 2,
-      }}
+    <div 
+      ref={sectionRef}
+      className={`parallax-container ${inView ? 'in-view' : ''} ${parallaxActive ? 'parallax-active' : ''} ${parallaxDeep ? 'parallax-deep' : ''}`}
+      style={{ position: "relative", overflow: "hidden" }} // Ensure relative positioning
     >
+      {/* Left Panel */}
+      <div 
+        className="panel panel-left"
+        style={{ 
+          transform: `translateX(-${panelTransformPercentage}%)`,
+          background: "linear-gradient(45deg, #111, #222)", // Darker panels
+          zIndex: 3 // Lower than drone
+        }}
+      />
+
+      {/* Right Panel */}
+      <div 
+        className="panel panel-right"
+        style={{ 
+          transform: `translateX(${panelTransformPercentage}%)`,
+          background: "linear-gradient(-45deg, #111, #222)", // Darker panels
+          zIndex: 3 // Lower than drone
+        }}
+      />
+
+      {/* Center Image - Revealed */}
       <div
-        className="welcome-container"
+        className="center-image"
         style={{
-          position: "relative",
-          height: "100vh",
-          background: "#fff",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          textAlign: "center",
-          color: "#000",
-          overflow: "hidden",
+          ...centerImageStyle,
+          backgroundImage: `url(${Tokyo})`,
+          // Ensure the image covers the entire width when revealed
+          left: "0",
+          transform: "none",
+          width: `${imageWidth}%`,
+          zIndex: 1 // Lowest z-index
+        }}
+      />
+      
+      {/* Text - NEO */}
+      <div
+        className="text text-left neo-font"
+        style={{ 
+          opacity: Math.max(0, 1 - scrollY / 300),
+          fontFamily: "'Blade Runner', 'Orbitron', sans-serif",
+          borderBottom: "none", // Remove underline
+          zIndex: 4 // Higher than panels, lower than drone
         }}
       >
-        {/* Expanding Image */}
-        <motion.div
-          style={{
-            position: "absolute",
-            top: "17vh",
-            width: `${imageWidth}px`, // Dynamically adjust width
-            height: `${imageHeight}vh`, // Dynamically adjust height
-            backgroundImage: `url(${cityImage})`,
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-            borderRadius: "10px",
-            zIndex: 1,
-            transition: "all 0.2s ease-out", // Smooth transition
-            objectFit: "cover", // Ensure the image covers the area without distortion
-          }}
-        />
+        NEO
+      </div>
 
-        {/* Text - NEO */}
-        <h1
-          style={{
-            position: "absolute",
-            left: leftPosition,
-            fontSize: fontSize,
-            fontWeight: "bold",
-            letterSpacing: "0.3em",
-            textShadow: "2px 2px 5px rgba(0, 0, 0, 0.3)",
-            zIndex: 2,
-            whiteSpace: "nowrap",
+      {/* Text - TOKYO */}
+      <div
+        className="text text-right neo-font"
+        style={{ 
+          opacity: Math.max(0, 1 - scrollY / 300),
+          fontFamily: "'Blade Runner', 'Orbitron', sans-serif",
+          borderBottom: "none", // Remove underline
+          zIndex: 4 // Higher than panels, lower than drone
+        }}
+      >
+        TOKYO
+      </div>
+      
+      {/* Drone positioned above NEO TOKYO lettering */}
+      <div style={droneStyle}>
+        <Drone />
+      </div>
+
+      {/* Subtitle that appears ONLY after scrolling deep */}
+      {subtitleVisible && (
+        <div 
+          className="subtitle" 
+          style={{ 
+            opacity: parallaxDeep ? 1 : 0,
+            zIndex: 5 // Above text, below drone
           }}
         >
-          NEO
-        </h1>
-
-        {/* Text - TOKYO */}
-        <h1
-          style={{
-            position: "absolute",
-            right: rightPosition,
-            fontSize: fontSize,
-            fontWeight: "bold",
-            letterSpacing: "0.3em",
-            textShadow: "2px 2px 5px rgba(0, 0, 0, 0.3)",
-            zIndex: 2,
-            whiteSpace: "nowrap",
-          }}
-        >
-          TOKYO
-        </h1>
-
-        {/* Subtitle & Description */}
-        <div
-          style={{
-            position: "absolute",
-            bottom: "30vh",
-            right: "18%",
-            textAlign: "right",
-            lineHeight: "1.5",
-            fontWeight: "bold",
-            zIndex: 2,
-          }}
-        >
-          <hr
-            style={{
-              width: "60px",
-              height: "3px",
-              backgroundColor: "#DA0037",
-              border: "none",
-              margin: "12px 0",
-            }}
-          />
-          <div style={{ fontSize: "1rem", fontWeight: "normal" }}>
+          <div className="tagline">
             Experience the Power of Personalization
           </div>
-          <p style={{ fontSize: "1.2rem", fontWeight: "700", top: "600px" }}>
-            EXPERIENCE NOW
-          </p>
-          <p style={{ fontSize: "1.5rem", fontWeight: "bold" }}>
+          <p className="headline">
             Endless Possibilities
           </p>
+          <div className="cta-container">
+            <button className="cta-button">
+              <span className="cta-text">EXPERIENCE NOW</span>
+              <span className="cta-icon">→</span>
+            </button>
+          </div>
         </div>
-      </div>
-    </motion.div>
+      )}
+
+      {/* Adding a style tag for the drone hover animation */}
+      <style>
+        {`
+          @keyframes droneHover {
+            0% { transform: translate(-50%, -50%); }
+            50% { transform: translate(-50%, calc(-50% - 10px)); }
+            100% { transform: translate(-50%, -50%); }
+          }
+        `}
+      </style>
+    </div>
   );
 };
 
-export default WelcomeSection;
+export default ParallaxRevealSection;

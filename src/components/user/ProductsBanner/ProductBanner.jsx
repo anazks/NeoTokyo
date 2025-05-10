@@ -91,10 +91,11 @@ function ProductBanner() {
                         <div className="discount-badge">SAVE ₹20,000</div>
                     </div>
 
-                <button className="team-buttons">
-                    <IoArrowForwardCircleSharp className='iconsbtn-team' />
+                {/* <button className="buy-Now">
+                    <IoArrowForwardCircleSharp className='iconsbtn-teams' />
                     <span className='Team' style={{ color: 'white' }}>BUY NOW</span>
-                </button>
+                </button> */}
+                <button className='Buy-now'>Buy Now</button>
 
                 {/* Particles for button hover effect */}
                 <div className="particles">
@@ -105,7 +106,8 @@ function ProductBanner() {
                     
             </div>
             <div className="rightBox">
-                <div className="image-container">
+           
+                <div className="image-containersx">
                     <img src={image} alt="gaming pc" />
                     <div className="image-overlay">
                         <div className="pulse-circle"></div>

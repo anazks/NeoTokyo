@@ -75,7 +75,7 @@ export default function Gaming() {
               <h1 className="staggered-text">
                 <span className="highlight-text">EXP</span>ERIENCES
               </h1>
-              <h1 className="staggered-text">BEGIN HERE</h1>
+              <h1 className="staggered-text">&nbsp;&nbsp; BEGIN HERE</h1>
               <div className="pulsing-circle"></div>
               <h4 className="possibilities-text">Endless Possibilities</h4>
               <div className="feature-list">
@@ -95,13 +95,6 @@ export default function Gaming() {
             </div>
           </motion.div>
           <div className="right-Box" data-aos="fade-left">
-          {/* <motion.img 
-              src={triangle} 
-              alt="Triangle Design" 
-              animate={{ rotate: 360 }}
-              transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
-              className="floating-image"
-            /> */}
             <img 
               src={triangle} 
               alt="Triangle Design" 
@@ -154,15 +147,6 @@ export default function Gaming() {
           </motion.div>
         </div>
       </div>
-
-      <motion.div 
-        className="scroll-indicator"
-        animate={{ y: [0, 10, 0] }}
-        transition={{ duration: 1.5, repeat: Infinity }}
-      >
-        <span className="scroll-text">Scroll</span>
-        <span className="scroll-arrow">↓</span>
-      </motion.div>
     </div>
   );
 }

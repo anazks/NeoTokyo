@@ -124,15 +124,18 @@ function Gamingpage() {
               >
                 {isGaming ? "GAMING\nSYSTEMS" : "PROFESSIONAL\nSYSTEMS"}
               </motion.h1>
+              <br />
               <motion.p
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.4, duration: 0.5 }}
                 className="subtitle"
-              >
+              > 
+
                 {isGaming 
-                  ? "Built for ultimate gaming performance" 
-                  : "Designed for professional workloads"}
+                  ? "Built for ultimate gaming performance"
+                  : "Designed for professional workloads"
+                }
               </motion.p>
               <motion.button 
                 whileHover={{ scale: 1.05 }}

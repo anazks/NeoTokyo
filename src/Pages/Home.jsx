@@ -65,7 +65,7 @@ function Home() {
   return (
     <div>
       {/* <NavBar /> */}
-      <WelcomeHome />
+      <WelcomeHome /> 
       {/* <Quick/>
         <Gaming/>
         <FeedBack/>
